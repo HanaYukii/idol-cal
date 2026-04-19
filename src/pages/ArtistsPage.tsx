@@ -25,13 +25,13 @@ export default function ArtistsPage() {
           {artists.map((a) => (
             <li
               key={a.id}
-              className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-white p-3 shadow-sm"
+              className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-900 p-3 text-zinc-100 shadow-sm"
             >
               <span
-                className="h-6 w-6 flex-shrink-0 rounded-full ring-1 ring-zinc-200"
+                className="h-6 w-6 flex-shrink-0 rounded-full ring-1 ring-zinc-700"
                 style={{ background: a.color }}
               />
-              <span className="flex-1 font-medium text-zinc-900">
+              <span className="flex-1 font-medium text-white">
                 {a.name}
               </span>
             </li>
