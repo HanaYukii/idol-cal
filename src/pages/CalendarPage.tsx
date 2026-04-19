@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useEvents } from '@/db/events'
 import { useArtists } from '@/db/artists'
 import { todayJST, parseISODate } from '@/lib/timezone'
 import EventCard from '@/components/EventCard'
+import EventDialog from '@/components/EventDialog'
 import type { IdolEvent } from '@/db/schema'
 
 const WEEKDAYS_JA = ['日', '月', '火', '水', '木', '金', '土']
@@ -50,6 +51,9 @@ export default function CalendarPage() {
   const todayRef = useRef<HTMLLIElement>(null)
   const hasEvents = events.length > 0
 
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const [editingEvent, setEditingEvent] = useState<IdolEvent | null>(null)
+
   const months = groupByMonth(events)
 
   useEffect(() => {
@@ -57,25 +61,44 @@ export default function CalendarPage() {
     const el = todayRef.current
     requestAnimationFrame(() => {
       const y =
-        window.scrollY + el.getBoundingClientRect().top - 110 /* nav + month header + gap */
+        window.scrollY + el.getBoundingClientRect().top - 110
       window.scrollTo({ top: y, behavior: 'instant' })
     })
   }, [hasEvents])
 
+  function openNew() {
+    setEditingEvent(null)
+    setDialogOpen(true)
+  }
+
+  function openEdit(ev: IdolEvent) {
+    setEditingEvent(ev)
+    setDialogOpen(true)
+  }
+
   return (
     <div className="p-4">
-      <header className="mb-6 pt-2">
-        <h1 className="text-2xl font-semibold tracking-tight">月曆</h1>
-        <p className="mt-1 text-sm text-zinc-500">
-          {events.length} 筆活動 · JST {today}
-        </p>
+      <header className="mb-6 flex items-end justify-between gap-3 pt-2">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">月曆</h1>
+          <p className="mt-1 text-sm text-zinc-500">
+            {events.length} 筆活動 · JST {today}
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={openNew}
+          className="rounded-md bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-zinc-800"
+        >
+          + 新增活動
+        </button>
       </header>
 
       {!hasEvents ? (
         <div className="rounded-xl border border-dashed border-zinc-300 bg-white/60 p-6 text-center text-zinc-500">
           <p className="text-sm">還沒有任何活動</p>
           <p className="mt-1 text-xs">
-            到「設定」按「載入 demo 資料」，或自己到「團體」加一個推し
+            點右上「+ 新增活動」，或到「設定」按「載入 demo 資料」
           </p>
         </div>
       ) : (
@@ -134,6 +157,7 @@ export default function CalendarPage() {
                               artistById={artistById}
                               hideDate
                               muted={isPast}
+                              onClick={() => openEdit(ev)}
                             />
                           </li>
                         ))}
@@ -146,6 +170,13 @@ export default function CalendarPage() {
           ))}
         </div>
       )}
+
+      <EventDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        event={editingEvent}
+        artists={artists}
+      />
     </div>
   )
 }

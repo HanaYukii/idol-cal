@@ -3,9 +3,14 @@ import { useEvents } from '@/db/events'
 import { useArtists } from '@/db/artists'
 import { todayJST } from '@/lib/timezone'
 import EventCard from '@/components/EventCard'
+import EventDialog from '@/components/EventDialog'
+import type { IdolEvent } from '@/db/schema'
 
 export default function ListPage() {
   const [showPast, setShowPast] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const [editingEvent, setEditingEvent] = useState<IdolEvent | null>(null)
+
   const events = useEvents()
   const artists = useArtists()
   const artistById = new Map(artists.map((a) => [a.id, a]))
@@ -14,20 +19,39 @@ export default function ListPage() {
   const upcoming = events.filter((e) => e.date >= today)
   const past = events.filter((e) => e.date < today).reverse()
 
+  function openNew() {
+    setEditingEvent(null)
+    setDialogOpen(true)
+  }
+
+  function openEdit(ev: IdolEvent) {
+    setEditingEvent(ev)
+    setDialogOpen(true)
+  }
+
   return (
     <div className="p-4">
-      <header className="mb-6 pt-2">
-        <h1 className="text-2xl font-semibold tracking-tight">清單</h1>
-        <p className="mt-1 text-sm text-zinc-500">
-          今後 {upcoming.length} 筆 · 過去 {past.length} 筆 · JST {today}
-        </p>
+      <header className="mb-6 flex items-end justify-between gap-3 pt-2">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">清單</h1>
+          <p className="mt-1 text-sm text-zinc-500">
+            今後 {upcoming.length} 筆 · 過去 {past.length} 筆 · JST {today}
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={openNew}
+          className="rounded-md bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-zinc-800"
+        >
+          + 新增活動
+        </button>
       </header>
 
       {events.length === 0 ? (
         <div className="rounded-xl border border-dashed border-zinc-300 bg-white/60 p-6 text-center text-zinc-500">
           <p className="text-sm">還沒有任何活動</p>
           <p className="mt-1 text-xs">
-            到「設定」按「載入 demo 資料」，或自己到「團體」加一個推し
+            點右上「+ 新增活動」，或到「設定」按「載入 demo 資料」
           </p>
         </div>
       ) : (
@@ -36,7 +60,11 @@ export default function ListPage() {
             <ul className="space-y-2">
               {upcoming.map((ev) => (
                 <li key={ev.id}>
-                  <EventCard event={ev} artistById={artistById} />
+                  <EventCard
+                    event={ev}
+                    artistById={artistById}
+                    onClick={() => openEdit(ev)}
+                  />
                 </li>
               ))}
             </ul>
@@ -62,7 +90,12 @@ export default function ListPage() {
                 <ul className="mt-3 space-y-2">
                   {past.map((ev) => (
                     <li key={ev.id}>
-                      <EventCard event={ev} artistById={artistById} muted />
+                      <EventCard
+                        event={ev}
+                        artistById={artistById}
+                        muted
+                        onClick={() => openEdit(ev)}
+                      />
                     </li>
                   ))}
                 </ul>
@@ -71,6 +104,13 @@ export default function ListPage() {
           )}
         </>
       )}
+
+      <EventDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        event={editingEvent}
+        artists={artists}
+      />
     </div>
   )
 }

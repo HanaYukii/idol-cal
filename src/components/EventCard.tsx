@@ -7,6 +7,8 @@ interface EventCardProps {
   muted?: boolean
   /** Hide the date line (when context already shows the date) */
   hideDate?: boolean
+  /** If provided, card becomes a clickable button */
+  onClick?: () => void
 }
 
 export default function EventCard({
@@ -14,6 +16,7 @@ export default function EventCard({
   artistById,
   muted,
   hideDate,
+  onClick,
 }: EventCardProps) {
   const meta = hideDate
     ? event.startTime
@@ -21,11 +24,16 @@ export default function EventCard({
       : ''
     : `${event.date}${event.startTime ? ` · ${event.startTime} 開演` : ''}`
 
+  const clickable = !!onClick
+  const Element = clickable ? 'button' : 'div'
+
   return (
-    <div
-      className={`rounded-lg border border-zinc-300 bg-white/70 p-3 shadow-sm backdrop-blur-sm ${
+    <Element
+      type={clickable ? 'button' : undefined}
+      onClick={onClick}
+      className={`block w-full rounded-lg border border-zinc-300 bg-white/70 p-3 text-left shadow-sm backdrop-blur-sm transition ${
         muted ? 'opacity-60' : ''
-      }`}
+      } ${clickable ? 'hover:border-zinc-400 hover:bg-white/90 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-200' : ''}`}
     >
       {meta && <div className="text-xs text-zinc-500">{meta}</div>}
       <div className="mt-0.5 font-medium text-zinc-900">{event.title}</div>
@@ -50,6 +58,6 @@ export default function EventCard({
           )
         })}
       </div>
-    </div>
+    </Element>
   )
 }
