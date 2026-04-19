@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useEvents } from '@/db/events'
 import { useArtists } from '@/db/artists'
 import { todayJST } from '@/lib/timezone'
+import EventCard from '@/components/EventCard'
 
 export default function ListPage() {
   const [showPast, setShowPast] = useState(false)
@@ -34,7 +35,9 @@ export default function ListPage() {
           {upcoming.length > 0 ? (
             <ul className="space-y-2">
               {upcoming.map((ev) => (
-                <EventRow key={ev.id} ev={ev} artistById={artistById} />
+                <li key={ev.id}>
+                  <EventCard event={ev} artistById={artistById} />
+                </li>
               ))}
             </ul>
           ) : (
@@ -58,12 +61,9 @@ export default function ListPage() {
               {showPast && (
                 <ul className="mt-3 space-y-2">
                   {past.map((ev) => (
-                    <EventRow
-                      key={ev.id}
-                      ev={ev}
-                      artistById={artistById}
-                      muted
-                    />
+                    <li key={ev.id}>
+                      <EventCard event={ev} artistById={artistById} muted />
+                    </li>
                   ))}
                 </ul>
               )}
@@ -72,55 +72,5 @@ export default function ListPage() {
         </>
       )}
     </div>
-  )
-}
-
-interface EventRowProps {
-  ev: {
-    id: string
-    artistIds: string[]
-    title: string
-    date: string
-    startTime?: string
-    venue?: string
-  }
-  artistById: Map<string, { id: string; name: string; color: string }>
-  muted?: boolean
-}
-
-function EventRow({ ev, artistById, muted }: EventRowProps) {
-  return (
-    <li
-      className={`rounded-lg border border-zinc-300 bg-white/70 p-3 shadow-sm backdrop-blur-sm ${
-        muted ? 'opacity-60' : ''
-      }`}
-    >
-      <div className="text-xs text-zinc-500">
-        {ev.date}
-        {ev.startTime ? ` · ${ev.startTime} 開演` : ''}
-      </div>
-      <div className="mt-0.5 font-medium text-zinc-900">{ev.title}</div>
-      {ev.venue && (
-        <div className="mt-0.5 text-xs text-zinc-600">{ev.venue}</div>
-      )}
-      <div className="mt-1 flex flex-wrap gap-1">
-        {ev.artistIds.map((id) => {
-          const a = artistById.get(id)
-          if (!a) return null
-          return (
-            <span
-              key={id}
-              className="inline-flex items-center gap-1 rounded-full bg-white/80 px-2 py-0.5 text-xs text-zinc-700 ring-1 ring-zinc-200"
-            >
-              <span
-                className="h-2 w-2 rounded-full"
-                style={{ background: a.color }}
-              />
-              {a.name}
-            </span>
-          )
-        })}
-      </div>
-    </li>
   )
 }
