@@ -8,7 +8,7 @@ import SettingsPage from '@/pages/SettingsPage'
 export default function App() {
   return (
     <HashRouter>
-      <div className="min-h-svh bg-zinc-950 text-zinc-100">
+      <div className="min-h-svh text-zinc-900">
         <TopNav />
         <main className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
           <Routes>

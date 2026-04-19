@@ -10,6 +10,7 @@ interface EventSeed {
   artistNames: string[]
   title: string
   date: string
+  startTime?: string
   venue?: string
   url?: string
   note?: string
@@ -320,6 +321,7 @@ export async function loadSeedData(): Promise<{
       artistIds,
       title: spec.title,
       date: spec.date,
+      startTime: spec.startTime,
       venue: spec.venue,
       url: spec.url,
       note: spec.note,

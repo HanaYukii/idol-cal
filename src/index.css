@@ -8,8 +8,17 @@
 }
 
 html {
-  color-scheme: dark;
-  background: #09090b;
+  color-scheme: light;
+  min-height: 100svh;
+  background-image: linear-gradient(
+    135deg,
+    #fff1f2 0%,
+    #ffffff 40%,
+    #ffffff 60%,
+    #f5f3ff 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 body {
@@ -17,6 +26,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  background: transparent;
 }
 
 * {

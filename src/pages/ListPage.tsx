@@ -23,7 +23,7 @@ export default function ListPage() {
       </header>
 
       {events.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/40 p-6 text-center text-zinc-500">
+        <div className="rounded-xl border border-dashed border-zinc-300 bg-white/60 p-6 text-center text-zinc-500">
           <p className="text-sm">還沒有任何活動</p>
           <p className="mt-1 text-xs">
             到「設定」按「載入 demo 資料」，或自己到「團體」加一個推し
@@ -38,7 +38,7 @@ export default function ListPage() {
               ))}
             </ul>
           ) : (
-            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4 text-center text-sm text-zinc-500">
+            <div className="rounded-lg border border-zinc-200 bg-white/60 p-4 text-center text-sm text-zinc-500">
               今後沒有排定的活動
             </div>
           )}
@@ -48,7 +48,7 @@ export default function ListPage() {
               <button
                 type="button"
                 onClick={() => setShowPast((v) => !v)}
-                className="w-full rounded-md border border-zinc-800 bg-zinc-900/50 px-3 py-2 text-sm text-zinc-400 hover:bg-zinc-800"
+                className="w-full rounded-md border border-zinc-200 bg-white/70 px-3 py-2 text-sm text-zinc-600 hover:bg-white"
               >
                 {showPast
                   ? `收起過去活動`
@@ -91,17 +91,17 @@ interface EventRowProps {
 function EventRow({ ev, artistById, muted }: EventRowProps) {
   return (
     <li
-      className={`rounded-lg border border-zinc-800 p-3 ${
-        muted ? 'bg-zinc-900/20 opacity-60' : 'bg-zinc-900/50'
+      className={`rounded-lg border border-zinc-200 bg-white p-3 shadow-sm ${
+        muted ? 'opacity-60' : ''
       }`}
     >
       <div className="text-xs text-zinc-500">
         {ev.date}
         {ev.startTime ? ` · ${ev.startTime} 開演` : ''}
       </div>
-      <div className="mt-0.5 font-medium">{ev.title}</div>
+      <div className="mt-0.5 font-medium text-zinc-900">{ev.title}</div>
       {ev.venue && (
-        <div className="mt-0.5 text-xs text-zinc-400">{ev.venue}</div>
+        <div className="mt-0.5 text-xs text-zinc-600">{ev.venue}</div>
       )}
       <div className="mt-1 flex flex-wrap gap-1">
         {ev.artistIds.map((id) => {
@@ -110,7 +110,7 @@ function EventRow({ ev, artistById, muted }: EventRowProps) {
           return (
             <span
               key={id}
-              className="inline-flex items-center gap-1 rounded-full bg-zinc-800 px-2 py-0.5 text-xs"
+              className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700"
             >
               <span
                 className="h-2 w-2 rounded-full"

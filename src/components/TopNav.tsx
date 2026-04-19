@@ -11,11 +11,13 @@ const TABS = [
 
 export default function TopNav() {
   return (
-    <header className="sticky top-0 z-30 border-b border-zinc-800 bg-zinc-950/85 backdrop-blur-md">
+    <header className="sticky top-0 z-30 border-b border-zinc-200/70 bg-white/75 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 sm:gap-6 sm:px-6">
         <div className="flex items-center gap-2">
           <div className="h-5 w-5 rounded-sm bg-gradient-to-br from-pink-400 to-violet-500" />
-          <span className="text-sm font-semibold tracking-tight">idol-cal</span>
+          <span className="text-sm font-semibold tracking-tight text-zinc-900">
+            idol-cal
+          </span>
         </div>
         <nav className="flex flex-1 items-center gap-1 overflow-x-auto">
           {TABS.map(({ to, label, icon: Icon, end }) => (
@@ -27,8 +29,8 @@ export default function TopNav() {
                 cn(
                   'inline-flex flex-shrink-0 items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors',
                   isActive
-                    ? 'bg-zinc-800 text-white'
-                    : 'text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100',
+                    ? 'bg-zinc-900 text-white'
+                    : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900',
                 )
               }
             >

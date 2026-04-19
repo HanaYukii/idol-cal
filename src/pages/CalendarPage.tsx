@@ -7,7 +7,7 @@ export default function CalendarPage() {
         <h1 className="text-2xl font-semibold tracking-tight">月曆</h1>
         <p className="mt-1 text-sm text-zinc-500">JST · {todayJST()}</p>
       </header>
-      <div className="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/40 p-6 text-center text-zinc-500">
+      <div className="rounded-xl border border-dashed border-zinc-300 bg-white/60 p-6 text-center text-zinc-500">
         <p className="text-sm">月曆視圖尚未實作</p>
         <p className="mt-1 text-xs">目前可以先使用「清單」頁面</p>
       </div>
