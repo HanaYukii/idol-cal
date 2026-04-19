@@ -231,7 +231,23 @@ const EVENTS: EventSeed[] = [
     title: '夏のファミリー遠足 略してファミえん 2026',
     date: '2026-08-09',
     venue: '山中湖交流プラザきららシアターひびき (山梨)',
-    note: 'FAMIEN 2026（同期間 LuckyFes 在茨城）',
+    note: 'FAMIEN 2026',
+  },
+
+  // ── LuckyFes'26 (@ 国営ひたち海浜公園, 茨城) ──
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'LuckyFes\'26 DAY2',
+    date: '2026-08-09',
+    venue: '国営ひたち海浜公園 (茨城)',
+    url: 'https://luckyfes.com/',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: 'LuckyFes\'26 DAY3',
+    date: '2026-08-10',
+    venue: '国営ひたち海浜公園 (茨城)',
+    url: 'https://luckyfes.com/',
   },
 ]
 
