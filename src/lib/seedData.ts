@@ -24,6 +24,8 @@ const ARTISTS: ArtistSeed[] = [
   { name: '高嶺のなでしこ', color: '#FDBA74' },
 ]
 
+const EBICHU_TOUR = '私立恵比寿中学 Spring Tour 2026 〜SuGuilty Train〜'
+
 // 2026 年 2 月〜8 月主要 live / tour（依公開資料，日期 JST）
 const EVENTS: EventSeed[] = [
   // ── 高嶺のなでしこ LIVE TOUR 2026 (Feb–Apr) ──
@@ -133,12 +135,14 @@ const EVENTS: EventSeed[] = [
     artistNames: ['=LOVE'],
     title: '=LOVE STADIUM LIVE',
     date: '2026-06-20',
+    startTime: '17:30',
     venue: 'MUFG スタジアム / 国立競技場 (東京)',
   },
   {
     artistNames: ['=LOVE'],
     title: '=LOVE STADIUM LIVE',
     date: '2026-06-21',
+    startTime: '17:30',
     venue: 'MUFG スタジアム / 国立競技場 (東京)',
   },
   {
@@ -164,67 +168,95 @@ const EVENTS: EventSeed[] = [
     url: 'https://trysail.jp/contents/989829',
   },
 
-  // ── 私立恵比寿中学: Spring Tour + Kanadevia + NHK大阪 + FAMIEN 2026 ──
+  // ── エビ中 Spring Tour 2026 〜SuGuilty Train〜 (Apr–Jul, 12 公演) ──
   {
     artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 Spring Tour 2026',
+    title: EBICHU_TOUR,
+    date: '2026-04-18',
+    venue: 'ザ・ヒロサワ・シティ会館 大ホール (茨城)',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: EBICHU_TOUR,
     date: '2026-04-25',
-    venue: '刈谷市総合文化センター (愛知)',
+    venue: '刈谷市総合文化センター 大ホール (愛知)',
   },
   {
     artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 Spring Tour 2026',
+    title: EBICHU_TOUR,
     date: '2026-04-29',
-    venue: '福岡国際会議場 (福岡)',
+    venue: '福岡国際会議場 メインホール (福岡)',
   },
   {
     artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 Spring Tour 2026',
+    title: EBICHU_TOUR,
     date: '2026-05-10',
     venue: '東京エレクトロンホール宮城 (宮城)',
   },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: EBICHU_TOUR,
+    date: '2026-05-17',
+    venue: '大宮ソニックシティ 大ホール (埼玉)',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: EBICHU_TOUR,
+    date: '2026-05-23',
+    venue: '新潟県民会館 大ホール (新潟)',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: EBICHU_TOUR,
+    date: '2026-06-06',
+    venue: 'Kanadevia Hall (東京)',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: EBICHU_TOUR,
+    date: '2026-06-07',
+    venue: 'Kanadevia Hall (東京)',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: EBICHU_TOUR,
+    date: '2026-07-04',
+    venue: 'NHK 大阪ホール (大阪)',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: EBICHU_TOUR,
+    date: '2026-07-05',
+    venue: 'NHK 大阪ホール (大阪)',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: `${EBICHU_TOUR} 追加公演`,
+    date: '2026-07-11',
+    venue: '立川ステージガーデン (東京)',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: `${EBICHU_TOUR} 追加公演`,
+    date: '2026-07-12',
+    venue: '立川ステージガーデン (東京)',
+  },
+
+  // ── エビ中 單發（非 tour） ──
   {
     artistNames: ['私立恵比寿中学'],
     title: 'エビ中 @ Zepp Haneda',
     date: '2026-05-12',
     venue: 'Zepp Haneda (TOKYO)',
   },
-  {
-    artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 Spring Tour 2026',
-    date: '2026-05-23',
-    venue: '新潟県民会館 (新潟)',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 @ Kanadevia Hall',
-    date: '2026-06-06',
-    venue: 'Kanadevia Hall (東京)',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 @ Kanadevia Hall',
-    date: '2026-06-07',
-    venue: 'Kanadevia Hall (東京)',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 @ NHK 大阪ホール',
-    date: '2026-07-04',
-    venue: 'NHK 大阪ホール (大阪)',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 @ NHK 大阪ホール',
-    date: '2026-07-05',
-    venue: 'NHK 大阪ホール (大阪)',
-  },
+
+  // ── エビ中 FAMIEN 2026（8/8–9 @ 山中湖） ──
   {
     artistNames: ['私立恵比寿中学'],
     title: '夏のファミリー遠足 略してファミえん 2026',
     date: '2026-08-08',
     venue: '山中湖交流プラザきららシアターひびき (山梨)',
-    note: 'FAMIEN 2026（同期間 LuckyFes 在茨城）',
+    note: 'FAMIEN 2026',
   },
   {
     artistNames: ['私立恵比寿中学'],
