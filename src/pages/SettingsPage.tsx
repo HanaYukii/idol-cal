@@ -44,9 +44,9 @@ export default function SettingsPage() {
       </header>
 
       <section className="space-y-3">
-        <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4 text-zinc-100 shadow-sm">
-          <h2 className="text-sm font-medium text-white">Demo 資料</h2>
-          <p className="mt-1 text-xs text-zinc-400">
+        <div className="rounded-lg border border-zinc-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm">
+          <h2 className="text-sm font-medium text-zinc-900">Demo 資料</h2>
+          <p className="mt-1 text-xs text-zinc-500">
             載入 2026 年 2〜8 月 5 個團體的 live
             範例（=LOVE、TrySail、エビ中、ukka、高嶺のなでしこ）。
           </p>
@@ -55,7 +55,7 @@ export default function SettingsPage() {
               type="button"
               onClick={handleLoadDemo}
               disabled={loading || clearing}
-              className="rounded-md bg-white px-3 py-1.5 text-sm font-medium text-zinc-900 hover:bg-zinc-100 disabled:opacity-50"
+              className="rounded-md bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-zinc-800 disabled:opacity-50"
             >
               {loading ? '載入中…' : '載入 demo 資料'}
             </button>
@@ -63,26 +63,26 @@ export default function SettingsPage() {
               type="button"
               onClick={handleClearAll}
               disabled={loading || clearing}
-              className="rounded-md border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-200 hover:bg-zinc-700 disabled:opacity-50"
+              className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50"
             >
               {clearing ? '清空中…' : '清空所有資料'}
             </button>
           </div>
           {message && (
-            <p className="mt-3 text-xs text-zinc-300">{message}</p>
+            <p className="mt-3 text-xs text-zinc-600">{message}</p>
           )}
         </div>
 
-        <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4 text-zinc-100 shadow-sm">
-          <h2 className="text-sm font-medium text-white">資料匯出 / 匯入</h2>
-          <p className="mt-1 text-xs text-zinc-400">
+        <div className="rounded-lg border border-zinc-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm">
+          <h2 className="text-sm font-medium text-zinc-900">資料匯出 / 匯入</h2>
+          <p className="mt-1 text-xs text-zinc-500">
             未實作。未來可下載 JSON 備份、匯入到其他裝置，也會支援 iCal 匯出。
           </p>
         </div>
 
-        <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4 text-zinc-100 shadow-sm">
-          <h2 className="text-sm font-medium text-white">關於</h2>
-          <p className="mt-1 text-xs text-zinc-400">
+        <div className="rounded-lg border border-zinc-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm">
+          <h2 className="text-sm font-medium text-zinc-900">關於</h2>
+          <p className="mt-1 text-xs text-zinc-500">
             idol-cal · 個人用偶像活動追蹤 · 資料存在你的瀏覽器 (IndexedDB)
           </p>
         </div>
