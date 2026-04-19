@@ -20,7 +20,7 @@ const ARTISTS: ArtistSeed[] = [
   { name: '=LOVE', color: '#D8B4FE' },
   { name: 'TrySail', color: '#93C5FD' },
   { name: '私立恵比寿中学', color: '#67E8F9' },
-  { name: 'ukka', color: '#FDA4AF' },
+  { name: 'ukka', color: '#FFB6D9' },
   { name: '高嶺のなでしこ', color: '#FDBA74' },
 ]
 
@@ -28,48 +28,64 @@ const EBICHU_TOUR = '私立恵比寿中学 Spring Tour 2026 〜SuGuilty Train〜
 
 // 2026 年 2 月〜8 月主要 live / tour（依公開資料，日期 JST）
 const EVENTS: EventSeed[] = [
-  // ── 高嶺のなでしこ LIVE TOUR 2026 (Feb–Apr) ──
+  // ── 高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – (Feb–May) ──
   {
     artistNames: ['高嶺のなでしこ'],
-    title: '高嶺のなでしこ LIVE TOUR 2026 — Sapporo',
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Sapporo',
     date: '2026-02-14',
     venue: 'Zepp Sapporo (北海道)',
   },
   {
     artistNames: ['高嶺のなでしこ'],
-    title: '高嶺のなでしこ LIVE TOUR 2026 — Osaka',
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Osaka',
     date: '2026-02-23',
     venue: 'Zepp Osaka Bayside (大阪)',
   },
   {
     artistNames: ['高嶺のなでしこ'],
-    title: '高嶺のなでしこ LIVE TOUR 2026 — Nagoya',
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Nagoya',
     date: '2026-03-01',
     venue: 'Zepp Nagoya (愛知)',
   },
   {
     artistNames: ['高嶺のなでしこ'],
-    title: '高嶺のなでしこ LIVE TOUR 2026 — Tokyo',
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Tokyo',
     date: '2026-03-07',
     venue: 'Zepp DiverCity TOKYO',
   },
   {
     artistNames: ['高嶺のなでしこ'],
-    title: '高嶺のなでしこ LIVE TOUR 2026 — Fukuoka',
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Fukuoka',
     date: '2026-03-21',
     venue: 'Zepp Fukuoka (福岡)',
   },
   {
     artistNames: ['高嶺のなでしこ'],
-    title: '高嶺のなでしこ LIVE TOUR 2026 — Sendai',
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Sendai',
     date: '2026-03-29',
     venue: '仙台PIT (宮城)',
   },
   {
     artistNames: ['高嶺のなでしこ'],
-    title: '高嶺のなでしこ Live Tour — Bouquet of 9 Flowers — in Seoul',
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Seoul',
     date: '2026-04-12',
     venue: 'Seoul (Korea)',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Taipei 昼公演',
+    date: '2026-04-18',
+    startTime: '13:00',
+    venue: 'MOONDOG (台北市松山區復興南路一段39号9F)',
+    url: 'https://takanenonadeshiko.jp/bouquetof9flowers-taipei/',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – in Taipei 夜公演',
+    date: '2026-04-18',
+    startTime: '19:00',
+    venue: 'MOONDOG (台北市松山區復興南路一段39号9F)',
+    url: 'https://takanenonadeshiko.jp/bouquetof9flowers-taipei/',
   },
   {
     artistNames: ['高嶺のなでしこ'],
