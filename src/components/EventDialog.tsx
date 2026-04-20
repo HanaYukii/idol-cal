@@ -177,11 +177,11 @@ export default function EventDialog({
 
           <div className="block">
             <span className="mb-1.5 block text-xs font-medium text-zinc-600">
-              團體 <span className="text-rose-500">*</span>
+              推し <span className="text-rose-500">*</span>
             </span>
             {artists.length === 0 ? (
               <p className="text-xs text-zinc-500">
-                還沒有團體，先到「團體」頁新增
+                還沒有推し，先到「推し」頁新增
               </p>
             ) : (
               <div className="flex flex-wrap gap-1.5">

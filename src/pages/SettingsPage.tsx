@@ -12,7 +12,7 @@ export default function SettingsPage() {
     setMessage(null)
     try {
       const r = await loadSeedData()
-      setMessage(`載入完成：新增 ${r.artistsAdded} 個團體、${r.eventsAdded} 筆活動`)
+      setMessage(`載入完成：新增 ${r.artistsAdded} 組推し、${r.eventsAdded} 筆活動`)
     } catch (err) {
       setMessage(`載入失敗：${err instanceof Error ? err.message : String(err)}`)
     } finally {
@@ -21,7 +21,7 @@ export default function SettingsPage() {
   }
 
   async function handleClearAll() {
-    if (!confirm('確定要清空所有團體和活動？此動作無法復原。')) return
+    if (!confirm('確定要清空所有推し和活動？此動作無法復原。')) return
     setClearing(true)
     setMessage(null)
     try {
@@ -47,7 +47,7 @@ export default function SettingsPage() {
         <div className="rounded-lg border border-zinc-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm">
           <h2 className="text-sm font-medium text-zinc-900">Demo 資料</h2>
           <p className="mt-1 text-xs text-zinc-500">
-            載入 2026 年 2〜8 月 5 個團體的 live
+            載入 2026 年 2〜8 月 5 組推し的 live
             範例（=LOVE、TrySail、エビ中、ukka、高嶺のなでしこ）。
           </p>
           <div className="mt-3 flex flex-wrap gap-2">

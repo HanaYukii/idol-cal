@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 const TABS = [
   { to: '/', label: '月曆', icon: Calendar, end: true },
   { to: '/list', label: '清單', icon: List, end: false },
-  { to: '/artists', label: '團體', icon: Users, end: false },
+  { to: '/artists', label: '推し', icon: Users, end: false },
   { to: '/settings', label: '設定', icon: Settings, end: false },
 ] as const
 
