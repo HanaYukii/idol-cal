@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { useEvents } from '@/db/events'
 import { useArtists } from '@/db/artists'
 import { todayJST, parseISODate } from '@/lib/timezone'
+import { useEventFilter, filterEvents } from '@/lib/filters'
 import EventCard from '@/components/EventCard'
 import EventDialog from '@/components/EventDialog'
+import FilterBar from '@/components/FilterBar'
 import type { IdolEvent } from '@/db/schema'
 
 const WEEKDAYS_JA = ['日', '月', '火', '水', '木', '金', '土']
@@ -47,24 +49,33 @@ export default function CalendarPage() {
   const events = useEvents()
   const artists = useArtists()
   const artistById = new Map(artists.map((a) => [a.id, a]))
+
+  const filter = useEventFilter()
+  const filtered = filterEvents(events, filter)
+
   const today = todayJST()
-  const todayRef = useRef<HTMLLIElement>(null)
-  const hasEvents = events.length > 0
+  const anchorRef = useRef<HTMLLIElement>(null)
+  const hasEvents = filtered.length > 0
 
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editingEvent, setEditingEvent] = useState<IdolEvent | null>(null)
 
-  const months = groupByMonth(events)
+  const months = groupByMonth(filtered)
+  // If today exists in filtered set, scroll to it; else scroll to the
+  // first event in range so the user starts where the data is.
+  const hasToday = filtered.some((e) => e.date === today)
+  const anchorDate = hasToday
+    ? today
+    : (filtered[0]?.date ?? '')
 
   useEffect(() => {
-    if (!hasEvents || !todayRef.current) return
-    const el = todayRef.current
+    if (!hasEvents || !anchorRef.current) return
+    const el = anchorRef.current
     requestAnimationFrame(() => {
-      const y =
-        window.scrollY + el.getBoundingClientRect().top - 110
+      const y = window.scrollY + el.getBoundingClientRect().top - 110
       window.scrollTo({ top: y, behavior: 'instant' })
     })
-  }, [hasEvents])
+  }, [hasEvents, anchorDate])
 
   function openNew() {
     setEditingEvent(null)
@@ -78,11 +89,14 @@ export default function CalendarPage() {
 
   return (
     <div className="p-4">
-      <header className="mb-6 flex items-end justify-between gap-3 pt-2">
+      <header className="mb-4 flex items-end justify-between gap-3 pt-2">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">月曆</h1>
           <p className="mt-1 text-sm text-zinc-500">
-            {events.length} 筆活動 · JST {today}
+            {filter.hasActive
+              ? `${filtered.length} / ${events.length} 筆`
+              : `${events.length} 筆活動`}{' '}
+            · JST {today}
           </p>
         </div>
         <button
@@ -94,12 +108,18 @@ export default function CalendarPage() {
         </button>
       </header>
 
-      {!hasEvents ? (
+      <FilterBar artists={artists} filter={filter} />
+
+      {events.length === 0 ? (
         <div className="rounded-xl border border-dashed border-zinc-300 bg-white/60 p-6 text-center text-zinc-500">
           <p className="text-sm">還沒有任何活動</p>
           <p className="mt-1 text-xs">
             點右上「+ 新增活動」，或到「設定」按「載入 demo 資料」
           </p>
+        </div>
+      ) : filtered.length === 0 ? (
+        <div className="rounded-lg border border-zinc-200 bg-white/60 p-4 text-center text-sm text-zinc-500">
+          沒有符合條件的活動
         </div>
       ) : (
         <div className="space-y-8">
@@ -115,13 +135,14 @@ export default function CalendarPage() {
                   const [, m, d] = date.split('-').map(Number)
                   const isToday = date === today
                   const isPast = date < today
+                  const isAnchor = date === anchorDate
                   const isWeekend =
                     parsed.getDay() === 0 || parsed.getDay() === 6
 
                   return (
                     <li
                       key={date}
-                      ref={isToday ? todayRef : undefined}
+                      ref={isAnchor ? anchorRef : undefined}
                       className="flex scroll-mt-28 gap-4"
                     >
                       <div
