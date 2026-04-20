@@ -124,7 +124,7 @@ export default function ArtistDialog({
               onChange={(e) => setName(e.target.value)}
               className={INPUT_CLASS}
               autoFocus
-              placeholder="=LOVE / TrySail / 宮下愛菜 ..."
+              placeholder="=LOVE / TrySail / 高嶺のなでしこ ..."
             />
           </label>
 
