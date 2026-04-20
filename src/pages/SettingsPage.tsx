@@ -6,11 +6,15 @@ import {
   importJSONText,
 } from '@/lib/backup'
 import { db } from '@/db/schema'
+import ICSImportDialog from '@/components/ICSImportDialog'
 
 export default function SettingsPage() {
   const [busy, setBusy] = useState<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const icsInputRef = useRef<HTMLInputElement>(null)
+  const [icsFile, setIcsFile] = useState<File | null>(null)
+  const [icsOpen, setIcsOpen] = useState(false)
 
   async function withBusy(tag: string, fn: () => Promise<string | null>) {
     setBusy(tag)
@@ -73,6 +77,22 @@ export default function SettingsPage() {
       const r = await importJSONText(text, 'replace')
       return `匯入完成：${r.artistsAdded} 組推し、${r.eventsAdded} 筆活動`
     })
+  }
+
+  function pickICSFile() {
+    icsInputRef.current?.click()
+  }
+
+  function handleICSFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file) return
+    setIcsFile(file)
+    setIcsOpen(true)
+  }
+
+  function handleICSImported(count: number) {
+    setMessage(`匯入 ${count} 筆 iCal 事件`)
   }
 
   const loading = !!busy
@@ -141,13 +161,31 @@ export default function SettingsPage() {
             >
               {busy === '匯出 iCal' ? '匯出中…' : '匯出 iCal'}
             </button>
+            <button
+              type="button"
+              onClick={pickICSFile}
+              disabled={loading}
+              className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50"
+            >
+              匯入 iCal
+            </button>
           </div>
+          <p className="mt-2 text-xs text-zinc-500">
+            匯入 iCal 可以吃 TimeTree / Google Calendar / iOS 行事曆 匯出的 .ics 檔。
+          </p>
           <input
             ref={fileInputRef}
             type="file"
             accept="application/json,.json"
             className="hidden"
             onChange={handleFile}
+          />
+          <input
+            ref={icsInputRef}
+            type="file"
+            accept=".ics,text/calendar"
+            className="hidden"
+            onChange={handleICSFile}
           />
         </div>
 
@@ -164,6 +202,13 @@ export default function SettingsPage() {
           </p>
         </div>
       </section>
+
+      <ICSImportDialog
+        open={icsOpen}
+        file={icsFile}
+        onClose={() => setIcsOpen(false)}
+        onImported={handleICSImported}
+      />
     </div>
   )
 }
