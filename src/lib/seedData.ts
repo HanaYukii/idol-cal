@@ -259,10 +259,10 @@ const EVENTS: EventSeed[] = [
     venue: '立川ステージガーデン (東京)',
   },
 
-  // ── エビ中 單發（非 tour） ──
+  // ── エビ中 × ukka ツーマンライブ ──
   {
-    artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 @ Zepp Haneda',
+    artistNames: ['私立恵比寿中学', 'ukka'],
+    title: '私立恵比寿中学 × ukka ツーマンライブ',
     date: '2026-05-12',
     venue: 'Zepp Haneda (TOKYO)',
   },
