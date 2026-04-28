@@ -23,6 +23,7 @@ const ARTISTS: ArtistSeed[] = [
   { name: '私立恵比寿中学', color: '#67E8F9' },
   { name: 'ukka', color: '#FFB6D9' },
   { name: '高嶺のなでしこ', color: '#FDBA74' },
+  { name: '僕が見たかった青空', color: '#5EEAD4' },
 ]
 
 const EBICHU_TOUR = '私立恵比寿中学 Spring Tour 2026 〜SuGuilty Train〜'
@@ -297,6 +298,53 @@ const EVENTS: EventSeed[] = [
     date: '2026-08-10',
     venue: '国営ひたち海浜公園 (茨城)',
     url: 'https://luckyfes.com/',
+  },
+
+  // ── 僕が見たかった青空 全国ツアー2026 + 3周年野外 + サマフェス ──
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: '僕が見たかった青空 全国ツアー2026 — 大阪 1部',
+    date: '2026-05-02',
+    startTime: '14:30',
+    venue: 'GORILLA HALL OSAKA (大阪)',
+    url: 'https://bokuao.com/feature/2026spring',
+  },
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: '僕が見たかった青空 全国ツアー2026 — 大阪 2部',
+    date: '2026-05-02',
+    startTime: '18:00',
+    venue: 'GORILLA HALL OSAKA (大阪)',
+    url: 'https://bokuao.com/feature/2026spring',
+  },
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: '僕が見たかった青空 全国ツアー2026 — 名古屋 1部',
+    date: '2026-05-09',
+    startTime: '14:30',
+    venue: 'DIAMOND HALL (愛知)',
+    url: 'https://bokuao.com/feature/2026spring',
+  },
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: '僕が見たかった青空 全国ツアー2026 — 名古屋 2部',
+    date: '2026-05-09',
+    startTime: '18:00',
+    venue: 'DIAMOND HALL (愛知)',
+    url: 'https://bokuao.com/feature/2026spring',
+  },
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: '僕が観たかった『青空野外』ライブ2026',
+    date: '2026-06-20',
+    venue: '河口湖ステラシアター (山梨)',
+    note: '結成3周年記念 初の野外ワンマン',
+  },
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: 'アオゾラサマーフェスティバル2026',
+    date: '2026-08-30',
+    venue: '豊洲PIT (東京)',
   },
 ]
 
