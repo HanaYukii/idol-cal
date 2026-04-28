@@ -300,7 +300,7 @@ const EVENTS: EventSeed[] = [
     url: 'https://luckyfes.com/',
   },
 
-  // ── 僕が見たかった青空 全国ツアー2026 + 3周年野外 + サマフェス ──
+  // ── 僕が見たかった青空 全国ツアー2026 + 音楽祭 + 3周年野外 + サマフェス ──
   {
     artistNames: ['僕が見たかった青空'],
     title: '僕が見たかった青空 全国ツアー2026 — 大阪 1部',
@@ -332,6 +332,24 @@ const EVENTS: EventSeed[] = [
     startTime: '18:00',
     venue: 'DIAMOND HALL (愛知)',
     url: 'https://bokuao.com/feature/2026spring',
+  },
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: 'EARLY SUMMER FESTA 2026 僕青音楽祭 — 1部',
+    date: '2026-05-06',
+    startTime: '13:45',
+    venue: 'うみかぜ公園 特設野外ステージ (神奈川 横須賀)',
+    url: 'https://esfes.jp/music/260506/',
+    note: 'OCEANS BAND 生演奏 / 海際野外ステージ',
+  },
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: 'EARLY SUMMER FESTA 2026 僕青音楽祭 — 2部',
+    date: '2026-05-06',
+    startTime: '17:45',
+    venue: 'うみかぜ公園 特設野外ステージ (神奈川 横須賀)',
+    url: 'https://esfes.jp/music/260506/',
+    note: 'OCEANS BAND 生演奏 / 海際野外ステージ',
   },
   {
     artistNames: ['僕が見たかった青空'],
