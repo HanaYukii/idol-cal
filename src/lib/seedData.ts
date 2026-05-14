@@ -165,9 +165,19 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['=LOVE'],
-    title: '=LOVE @ 幕張メッセ',
+    title: '=LOVE 個別お話し会（20th single 劇薬中毒 発売記念）',
+    date: '2026-05-03',
+    startTime: '11:00',
+    venue: '幕張メッセ 9 ホール (千葉)',
+    note: '三部制 11:00 / 13:00 / 14:30',
+  },
+  {
+    artistNames: ['=LOVE'],
+    title: '=LOVE 個別お話し会',
     date: '2026-06-28',
-    venue: '幕張メッセ 国際展示場ホール (千葉)',
+    startTime: '11:00',
+    venue: '幕張メッセ 7 ホール (千葉)',
+    note: '三部制 11:00 / 13:00 / 14:30',
   },
 
   // ── TrySail 10th Anniversary Live "Cheers!!!" (May) ──
