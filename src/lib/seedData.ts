@@ -268,6 +268,16 @@ const EVENTS: EventSeed[] = [
     venue: 'Zepp Haneda (TOKYO)',
   },
 
+  // ── エビ中 仲村悠菜 個人生誕ソロライブ ──
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '仲村悠菜 生誕ソロライブ「純喫茶ミルクティー〜4杯目〜」',
+    date: '2026-05-28',
+    startTime: '19:00',
+    venue: 'KT Zepp Yokohama (神奈川)',
+    note: 'エビ中 仲村悠菜 個人生誕祭、4 回目',
+  },
+
   // ── エビ中 FAMIEN 2026（8/8–9 @ 山中湖） ──
   {
     artistNames: ['私立恵比寿中学'],
@@ -357,6 +367,17 @@ const EVENTS: EventSeed[] = [
     date: '2026-06-20',
     venue: '河口湖ステラシアター (山梨)',
     note: '結成3周年記念 初の野外ワンマン',
+  },
+
+  // ── 高嶺のなでしこ たかねこフェスVol.6〜サマーセッション〜（高貓自辦 multi-artist フェス） ──
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'たかねこフェスVol.6 〜サマーセッション〜',
+    date: '2026-07-12',
+    startTime: '12:00',
+    venue: 'EX THEATER ROPPONGI (東京)',
+    url: 'https://takanenonadeshiko.jp/takanekofes-vol6/',
+    note: '高貓主催対バン、α+ / いぎなり東北産 / 22/7 / 可憐なアイボリー など 20 組',
   },
   {
     artistNames: ['僕が見たかった青空'],
