@@ -24,11 +24,13 @@ const ARTISTS: ArtistSeed[] = [
   { name: 'ukka', color: '#FFB6D9' },
   { name: '高嶺のなでしこ', color: '#FDBA74' },
   { name: '僕が見たかった青空', color: '#5EEAD4' },
+  { name: '超ときめき♡宣伝部', color: '#E879F9' },
 ]
 
 const EBICHU_TOUR = '私立恵比寿中学 Spring Tour 2026 〜SuGuilty Train〜'
+const TOKISEN_TOUR = '超ときめき♡宣伝部のきみのハートにロックオンTOUR 2026'
 
-// 2026 年 2 月〜8 月主要 live / tour（依公開資料，日期 JST）
+// 2026 年 2 月〜10 月主要 live / tour（依公開資料，日期 JST）
 const EVENTS: EventSeed[] = [
   // ── 高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – (Feb–May) ──
   {
@@ -309,7 +311,8 @@ const EVENTS: EventSeed[] = [
     artistNames: ['高嶺のなでしこ'],
     title: 'LuckyFes\'26 DAY2',
     date: '2026-08-09',
-    venue: '国営ひたち海浜公園 (茨城)',
+    startTime: '13:20',
+    venue: '国営ひたち海浜公園 GARDEN STAGE (茨城)',
     url: 'https://luckyfes.com/',
   },
   {
@@ -318,6 +321,22 @@ const EVENTS: EventSeed[] = [
     date: '2026-08-10',
     venue: '国営ひたち海浜公園 (茨城)',
     url: 'https://luckyfes.com/',
+  },
+
+  // ── エビ中 夏フェス出演 ──
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: 'TOKYO IDOL FESTIVAL 2026',
+    date: '2026-07-31',
+    venue: 'お台場・青海エリア (東京)',
+    url: 'https://official.idolfes.com/s/tif2026/',
+    note: '高貓・僕青も出演決定（出演日未発表）',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: 'テレビ朝日・六本木ヒルズ SUMMER FES 音楽LIVE',
+    date: '2026-08-14',
+    venue: '六本木ヒルズ (東京)',
   },
 
   // ── 僕が見たかった青空 全国ツアー2026 + 音楽祭 + 3周年野外 + サマフェス ──
@@ -394,6 +413,121 @@ const EVENTS: EventSeed[] = [
     title: 'アオゾラサマーフェスティバル2026',
     date: '2026-08-30',
     venue: '豊洲PIT (東京)',
+  },
+
+  // ── 超ときめき♡宣伝部 きみのハートにロックオンTOUR 2026 (Jul–Oct, 16 公演) ──
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 仙台`,
+    date: '2026-07-04',
+    startTime: '17:00',
+    venue: '仙台サンプラザホール (宮城)',
+    url: 'https://toki-sen.com/contents/1061667',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 金沢`,
+    date: '2026-07-12',
+    startTime: '17:00',
+    venue: '本多の森北電ホール (石川)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 栃木`,
+    date: '2026-07-26',
+    startTime: '17:00',
+    venue: '栃木県総合文化センター (栃木)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 八王子`,
+    date: '2026-08-02',
+    startTime: '17:00',
+    venue: 'J:COM ホール八王子 (東京)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 札幌`,
+    date: '2026-08-08',
+    startTime: '17:00',
+    venue: 'カナモトホール (北海道)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 市川`,
+    date: '2026-08-11',
+    startTime: '17:00',
+    venue: '市川市文化会館 (千葉)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 大宮`,
+    date: '2026-08-12',
+    startTime: '18:00',
+    venue: '大宮ソニックシティ 大ホール (埼玉)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 有明 DAY1`,
+    date: '2026-08-22',
+    startTime: '17:00',
+    venue: 'SGC ホール有明 (東京)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 有明 DAY2`,
+    date: '2026-08-23',
+    startTime: '17:00',
+    venue: 'SGC ホール有明 (東京)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 福岡`,
+    date: '2026-08-29',
+    startTime: '16:00',
+    venue: '福岡市民会館 大ホール (福岡)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 名古屋`,
+    date: '2026-08-30',
+    startTime: '18:00',
+    venue: 'Niterra 日本特殊陶業市民会館 (愛知)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 神戸 DAY1`,
+    date: '2026-09-12',
+    startTime: '17:00',
+    venue: 'GLION ARENA KOBE (兵庫)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 神戸 DAY2`,
+    date: '2026-09-13',
+    startTime: '16:00',
+    venue: 'GLION ARENA KOBE (兵庫)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 日本武道館`,
+    date: '2026-10-05',
+    startTime: '18:00',
+    venue: '日本武道館 (東京)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 有明アリーナ DAY1`,
+    date: '2026-10-24',
+    startTime: '17:00',
+    venue: '有明アリーナ (東京)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: `${TOKISEN_TOUR} — 有明アリーナ FINAL`,
+    date: '2026-10-25',
+    startTime: '16:00',
+    venue: '有明アリーナ (東京)',
   },
 ]
 
