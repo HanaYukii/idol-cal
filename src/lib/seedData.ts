@@ -93,7 +93,7 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['高嶺のなでしこ'],
-    title: '高嶺のなでしこ @ 東京国際フォーラム ホールA',
+    title: '高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – FINAL',
     date: '2026-05-06',
     venue: '東京国際フォーラム ホールA (東京)',
   },
@@ -323,20 +323,58 @@ const EVENTS: EventSeed[] = [
     url: 'https://luckyfes.com/',
   },
 
-  // ── エビ中 夏フェス出演 ──
+  // ── TIF 2026 (7/31–8/2 @ お台場・青海) ──
   {
     artistNames: ['私立恵比寿中学'],
-    title: 'TOKYO IDOL FESTIVAL 2026',
+    title: 'TOKYO IDOL FESTIVAL 2026 DAY1',
     date: '2026-07-31',
     venue: 'お台場・青海エリア (東京)',
     url: 'https://official.idolfes.com/s/tif2026/',
-    note: '高貓・僕青も出演決定（出演日未発表）',
   },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'TOKYO IDOL FESTIVAL 2026 DAY1',
+    date: '2026-07-31',
+    venue: 'お台場・青海エリア (東京)',
+    url: 'https://official.idolfes.com/s/tif2026/',
+  },
+  {
+    artistNames: ['高嶺のなでしこ', '僕が見たかった青空'],
+    title: 'TOKYO IDOL FESTIVAL 2026 DAY2',
+    date: '2026-08-01',
+    venue: 'お台場・青海エリア (東京)',
+    url: 'https://official.idolfes.com/s/tif2026/',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'TOKYO IDOL FESTIVAL 2026 DAY3',
+    date: '2026-08-02',
+    venue: 'お台場・青海エリア (東京)',
+    url: 'https://official.idolfes.com/s/tif2026/',
+  },
+
+  // ── エビ中 夏フェス出演 ──
   {
     artistNames: ['私立恵比寿中学'],
     title: 'テレビ朝日・六本木ヒルズ SUMMER FES 音楽LIVE',
     date: '2026-08-14',
     venue: '六本木ヒルズ (東京)',
+  },
+
+  // ── 高嶺のなでしこ 4周年記念 ──
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '高嶺のなでしこ 4周年 Special LIVE',
+    date: '2026-08-06',
+    venue: 'KT Zepp Yokohama (神奈川)',
+    url: 'https://takanenonadeshiko.jp/takaneko-4thanniversarylive/',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '高嶺のなでしこ 4th ファンミーティング',
+    date: '2026-08-07',
+    venue: 'ヒューリックホール東京 (東京)',
+    note: '詳細後日発表',
   },
 
   // ── 僕が見たかった青空 全国ツアー2026 + 音楽祭 + 3周年野外 + サマフェス ──
