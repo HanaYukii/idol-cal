@@ -280,7 +280,7 @@ const EVENTS: EventSeed[] = [
     venue: 'Zepp Haneda (TOKYO)',
   },
 
-  // ── エビ中 仲村悠菜 個人生誕ソロライブ ──
+  // ── エビ中 メンバー個人生誕ソロライブ ──
   {
     artistNames: ['私立恵比寿中学'],
     title: '仲村悠菜 生誕ソロライブ「純喫茶ミルクティー〜4杯目〜」',
@@ -288,6 +288,50 @@ const EVENTS: EventSeed[] = [
     startTime: '19:00',
     venue: 'KT Zepp Yokohama (神奈川)',
     note: 'エビ中 仲村悠菜 個人生誕祭、4 回目',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '風見和香 生誕ソロライブ',
+    date: '2026-08-31',
+    venue: 'Zepp DiverCity (TOKYO)',
+    note: 'エビ中 風見和香 個人生誕祭',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '桜井えま 生誕ソロライブ',
+    date: '2026-09-08',
+    venue: 'Zepp DiverCity (TOKYO)',
+    note: 'エビ中 桜井えま 個人生誕祭',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '桜木心菜 生誕ソロライブ',
+    date: '2026-09-15',
+    venue: 'Zepp DiverCity (TOKYO)',
+    note: 'エビ中 桜木心菜 個人生誕祭',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '中山莉子 生誕ソロライブ',
+    date: '2026-10-26',
+    venue: 'Zepp DiverCity (TOKYO)',
+    note: 'エビ中 中山莉子 個人生誕祭',
+  },
+
+  // ── エビ中 真山りか 主演 リーディング・オペラ Op.4「トスカ」 ──
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: 'リーディング・オペラ Op.4「トスカ」DAY1',
+    date: '2026-09-09',
+    venue: 'ルーテル市ヶ谷ホール (東京)',
+    note: 'エビ中 真山りか 主演（岸本勇太 / 石井雅登 / 今拓哉 出演）',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: 'リーディング・オペラ Op.4「トスカ」DAY2',
+    date: '2026-09-10',
+    venue: 'ルーテル市ヶ谷ホール (東京)',
+    note: 'エビ中 真山りか 主演（岸本勇太 / 石井雅登 / 今拓哉 出演）',
   },
 
   // ── エビ中 FAMIEN 2026（8/8–9 @ 山中湖） ──
