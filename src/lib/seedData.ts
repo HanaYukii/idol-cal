@@ -25,6 +25,7 @@ const ARTISTS: ArtistSeed[] = [
   { name: '高嶺のなでしこ', color: '#FDBA74' },
   { name: '僕が見たかった青空', color: '#5EEAD4' },
   { name: '超ときめき♡宣伝部', color: '#E879F9' },
+  { name: 'SWEET STEADY', color: '#86EFAC' },
 ]
 
 const EBICHU_TOUR = '私立恵比寿中学 Spring Tour 2026 〜SuGuilty Train〜'
@@ -610,6 +611,61 @@ const EVENTS: EventSeed[] = [
     date: '2026-10-25',
     startTime: '16:00',
     venue: '有明アリーナ (東京)',
+  },
+
+  // ── SWEET STEADY (KAWAII LAB. / ASOBISYSTEM) 2026 夏 ──
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'KAWAII LAB. SESSION 2026 SUMMER DAY1',
+    date: '2026-07-10',
+    note: 'KAWAII LAB. 合同ライブ',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'KAWAII LAB. SESSION 2026 SUMMER DAY2',
+    date: '2026-07-11',
+    note: 'KAWAII LAB. 合同ライブ',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'JOIN ALIVE 2026',
+    date: '2026-07-19',
+    venue: '北海道 (岩見沢)',
+    note: '夏フェス出演',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: '栗田樹菜 生誕LIVE',
+    date: '2026-07-21',
+    note: 'SWEET STEADY 栗田樹菜 個人生誕祭',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'Osaka Gigantic Music Festival 2026',
+    date: '2026-07-26',
+    venue: '大阪',
+    note: '夏フェス出演',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: '塩川莉世 生誕LIVE',
+    date: '2026-07-28',
+    note: 'SWEET STEADY 塩川莉世 個人生誕祭',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'TOKYO IDOL FESTIVAL 2026 DAY1',
+    date: '2026-07-31',
+    venue: 'お台場・青海エリア (東京)',
+    url: 'https://official.idolfes.com/s/tif2026/',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'SWEET STEADY ARENA LIVE 2026 -SUMMER-',
+    date: '2026-08-23',
+    venue: 'ぴあアリーナMM (神奈川)',
+    url: 'https://sweetsteady.asobisystem.com/',
+    note: '初のアリーナ單獨公演',
   },
 ]
 
