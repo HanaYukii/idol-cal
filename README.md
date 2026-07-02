@@ -1,57 +1,61 @@
 # idol-cal
 
-個人用偶像活動 / ライブ行程追蹤工具。手機優先、本地儲存、單人部署。
+A personal tool for tracking idol events / live schedules. Desktop-first, works on mobile, stores everything locally, self-hosted per user.
 
-> 為什麼自己寫：Google Calendar 不適合跨月瀏覽、Eventernote 介面不夠好、想要不同團上色。
+**Live:** https://hanayukii.github.io/idol-cal/
+
+> Why build it: Google Calendar isn't great for browsing across months, Eventernote's UI gets in the way, and I wanted each group in its own color.
 
 ## Features
 
-- 月曆視圖（跨月捲動、今日標示）
-- 清單視圖（日期排序、sticky header）
-- 多團上色（內建推し圈常見色卡 + 自訂 hex）
-- Filter：Artist、日期區間
-- Import / Export JSON；匯出 iCal
-- Mobile-first、深色介面預設、PWA 可「加入主畫面」
+- **Agenda calendar** — one continuous scroll across months, sticky month headers, today marker, auto-scrolls to today
+- **List view** — sorted by date, upcoming-first with past events collapsed
+- **Per-artist colors** — a preset palette of idol-scene pastels plus custom hex
+- **Multi-artist events** — two-man lives / joint shows show every group's color
+- **Filters** — by artist and by date range (all / upcoming / this month / custom); filter state lives in the URL
+- **Backup** — export / import JSON, plus iCal (.ics) export and import (TimeTree, Google Calendar, iOS Calendar files all work)
+- Dark-on-pastel UI, PWA-installable ("Add to Home Screen")
 
 ## Tech
 
 - Vite + React + TypeScript
 - Tailwind CSS 4
-- IndexedDB (Dexie.js) — 純前端，**無 backend / 無帳號系統**
-- react-router-dom (HashRouter，配合 GitHub Pages)
-- 時區：所有日期以 **JST (Asia/Tokyo)** 為準
+- IndexedDB (Dexie.js) — pure front-end, **no backend, no accounts**
+- react-router-dom (HashRouter, for GitHub Pages)
+- Timezone: all dates are treated as **JST (Asia/Tokyo)**
 
-## 本地開發
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-預設跑在 `http://localhost:5173`。
+Runs on `http://localhost:5173` by default. There's demo data (8 groups, ~90 events) under Settings → "load demo data" to see how it looks.
 
-## 單人部署（GitHub Pages）
+## Self-hosting (GitHub Pages)
 
-1. Fork 這個 repo
-2. 修改 `vite.config.ts` 的 `base` 成你的 repo 名稱
-3. 建立 `.github/workflows/deploy.yml`（或用 Vercel / Netlify 一鍵部署）
-4. Settings → Pages → Source 選 GitHub Actions
+1. Fork this repo
+2. Change `base` in `vite.config.ts` to match your repo name
+3. In the repo's Settings → Pages, set Source to "GitHub Actions"
 
-資料存在瀏覽器本地。換裝置請從「設定 → 匯出 JSON」備份，到新裝置再「匯入」。
+The included `.github/workflows/deploy.yml` builds and deploys on every push to `main`. (Vercel / Netlify also work with zero config.)
 
-## Data Model
+Data lives in your browser (IndexedDB) and never leaves the device. To move between devices, use Settings → export JSON, then import on the other device.
+
+## Data model
 
 ```ts
 interface Artist {
   id: string
   name: string
-  color: string        // hex e.g. "#FF6FA8"
+  color: string        // hex, e.g. "#FF6FA8"
   createdAt: number
 }
 
 interface IdolEvent {
   id: string
-  artistIds: string[]  // 多團支援（聯合公演、対バン）
+  artistIds: string[]  // multi-artist support (joint shows, 対バン)
   title: string
   date: string         // "2026-05-15" (JST)
   startTime?: string   // "18:30"
@@ -63,13 +67,13 @@ interface IdolEvent {
 }
 ```
 
-## 非目標
+## Non-goals
 
-- 帳號系統、雲端同步、多使用者
-- 推播通知
-- 爬蟲自動匯入（手動輸入為主）
-- 重複活動（recurring events）
-- i18n（先繁中）
+- Accounts, cloud sync, multi-user
+- Push notifications
+- Scraping / auto-import (manual entry is the model; .ics import is the assist)
+- Recurring events
+- i18n (UI is Traditional Chinese for now)
 
 ## License
 
