@@ -370,14 +370,7 @@ const EVENTS: EventSeed[] = [
 
   // ── TIF 2026 (7/31–8/2 @ お台場・青海) ──
   {
-    artistNames: ['私立恵比寿中学'],
-    title: 'TOKYO IDOL FESTIVAL 2026 DAY1',
-    date: '2026-07-31',
-    venue: 'お台場・青海エリア (東京)',
-    url: 'https://official.idolfes.com/s/tif2026/',
-  },
-  {
-    artistNames: ['高嶺のなでしこ'],
+    artistNames: ['私立恵比寿中学', '高嶺のなでしこ', 'SWEET STEADY'],
     title: 'TOKYO IDOL FESTIVAL 2026 DAY1',
     date: '2026-07-31',
     venue: 'お台場・青海エリア (東京)',
@@ -635,9 +628,9 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['SWEET STEADY'],
-    title: '栗田樹菜 生誕LIVE',
+    title: '栗田なつか 生誕LIVE',
     date: '2026-07-21',
-    note: 'SWEET STEADY 栗田樹菜 個人生誕祭',
+    note: 'SWEET STEADY 栗田なつか 個人生誕祭',
   },
   {
     artistNames: ['SWEET STEADY'],
@@ -651,13 +644,6 @@ const EVENTS: EventSeed[] = [
     title: '塩川莉世 生誕LIVE',
     date: '2026-07-28',
     note: 'SWEET STEADY 塩川莉世 個人生誕祭',
-  },
-  {
-    artistNames: ['SWEET STEADY'],
-    title: 'TOKYO IDOL FESTIVAL 2026 DAY1',
-    date: '2026-07-31',
-    venue: 'お台場・青海エリア (東京)',
-    url: 'https://official.idolfes.com/s/tif2026/',
   },
   {
     artistNames: ['SWEET STEADY'],
