@@ -1,0 +1,35 @@
+interface LogoProps {
+  className?: string
+}
+
+/** idol-cal mark: a pastel calendar with a heart. Used in the nav and
+ *  mirrored by public/favicon.svg. */
+export default function Logo({ className }: LogoProps) {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      className={className}
+      role="img"
+      aria-label="idol-cal"
+    >
+      <defs>
+        <linearGradient id="logo-ic" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#FB7BAC" />
+          <stop offset="1" stopColor="#A78BFA" />
+        </linearGradient>
+      </defs>
+      <rect x="1" y="1" width="30" height="30" rx="8" fill="url(#logo-ic)" />
+      <rect x="10.4" y="4.6" width="2.7" height="6.8" rx="1.35" fill="#fff" />
+      <rect x="18.9" y="4.6" width="2.7" height="6.8" rx="1.35" fill="#fff" />
+      <rect x="6.8" y="8.4" width="18.4" height="16.8" rx="3.2" fill="#fff" />
+      <path
+        d="M6.8 11.6a3.2 3.2 0 0 1 3.2-3.2h12a3.2 3.2 0 0 1 3.2 3.2v1.6H6.8z"
+        fill="#FBBBD6"
+      />
+      <path
+        d="M16 23.2c-2.9-2-4.7-3.6-4.7-5.7 0-1.4 1.1-2.5 2.5-2.5 1 0 1.7.5 2.2 1.3.5-.8 1.2-1.3 2.2-1.3 1.4 0 2.5 1.1 2.5 2.5 0 2.1-1.8 3.7-4.7 5.7z"
+        fill="url(#logo-ic)"
+      />
+    </svg>
+  )
+}

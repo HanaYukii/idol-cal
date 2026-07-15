@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom'
 import { Calendar, List, Users, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Logo from '@/components/Logo'
 
 const TABS = [
   { to: '/', label: '月曆', icon: Calendar, end: true },
@@ -18,7 +19,7 @@ export default function TopNav() {
           className="flex items-center gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-zinc-300"
           aria-label="回首頁"
         >
-          <div className="h-5 w-5 rounded-sm bg-gradient-to-br from-pink-400 to-violet-500" />
+          <Logo className="h-6 w-6" />
           <span className="text-sm font-semibold tracking-tight text-zinc-900">
             idol-cal
           </span>
