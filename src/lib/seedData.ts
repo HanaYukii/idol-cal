@@ -26,7 +26,10 @@ const ARTISTS: ArtistSeed[] = [
   { name: '僕が見たかった青空', color: '#5EEAD4' },
   { name: '超ときめき♡宣伝部', color: '#E879F9' },
   { name: 'SWEET STEADY', color: '#86EFAC' },
+  { name: 'CUTIE STREET', color: '#FB7185' },
 ]
+
+const CUTIE_ARENA_TOUR = 'CUTIE STREET JAPAN ARENA TOUR 2026 -AUTUMN-'
 
 const EBICHU_TOUR = '私立恵比寿中学 Spring Tour 2026 〜SuGuilty Train〜'
 const TOKISEN_TOUR = '超ときめき♡宣伝部のきみのハートにロックオンTOUR 2026'
@@ -370,7 +373,12 @@ const EVENTS: EventSeed[] = [
 
   // ── TIF 2026 (7/31–8/2 @ お台場・青海) ──
   {
-    artistNames: ['私立恵比寿中学', '高嶺のなでしこ', 'SWEET STEADY'],
+    artistNames: [
+      '私立恵比寿中学',
+      '高嶺のなでしこ',
+      'SWEET STEADY',
+      'CUTIE STREET',
+    ],
     title: 'TOKYO IDOL FESTIVAL 2026 DAY1',
     date: '2026-07-31',
     venue: 'お台場・青海エリア (東京)',
@@ -651,7 +659,129 @@ const EVENTS: EventSeed[] = [
     date: '2026-08-23',
     venue: 'ぴあアリーナMM (神奈川)',
     url: 'https://sweetsteady.asobisystem.com/',
-    note: '初のアリーナ單獨公演',
+    note: '初の単独アリーナ公演',
+  },
+
+  // ── CUTIE STREET (KAWAII LAB. / ASOBISYSTEM) 2026 夏 ──
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'KAWAII LAB. SESSION 2026 SUMMER DAY1',
+    date: '2026-07-10',
+    venue: '国立代々木競技場 第一体育館 (東京)',
+    note: 'KAWAII LAB. 合同ライブ',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'KAWAII LAB. SESSION 2026 SUMMER DAY2',
+    date: '2026-07-11',
+    venue: '国立代々木競技場 第一体育館 (東京)',
+    note: 'KAWAII LAB. 合同ライブ',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'TOKYO GIRLS MUSIC Fes.',
+    date: '2026-07-12',
+    venue: 'LINE CUBE SHIBUYA (東京)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'JOIN ALIVE 2026',
+    date: '2026-07-19',
+    venue: '北海道 (岩見沢)',
+    note: '夏フェス出演',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'CUTIE STREET Live in Korea 2026 SUMMER DAY1',
+    date: '2026-07-25',
+    venue: 'Sejong University (Seoul)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'CUTIE STREET Live in Korea 2026 SUMMER DAY2',
+    date: '2026-07-26',
+    venue: 'Sejong University (Seoul)',
+  },
+
+  // ── CUTIE STREET JAPAN ARENA TOUR 2026 -AUTUMN- (初アリーナツアー, 7都市13公演) ──
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 横浜`,
+    date: '2026-09-23',
+    venue: '横浜アリーナ (神奈川)',
+    url: 'https://cutiestreet.asobisystem.com/',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 有明 DAY1`,
+    date: '2026-09-29',
+    venue: '有明アリーナ (東京)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 有明 DAY2`,
+    date: '2026-09-30',
+    venue: '有明アリーナ (東京)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 宮城 DAY1`,
+    date: '2026-10-03',
+    venue: 'セキスイハイムスーパーアリーナ (宮城)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 宮城 DAY2`,
+    date: '2026-10-04',
+    venue: 'セキスイハイムスーパーアリーナ (宮城)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 福岡 DAY1`,
+    date: '2026-10-28',
+    venue: 'マリンメッセ福岡 A館 (福岡)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 福岡 DAY2`,
+    date: '2026-10-29',
+    venue: 'マリンメッセ福岡 A館 (福岡)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 神戸 DAY1`,
+    date: '2026-10-31',
+    venue: '神戸ワールド記念ホール (兵庫)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 神戸 DAY2`,
+    date: '2026-11-01',
+    venue: '神戸ワールド記念ホール (兵庫)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 広島 DAY1`,
+    date: '2026-11-14',
+    venue: '広島グリーンアリーナ (広島)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 広島 DAY2`,
+    date: '2026-11-15',
+    venue: '広島グリーンアリーナ (広島)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 名古屋 DAY1`,
+    date: '2026-11-28',
+    venue: 'IGアリーナ (愛知)',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${CUTIE_ARENA_TOUR} — 名古屋 FINAL`,
+    date: '2026-11-29',
+    venue: 'IGアリーナ (愛知)',
   },
 ]
 
