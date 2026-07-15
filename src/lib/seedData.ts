@@ -378,6 +378,7 @@ const EVENTS: EventSeed[] = [
       '高嶺のなでしこ',
       'SWEET STEADY',
       'CUTIE STREET',
+      '超ときめき♡宣伝部',
     ],
     title: 'TOKYO IDOL FESTIVAL 2026 DAY1',
     date: '2026-07-31',
@@ -616,19 +617,21 @@ const EVENTS: EventSeed[] = [
 
   // ── SWEET STEADY (KAWAII LAB. / ASOBISYSTEM) 2026 夏 ──
   {
-    artistNames: ['SWEET STEADY'],
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
     title: 'KAWAII LAB. SESSION 2026 SUMMER DAY1',
     date: '2026-07-10',
+    venue: '国立代々木競技場 第一体育館 (東京)',
     note: 'KAWAII LAB. 合同ライブ',
   },
   {
-    artistNames: ['SWEET STEADY'],
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
     title: 'KAWAII LAB. SESSION 2026 SUMMER DAY2',
     date: '2026-07-11',
+    venue: '国立代々木競技場 第一体育館 (東京)',
     note: 'KAWAII LAB. 合同ライブ',
   },
   {
-    artistNames: ['SWEET STEADY'],
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
     title: 'JOIN ALIVE 2026',
     date: '2026-07-19',
     venue: '北海道 (岩見沢)',
@@ -663,32 +666,13 @@ const EVENTS: EventSeed[] = [
   },
 
   // ── CUTIE STREET (KAWAII LAB. / ASOBISYSTEM) 2026 夏 ──
-  {
-    artistNames: ['CUTIE STREET'],
-    title: 'KAWAII LAB. SESSION 2026 SUMMER DAY1',
-    date: '2026-07-10',
-    venue: '国立代々木競技場 第一体育館 (東京)',
-    note: 'KAWAII LAB. 合同ライブ',
-  },
-  {
-    artistNames: ['CUTIE STREET'],
-    title: 'KAWAII LAB. SESSION 2026 SUMMER DAY2',
-    date: '2026-07-11',
-    venue: '国立代々木競技場 第一体育館 (東京)',
-    note: 'KAWAII LAB. 合同ライブ',
-  },
+  // KAWAII LAB. SESSION 7/10-11 と JOIN ALIVE 7/19 は SWEET STEADY の
+  // エントリに合同で入れてある（同じイベント）
   {
     artistNames: ['CUTIE STREET'],
     title: 'TOKYO GIRLS MUSIC Fes.',
     date: '2026-07-12',
     venue: 'LINE CUBE SHIBUYA (東京)',
-  },
-  {
-    artistNames: ['CUTIE STREET'],
-    title: 'JOIN ALIVE 2026',
-    date: '2026-07-19',
-    venue: '北海道 (岩見沢)',
-    note: '夏フェス出演',
   },
   {
     artistNames: ['CUTIE STREET'],
