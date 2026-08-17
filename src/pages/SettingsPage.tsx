@@ -107,8 +107,8 @@ export default function SettingsPage() {
         <div className="rounded-lg border border-zinc-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm">
           <h2 className="text-sm font-medium text-zinc-900">Demo 資料</h2>
           <p className="mt-1 text-xs text-zinc-500">
-            載入 2026 年 2〜8 月 5 組推し的 live
-            範例（=LOVE、TrySail、エビ中、ukka、高嶺のなでしこ）。
+            載入 2026 年 2〜12 月 9 組推し的 live
+            範例（エビ中、高嶺のなでしこ、とき宣、Juice=Juice、ももクロ 等）。
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <button

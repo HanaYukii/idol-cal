@@ -31,7 +31,7 @@ npm install
 npm run dev
 ```
 
-Runs on `http://localhost:5173` by default. There's demo data (8 groups, ~90 events) under Settings → "load demo data" to see how it looks.
+Runs on `http://localhost:5173` by default. There's demo data (9 groups, ~160 events) under Settings → "load demo data" to see how it looks.
 
 ## Self-hosting (GitHub Pages)
 

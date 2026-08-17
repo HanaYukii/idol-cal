@@ -18,23 +18,31 @@ interface EventSeed {
 
 // Artist 代表色：柔和亮色 (Tailwind 300 系列，低飽和度高明度)
 const ARTISTS: ArtistSeed[] = [
-  { name: '=LOVE', color: '#D8B4FE' },
   { name: 'TrySail', color: '#93C5FD' },
   { name: '私立恵比寿中学', color: '#67E8F9' },
-  { name: 'ukka', color: '#FFB6D9' },
   { name: '高嶺のなでしこ', color: '#FDBA74' },
   { name: '僕が見たかった青空', color: '#5EEAD4' },
   { name: '超ときめき♡宣伝部', color: '#E879F9' },
   { name: 'SWEET STEADY', color: '#86EFAC' },
   { name: 'CUTIE STREET', color: '#FB7185' },
+  { name: 'Juice=Juice', color: '#FDE047' },
+  { name: 'ももいろクローバーZ', color: '#FCA5A5' },
 ]
 
 const CUTIE_ARENA_TOUR = 'CUTIE STREET JAPAN ARENA TOUR 2026 -AUTUMN-'
 
 const EBICHU_TOUR = '私立恵比寿中学 Spring Tour 2026 〜SuGuilty Train〜'
 const TOKISEN_TOUR = '超ときめき♡宣伝部のきみのハートにロックオンTOUR 2026'
+const JJ_5ROOMS = 'Juice=Juice Room Tour 2026 「5ROOMS」'
+const JJ_5ROOMS_URL =
+  'https://helloproject.com/event/ac7ec0bd437f3af1f9fcdc9c579f31312e9112fe13471d9fbae91c755990d6f2/'
+const TRYSAIL_TRICK = 'LAWSON presents TrySail Event 2026「コワイセイルのTrick運動会」'
+const MOMOCLO_XMAS = 'ももいろクローバーZ クリスマスツアー2026「ももクリDelivery」'
+const MOMOCLO_XMAS_URL = 'https://www.momoclo.net/archives/news/260727_03'
+const SWESTE_HALL_TOUR = 'SWEET STEADY JAPAN HALL TOUR 2026'
+const SOUND_OF_EBICHU = 'SOUND OF EBICHU 2026 -Band Edition-'
 
-// 2026 年 2 月〜10 月主要 live / tour（依公開資料，日期 JST）
+// 2026 年 2 月〜12 月主要 live / tour（依公開資料，日期 JST）
 const EVENTS: EventSeed[] = [
   // ── 高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – (Feb–May) ──
   {
@@ -102,90 +110,6 @@ const EVENTS: EventSeed[] = [
     venue: '東京国際フォーラム ホールA (東京)',
   },
 
-  // ── ukka フリーライブ & Spread Your WINGS (Apr–May, Last Message 解散) ──
-  {
-    artistNames: ['ukka'],
-    title: 'ukka フリーライブツアー',
-    date: '2026-04-11',
-    venue: 'ららぽーと豊洲 (東京)',
-  },
-  {
-    artistNames: ['ukka'],
-    title: 'ukka フリーライブツアー',
-    date: '2026-04-18',
-    venue: '仙台駅前EBeanS (宮城)',
-  },
-  {
-    artistNames: ['ukka'],
-    title: 'ukka 東名阪ツアー "Spread Your WINGS" — Tokyo',
-    date: '2026-04-27',
-    venue: 'Spotify O-WEST (東京)',
-  },
-  {
-    artistNames: ['ukka'],
-    title: 'ukka 東名阪ツアー "Spread Your WINGS" — Nagoya',
-    date: '2026-05-09',
-    venue: 'Lives NAGOYA (愛知)',
-  },
-  {
-    artistNames: ['ukka'],
-    title: 'ukka 東名阪ツアー "Spread Your WINGS" — Osaka',
-    date: '2026-05-16',
-    venue: 'ESAKA MUSE (大阪)',
-  },
-  {
-    artistNames: ['ukka'],
-    title: 'ukka ~Last Message~ Final Live',
-    date: '2026-05-24',
-    note: '「ukka ラストプロジェクト」最終公演',
-  },
-
-  // ── =LOVE: Apr Tour FINAL + June Stadium Live ──
-  {
-    artistNames: ['=LOVE'],
-    title: '=LOVE 8th ANNIVERSARY PREMIUM TOUR FINAL',
-    date: '2026-04-18',
-    venue: '横浜スタジアム (神奈川)',
-    url: 'https://equal-love.jp/feature/specialsite_8thconcert',
-  },
-  {
-    artistNames: ['=LOVE'],
-    title: '=LOVE 8th ANNIVERSARY PREMIUM TOUR FINAL',
-    date: '2026-04-19',
-    venue: '横浜スタジアム (神奈川)',
-    url: 'https://equal-love.jp/feature/specialsite_8thconcert',
-  },
-  {
-    artistNames: ['=LOVE'],
-    title: '=LOVE STADIUM LIVE',
-    date: '2026-06-20',
-    startTime: '17:30',
-    venue: 'MUFG スタジアム / 国立競技場 (東京)',
-  },
-  {
-    artistNames: ['=LOVE'],
-    title: '=LOVE STADIUM LIVE',
-    date: '2026-06-21',
-    startTime: '17:30',
-    venue: 'MUFG スタジアム / 国立競技場 (東京)',
-  },
-  {
-    artistNames: ['=LOVE'],
-    title: '=LOVE 個別お話し会（20th single 劇薬中毒 発売記念）',
-    date: '2026-05-03',
-    startTime: '11:00',
-    venue: '幕張メッセ 9 ホール (千葉)',
-    note: '三部制 11:00 / 13:00 / 14:30',
-  },
-  {
-    artistNames: ['=LOVE'],
-    title: '=LOVE 個別お話し会',
-    date: '2026-06-28',
-    startTime: '11:00',
-    venue: '幕張メッセ 7 ホール (千葉)',
-    note: '三部制 11:00 / 13:00 / 14:30',
-  },
-
   // ── TrySail 10th Anniversary Live "Cheers!!!" (May) ──
   {
     artistNames: ['TrySail'],
@@ -200,6 +124,30 @@ const EVENTS: EventSeed[] = [
     date: '2026-05-17',
     venue: 'パシフィコ横浜 国立大ホール (神奈川)',
     url: 'https://trysail.jp/contents/989829',
+  },
+
+  // ── TrySail コワイセイルのTrick運動会（運動会×ハロウィン企画イベント） ──
+  {
+    artistNames: ['TrySail'],
+    title: `${TRYSAIL_TRICK} — 神戸`,
+    date: '2026-10-18',
+    venue: '神戸国際会館 こくさいホール (兵庫)',
+    url: 'https://trysail.jp/contents/1074018',
+    note: '開演時間未発表',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${TRYSAIL_TRICK} — 東京 DAY1`,
+    date: '2026-10-31',
+    venue: 'Shibuya LOVEZ (東京)',
+    url: 'https://trysail.jp/contents/1074018',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${TRYSAIL_TRICK} — 東京 DAY2`,
+    date: '2026-11-01',
+    venue: 'Shibuya LOVEZ (東京)',
+    url: 'https://trysail.jp/contents/1074018',
   },
 
   // ── エビ中 Spring Tour 2026 〜SuGuilty Train〜 (Apr–Jul, 12 公演) ──
@@ -276,9 +224,9 @@ const EVENTS: EventSeed[] = [
     venue: '立川ステージガーデン (東京)',
   },
 
-  // ── エビ中 × ukka ツーマンライブ ──
+  // ── エビ中 × ukka ツーマンライブ（ukka は 2026 年 5 月解散） ──
   {
-    artistNames: ['私立恵比寿中学', 'ukka'],
+    artistNames: ['私立恵比寿中学'],
     title: '私立恵比寿中学 × ukka ツーマンライブ',
     date: '2026-05-12',
     venue: 'Zepp Haneda (TOKYO)',
@@ -408,6 +356,24 @@ const EVENTS: EventSeed[] = [
     venue: '六本木ヒルズ (東京)',
   },
 
+  // ── エビ中 SOUND OF EBICHU 2026（新ライブシリーズ、バンド編成。ちゅうおんの後継） ──
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: `${SOUND_OF_EBICHU} — 横浜`,
+    date: '2026-10-11',
+    startTime: '18:00',
+    venue: 'パシフィコ横浜 国立大ホール (神奈川)',
+    url: 'https://www.shiritsuebichu.jp/news/16044/',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: `${SOUND_OF_EBICHU} — 神戸`,
+    date: '2026-11-08',
+    startTime: '18:00',
+    venue: '神戸国際会館 こくさいホール (兵庫)',
+    url: 'https://www.shiritsuebichu.jp/news/16044/',
+  },
+
   // ── 高嶺のなでしこ 4周年記念 ──
   {
     artistNames: ['高嶺のなでしこ'],
@@ -498,6 +464,13 @@ const EVENTS: EventSeed[] = [
     title: 'アオゾラサマーフェスティバル2026',
     date: '2026-08-30',
     venue: '豊洲PIT (東京)',
+  },
+  {
+    artistNames: ['僕が見たかった青空'],
+    title: '僕が見たかった青空 2026年ラストライブ（正式タイトル未発表）',
+    date: '2026-12-14',
+    venue: 'Kanadevia Hall (東京)',
+    note: '河口湖3周年ライブでサプライズ発表、詳細後日',
   },
 
   // ── 超ときめき♡宣伝部 きみのハートにロックオンTOUR 2026 (Jul–Oct, 16 公演) ──
@@ -615,6 +588,22 @@ const EVENTS: EventSeed[] = [
     venue: '有明アリーナ (東京)',
   },
 
+  // ── 超ときめき♡宣伝部 その他（※2026年8月発表: 2027年春頃をもって活動終了） ──
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: 'ときめき♡夏のびっちょり祭り2026 ミニライブ',
+    date: '2026-09-05',
+    venue: '西武園ゆうえんち (埼玉)',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部', 'ももいろクローバーZ'],
+    title: '氣志團万博2026 〜房総爆音リゾート〜 DAY2',
+    date: '2026-11-08',
+    venue: '幕張メッセ (千葉)',
+    url: 'https://www.kishidanbanpaku.com/',
+    note: 'フェスは 11/7-8 開催、とき宣・ももクロとも DAY2 出演',
+  },
+
   // ── SWEET STEADY (KAWAII LAB. / ASOBISYSTEM) 2026 夏 ──
   {
     artistNames: ['SWEET STEADY', 'CUTIE STREET'],
@@ -665,6 +654,33 @@ const EVENTS: EventSeed[] = [
     note: '初の単独アリーナ公演',
   },
 
+  // ── SWEET STEADY JAPAN HALL TOUR 2026（初のホールツアー、開演時間未発表） ──
+  {
+    artistNames: ['SWEET STEADY'],
+    title: `${SWESTE_HALL_TOUR} — 厚木`,
+    date: '2026-11-13',
+    venue: '厚木市文化会館 (神奈川)',
+    url: 'https://prtimes.jp/main/html/rd/p/000000821.000017258.html',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: `${SWESTE_HALL_TOUR} — 堺`,
+    date: '2026-12-03',
+    venue: 'フェニーチェ堺 大ホール (大阪)',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: `${SWESTE_HALL_TOUR} — 名古屋`,
+    date: '2026-12-06',
+    venue: 'Niterra 日本特殊陶業市民会館 フォレストホール (愛知)',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: `${SWESTE_HALL_TOUR} — 有明`,
+    date: '2026-12-18',
+    venue: 'SGC ホール有明 (東京)',
+  },
+
   // ── CUTIE STREET (KAWAII LAB. / ASOBISYSTEM) 2026 夏 ──
   // KAWAII LAB. SESSION 7/10-11 と JOIN ALIVE 7/19 は SWEET STEADY の
   // エントリに合同で入れてある（同じイベント）
@@ -685,6 +701,34 @@ const EVENTS: EventSeed[] = [
     title: 'CUTIE STREET Live in Korea 2026 SUMMER DAY2',
     date: '2026-07-26',
     venue: 'Sejong University (Seoul)',
+  },
+
+  // ── CUTIE STREET 2周年記念（初武道館） & 生誕祭 ──
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'CUTIE STREET 2nd ANNIVERSARY LIVE 2026「8 TREASURES」DAY1',
+    date: '2026-08-25',
+    startTime: '18:00',
+    venue: '日本武道館 (東京)',
+    url: 'https://cutiestreet.asobisystem.com/news/detail/69020',
+    note: '初武道館・2周年記念',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'CUTIE STREET 2nd ANNIVERSARY LIVE 2026「8 TREASURES」DAY2',
+    date: '2026-08-26',
+    startTime: '17:00',
+    venue: '日本武道館 (東京)',
+    url: 'https://cutiestreet.asobisystem.com/news/detail/69020',
+    note: '初武道館・2周年記念',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: '梅田みゆ生誕祭2026',
+    date: '2026-09-14',
+    startTime: '19:00',
+    venue: 'SGC ホール有明 (東京)',
+    note: 'CUTIE STREET 梅田みゆ 個人生誕祭',
   },
 
   // ── CUTIE STREET JAPAN ARENA TOUR 2026 -AUTUMN- (初アリーナツアー, 7都市13公演) ──
@@ -766,6 +810,465 @@ const EVENTS: EventSeed[] = [
     title: `${CUTIE_ARENA_TOUR} — 名古屋 FINAL`,
     date: '2026-11-29',
     venue: 'IGアリーナ (愛知)',
+  },
+
+  // ── KAWAII LAB. 合同イベント 2026 夏〜冬（SWEET STEADY / CUTIE STREET） ──
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: 'ASOBISYSTEM 19th Anniversary ASOBIEXPO 2026',
+    date: '2026-08-18',
+    startTime: '17:30',
+    venue: 'TOYOTA ARENA TOKYO (東京)',
+    url: 'https://asobisystem.com/news/72691/',
+    note: 'KAWAII LAB. 全グループ含む全86組出演',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: 'KAWAII LAB. Christmas SESSION 2026 DAY1',
+    date: '2026-12-12',
+    startTime: '17:00',
+    venue: '有明アリーナ (東京)',
+    url: 'https://kawaiilab.asobisystem.com/news/detail/84218',
+    note: 'KAWAII LAB. 合同ライブ',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: 'KAWAII LAB. Christmas SESSION 2026 DAY2',
+    date: '2026-12-13',
+    startTime: '16:00',
+    venue: '有明アリーナ (東京)',
+    url: 'https://kawaiilab.asobisystem.com/news/detail/84218',
+    note: 'KAWAII LAB. 合同ライブ',
+  },
+
+  // ── MTV VMAJ 2026（超ときめき♡宣伝部 出演） ──
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: 'MTV VMAJ 2026',
+    date: '2026-10-29',
+    startTime: '18:00',
+    venue: '東京ドーム (東京)',
+    url: 'https://www.mtvjapan.com/event/vmaj/2026/',
+    note: 'アワード形式ライブ、=LOVE / ≠ME ほかも出演',
+  },
+
+  // ── ももいろクローバーZ 2026 秋〜年末（フェス出演・桃神祭・年末） ──
+  // 氣志團万博 11/8 はとき宣のエントリに合同で入れてある（同じイベント）
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: '黒フェス2026〜白黒歌合戦〜',
+    date: '2026-09-06',
+    startTime: '16:30',
+    venue: '豊洲PIT (東京)',
+    url: 'http://kurofes.net/',
+    note: '松崎しげる主催フェス出演',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: '中山秀征 HIDE LIVE 2026 ザ･歌謡ショー',
+    date: '2026-09-17',
+    startTime: '18:00',
+    venue: 'EX THEATER ROPPONGI (東京)',
+    note: 'ゲスト出演',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: 'FEST. INAZUMA 2026',
+    date: '2026-09-19',
+    venue: '烏丸半島芝生広場 (滋賀)',
+    url: 'https://fest-inazuma.com/',
+    note: '旧イナズマロックフェス、出演枠時刻未発表',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: 'ROCK IN JAPAN FESTIVAL 2026',
+    date: '2026-09-21',
+    startTime: '14:00',
+    venue: '千葉市蘇我スポーツ公園 (千葉)',
+    note: 'LOTUS STAGE 出演',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: 'ももクロ秋の桃神祭2026 in千葉県長生村 DAY1「鬼になった桃神様」',
+    date: '2026-10-17',
+    startTime: '15:00',
+    venue: '尼ヶ台総合公園 (千葉)',
+    url: 'https://www.momoclo.net/tohjinsai2026/',
+    note: '開催地公募型野外ライブ（春の一大事の代替）',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: 'ももクロ秋の桃神祭2026 in千葉県長生村 DAY2「祀れ、われらの偶像」',
+    date: '2026-10-18',
+    startTime: '15:00',
+    venue: '尼ヶ台総合公園 (千葉)',
+    url: 'https://www.momoclo.net/tohjinsai2026/',
+    note: '開催地公募型野外ライブ（春の一大事の代替）',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: '第10回 ももいろ歌合戦',
+    date: '2026-12-31',
+    venue: '有明アリーナ (東京)',
+    note: '有明アリーナ初開催、開演時刻・出演者未発表',
+  },
+
+  // ── ももクリDelivery（クリスマスホールツアー、全11公演。SSA改修のためツアー形式） ──
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 有明`,
+    date: '2026-10-30',
+    startTime: '19:00',
+    venue: 'SGC ホール有明 (東京)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 福山`,
+    date: '2026-11-02',
+    startTime: '19:00',
+    venue: 'ふくやま芸術文化ホール リーデンローズ (広島)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 神戸`,
+    date: '2026-11-06',
+    startTime: '19:00',
+    venue: '神戸国際会館 こくさいホール (兵庫)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 京都`,
+    date: '2026-11-07',
+    startTime: '17:30',
+    venue: 'ロームシアター京都 (京都)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 新潟`,
+    date: '2026-11-22',
+    startTime: '16:00',
+    venue: '新潟テルサ (新潟)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 一宮`,
+    date: '2026-11-23',
+    startTime: '17:30',
+    venue: '一宮市民会館 (愛知)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 福岡`,
+    date: '2026-11-27',
+    startTime: '19:00',
+    venue: '福岡市民ホール 大ホール (福岡)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 札幌 番外編`,
+    date: '2026-12-03',
+    startTime: '19:00',
+    venue: 'Zepp Sapporo (北海道)',
+    url: MOMOCLO_XMAS_URL,
+    note: 'NORTHERN LIGHTS CHRISTMAS GIG、この日限りのライブハウス公演',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 有明 FINAL DAY1`,
+    date: '2026-12-11',
+    startTime: '19:00',
+    venue: 'SGC ホール有明 (東京)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 有明 FINAL DAY2`,
+    date: '2026-12-12',
+    startTime: '17:00',
+    venue: 'SGC ホール有明 (東京)',
+    url: MOMOCLO_XMAS_URL,
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: `${MOMOCLO_XMAS} — 有明 FINAL DAY3`,
+    date: '2026-12-13',
+    startTime: '16:00',
+    venue: 'SGC ホール有明 (東京)',
+    url: MOMOCLO_XMAS_URL,
+  },
+
+  // ── Juice=Juice (Hello! Project) 2026 夏〜秋 ──
+  // ハロ！コン 2026 は 8/9 TOYOTA ARENA TOKYO で終了済みのため未収録
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'ナルチカ 2026 Juice=Juice in 高石 1回目',
+    date: '2026-08-23',
+    startTime: '13:30',
+    venue: 'アプラたかいし 大ホール (大阪)',
+    url: 'https://helloproject.com/event/65c7bca38a9204efa47e4e0ba5bace61297d7299/',
+    note: '大阪府高石市×Juice=Juice 地域活性化コンサート、昼夜2公演',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'ナルチカ 2026 Juice=Juice in 高石 2回目',
+    date: '2026-08-23',
+    startTime: '16:30',
+    venue: 'アプラたかいし 大ホール (大阪)',
+    url: 'https://helloproject.com/event/65c7bca38a9204efa47e4e0ba5bace61297d7299/',
+    note: '大阪府高石市×Juice=Juice 地域活性化コンサート、昼夜2公演',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'Kohmi EXPO 2026',
+    date: '2026-09-03',
+    startTime: '18:30',
+    venue: 'LINE CUBE SHIBUYA (東京)',
+    note: '広瀬香美プロデュースフェス出演',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'CDTVライブ！ライブ！秋の大感謝祭2026',
+    date: '2026-09-11',
+    startTime: '18:00',
+    venue: '東京ガーデンシアター (東京)',
+    note: 'TBS 有観客ライブ、NiziU / FRUITS ZIPPER と共演',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: '第4回 IDOL RUNWAY COLLECTION 2026 A/W',
+    date: '2026-09-20',
+    startTime: '12:00',
+    venue: '横浜アリーナ (神奈川)',
+    note: 'ハロプロ初出演、日向坂46 / FRUITS ZIPPER / ≒JOY ほか',
+  },
+
+  // ── Juice=Juice Room Tour 2026 「5ROOMS」 (9/18–11/25, 武道館含む) ──
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 厚木 初日`,
+    date: '2026-09-18',
+    startTime: '19:00',
+    venue: '厚木市文化会館 大ホール (神奈川)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 厚木 昼公演`,
+    date: '2026-09-19',
+    startTime: '13:45',
+    venue: '厚木市文化会館 大ホール (神奈川)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 厚木 夜公演`,
+    date: '2026-09-19',
+    startTime: '17:15',
+    venue: '厚木市文化会館 大ホール (神奈川)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 広島 昼公演`,
+    date: '2026-09-22',
+    startTime: '15:30',
+    venue: 'JMSアステールプラザ 大ホール (広島)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 広島 夜公演`,
+    date: '2026-09-22',
+    startTime: '19:00',
+    venue: 'JMSアステールプラザ 大ホール (広島)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 京都`,
+    date: '2026-09-24',
+    startTime: '19:00',
+    venue: 'ロームシアター京都 メインホール (京都)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 福岡 昼公演`,
+    date: '2026-09-26',
+    startTime: '15:30',
+    venue: 'SAWARAPIA 大ホール (福岡)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 福岡 夜公演`,
+    date: '2026-09-26',
+    startTime: '19:00',
+    venue: 'SAWARAPIA 大ホール (福岡)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 福岡 昼公演`,
+    date: '2026-09-27',
+    startTime: '13:15',
+    venue: 'SAWARAPIA 大ホール (福岡)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 福岡 夜公演`,
+    date: '2026-09-27',
+    startTime: '16:45',
+    venue: 'SAWARAPIA 大ホール (福岡)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 名古屋 昼公演`,
+    date: '2026-10-03',
+    startTime: '15:15',
+    venue: 'Niterra日本特殊陶業市民会館 ビレッジホール (愛知)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 名古屋 夜公演`,
+    date: '2026-10-03',
+    startTime: '18:45',
+    venue: 'Niterra日本特殊陶業市民会館 ビレッジホール (愛知)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 大阪 昼公演`,
+    date: '2026-10-10',
+    startTime: '14:30',
+    venue: 'NHK大阪ホール (大阪)',
+    url: JJ_5ROOMS_URL,
+    note: '10月10日は Juice=Juice の日',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 大阪 夜公演`,
+    date: '2026-10-10',
+    startTime: '18:00',
+    venue: 'NHK大阪ホール (大阪)',
+    url: JJ_5ROOMS_URL,
+    note: '10月10日は Juice=Juice の日',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 仙台 昼公演`,
+    date: '2026-10-18',
+    startTime: '15:30',
+    venue: '東京エレクトロンホール宮城 (宮城)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 仙台 夜公演`,
+    date: '2026-10-18',
+    startTime: '19:00',
+    venue: '東京エレクトロンホール宮城 (宮城)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 桐生 昼公演`,
+    date: '2026-10-25',
+    startTime: '15:15',
+    venue: '美喜仁桐生文化会館 シルクホール (群馬)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 桐生 夜公演`,
+    date: '2026-10-25',
+    startTime: '18:45',
+    venue: '美喜仁桐生文化会館 シルクホール (群馬)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 日本武道館 特別公演`,
+    date: '2026-11-06',
+    startTime: '18:00',
+    venue: '日本武道館 (東京)',
+    url: JJ_5ROOMS_URL,
+    note: '追加公演（8/12 発表）',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 大阪・オリックス劇場`,
+    date: '2026-11-13',
+    startTime: '19:00',
+    venue: 'オリックス劇場 (大阪)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 東京 昼公演`,
+    date: '2026-11-16',
+    startTime: '15:15',
+    venue: 'Kanadevia Hall (東京)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 東京 夜公演`,
+    date: '2026-11-16',
+    startTime: '19:00',
+    venue: 'Kanadevia Hall (東京)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 東京 昼公演`,
+    date: '2026-11-17',
+    startTime: '15:00',
+    venue: 'Kanadevia Hall (東京)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 東京 夜公演`,
+    date: '2026-11-17',
+    startTime: '18:45',
+    venue: 'Kanadevia Hall (東京)',
+    url: JJ_5ROOMS_URL,
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: `${JJ_5ROOMS} — 横浜 FINAL`,
+    date: '2026-11-25',
+    startTime: '18:00',
+    venue: 'ぴあアリーナMM (神奈川)',
+    url: JJ_5ROOMS_URL,
+    note: 'ツアーファイナル（追加公演）',
+  },
+
+  // ── Juice=Juice FC スペシャルライブ（10/10 は Juice=Juice の日） ──
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'Juice=Juiceスペシャルライブ2026 〜10月10日はJuice=Juiceの日〜 DAY1',
+    date: '2026-10-20',
+    venue: '都内近郊 (会場後日発表)',
+    note: '生バンド編成 / FC会員限定 / 開演時間未発表',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'Juice=Juiceスペシャルライブ2026 〜10月10日はJuice=Juiceの日〜 DAY2',
+    date: '2026-10-21',
+    venue: '都内近郊 (会場後日発表)',
+    note: '生バンド編成 / FC会員限定 / 開演時間未発表',
   },
 ]
 
