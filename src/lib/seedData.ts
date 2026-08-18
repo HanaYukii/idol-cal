@@ -42,7 +42,7 @@ const MOMOCLO_XMAS_URL = 'https://www.momoclo.net/archives/news/260727_03'
 const SWESTE_HALL_TOUR = 'SWEET STEADY JAPAN HALL TOUR 2026'
 const SOUND_OF_EBICHU = 'SOUND OF EBICHU 2026 -Band Edition-'
 
-// 2026 年 2 月〜12 月主要 live / tour（依公開資料，日期 JST）
+// 2026 年 2 月〜2027 年 1 月主要 live / tour（依公開資料，日期 JST）
 const EVENTS: EventSeed[] = [
   // ── 高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – (Feb–May) ──
   {
@@ -374,6 +374,35 @@ const EVENTS: EventSeed[] = [
     url: 'https://www.shiritsuebichu.jp/news/16044/',
   },
 
+  // ── エビ中 舞台「けものフレンズ」×私立恵比寿中学（全8人出演） ──
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '舞台「けものフレンズ」×私立恵比寿中学',
+    date: '2026-12-04',
+    startTime: '12:00',
+    venue: '品川プリンスホテル ステラボール (東京)',
+    url: 'https://kemono-friends-butai.jp/schedule.html',
+    note: '初日、2公演 12:00 / 18:00',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '舞台「けものフレンズ」×私立恵比寿中学',
+    date: '2026-12-05',
+    startTime: '13:30',
+    venue: '品川プリンスホテル ステラボール (東京)',
+    url: 'https://kemono-friends-butai.jp/schedule.html',
+    note: '2公演 13:30 / 16:30',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '舞台「けものフレンズ」×私立恵比寿中学',
+    date: '2026-12-06',
+    startTime: '12:00',
+    venue: '品川プリンスホテル ステラボール (東京)',
+    url: 'https://kemono-friends-butai.jp/schedule.html',
+    note: '千穐楽、2公演 12:00 / 16:30',
+  },
+
   // ── 高嶺のなでしこ 4周年記念 ──
   {
     artistNames: ['高嶺のなでしこ'],
@@ -388,6 +417,53 @@ const EVENTS: EventSeed[] = [
     date: '2026-08-07',
     venue: 'ヒューリックホール東京 (東京)',
     note: '詳細後日発表',
+  },
+
+  // ── 高嶺のなでしこ 2026 夏〜秋（★8/25 星谷美来 卒業公演） ──
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'ふぁぼフェス♡',
+    date: '2026-08-22',
+    startTime: '13:30',
+    venue: 'Zepp Shinjuku (東京)',
+    note: '対バンフェス出演',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'メ〜テレ MUSIC DAYS',
+    date: '2026-08-23',
+    venue: '東別院テラスホール (愛知)',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '星谷美来 卒業公演〜ずっと恋の病でいてね〜',
+    date: '2026-08-25',
+    startTime: '18:30',
+    venue: '恵比寿ガーデンホール (東京)',
+    url: 'https://takanenonadeshiko.jp/hoshitanimikuru-0825/',
+    note: '星谷美来 グループ卒業公演',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '@JAM EXPO 2026 DAY1',
+    date: '2026-08-29',
+    venue: '横浜アリーナ (神奈川)',
+    url: 'https://atjam.jp/expo2026',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '24時間テレビ 日産チャリティーイベント',
+    date: '2026-08-30',
+    venue: '日産本社グローバルギャラリー (神奈川)',
+    note: '無料イベント',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'ジャムズセッション!!Vol.8',
+    date: '2026-09-10',
+    startTime: '16:30',
+    venue: '品川プリンスホテル ステラボール (東京)',
+    note: '対バン、たかねこ出演枠 19:45〜20:10',
   },
 
   // ── 僕が見たかった青空 全国ツアー2026 + 音楽祭 + 3周年野外 + サマフェス ──
@@ -596,6 +672,38 @@ const EVENTS: EventSeed[] = [
     venue: '西武園ゆうえんち (埼玉)',
   },
   {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: '「大盛りハッピー」発売記念リアルイベント',
+    date: '2026-09-22',
+    venue: '有明セントラルタワーホールB (東京)',
+    url: 'https://toki-sen.com/contents/1083047',
+    note: '特典会形式（撮影 / おはなし会など）',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: '「大盛りハッピー」発売記念リアルイベント',
+    date: '2026-09-23',
+    venue: '有明セントラルタワーホールB (東京)',
+    url: 'https://toki-sen.com/contents/1083047',
+    note: '特典会形式（撮影 / おはなし会など）',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: '「大盛りハッピー」発売記念リアルイベント',
+    date: '2026-10-11',
+    venue: 'TODA HALL & CONFERENCE TOKYO ホールA (東京)',
+    url: 'https://toki-sen.com/contents/1083047',
+    note: '特典会形式',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: '「大盛りハッピー」発売記念リアルイベント',
+    date: '2026-10-12',
+    venue: 'シティホール＆ギャラリー五反田 (東京)',
+    url: 'https://toki-sen.com/contents/1083047',
+    note: '特典会形式',
+  },
+  {
     artistNames: ['超ときめき♡宣伝部', 'ももいろクローバーZ'],
     title: '氣志團万博2026 〜房総爆音リゾート〜 DAY2',
     date: '2026-11-08',
@@ -644,6 +752,33 @@ const EVENTS: EventSeed[] = [
     title: '塩川莉世 生誕LIVE',
     date: '2026-07-28',
     note: 'SWEET STEADY 塩川莉世 個人生誕祭',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: '3rdシングル『SWEET STEP』発売記念リリースイベント',
+    date: '2026-08-02',
+    startTime: '18:00',
+    venue: 'セブンパークアリオ柏 屋外スマイルパーク (千葉)',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/85497',
+    note: 'ミニライブ&特典会',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: '3rdシングル『SWEET STEP』発売記念リリースイベント',
+    date: '2026-08-09',
+    startTime: '17:00',
+    venue: 'ららぽーと豊洲 シーサイドデッキ メインステージ (東京)',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/85499',
+    note: 'ミニライブ&特典会、CD購入者優先エリアあり・エリア外観覧可',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'TOMAKOMAI MIRAI FEST 2026 DAY2',
+    date: '2026-09-13',
+    startTime: '11:00',
+    venue: 'キラキラ公園 (北海道 苫小牧)',
+    url: 'https://miraifest-tomakomai.jp',
+    note: '野外フェス出演（DAY1 9/12 は CUTIE STREET）',
   },
   {
     artistNames: ['SWEET STEADY'],
@@ -729,6 +864,61 @@ const EVENTS: EventSeed[] = [
     startTime: '19:00',
     venue: 'SGC ホール有明 (東京)',
     note: 'CUTIE STREET 梅田みゆ 個人生誕祭',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: '2nd ANNIVERSARY「すべての道はKAWAIIにつーず！展」',
+    date: '2026-09-05',
+    venue: '日本橋三井ホール (東京)',
+    url: 'https://cutiestreet.asobisystem.com/news/detail/86474',
+    note: '展覧会、会期 9/5〜9/23。時間指定チケット ¥2,700',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'TOMAKOMAI MIRAI FEST 2026 DAY1',
+    date: '2026-09-12',
+    venue: 'キラキラ公園 (北海道 苫小牧)',
+    url: 'https://miraifest-tomakomai.jp',
+    note: '野外フェス出演（DAY2 9/13 は SWEET STEADY）',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'ROCK IN JAPAN FESTIVAL 2026',
+    date: '2026-09-19',
+    venue: '千葉市蘇我スポーツ公園 (千葉)',
+    note: 'フェス出演（ももクロは 9/21 出演）',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'STARフェス DAY2',
+    date: '2026-10-11',
+    startTime: '17:00',
+    venue: 'ぴあアリーナMM (神奈川)',
+    url: 'https://cutiestreet.asobisystem.com/news/detail/86976',
+    note: 'フジテレビ主催、INI / THE RAMPAGE など出演',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'KAWAII LAB. COLLECTION produced by TGC 〜KAWAIIっちゃ in KITAKYUSHU〜',
+    date: '2026-10-12',
+    venue: '北九州メッセ (福岡)',
+    note: 'KAWAII LAB. 合同イベント',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'MIYAKO ISLAND ROCK FESTIVAL 2026',
+    date: '2026-10-17',
+    venue: '宮古島コースタルリゾートヒララ (沖縄)',
+    note: 'フェス出演',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: 'CUTIE STREET Live in Korea 2027 WINTER',
+    date: '2027-01-23',
+    startTime: '18:00',
+    venue: 'KINTEX Hall 9A (韓国 高陽)',
+    url: 'https://cutiestreet.asobisystem.com/news/detail/86456',
+    note: '初の韓国単独公演、18:00 KST',
   },
 
   // ── CUTIE STREET JAPAN ARENA TOUR 2026 -AUTUMN- (初アリーナツアー, 7都市13公演) ──
@@ -839,6 +1029,35 @@ const EVENTS: EventSeed[] = [
     venue: '有明アリーナ (東京)',
     url: 'https://kawaiilab.asobisystem.com/news/detail/84218',
     note: 'KAWAII LAB. 合同ライブ',
+  },
+
+  // ── GIFT 〜Girls Idol Festival Tokyo〜（テレ朝主催新フェス、11/27-29） ──
+  {
+    artistNames: ['超ときめき♡宣伝部', 'CUTIE STREET'],
+    title: 'GIFT 〜Girls Idol Festival Tokyo〜 DAY1',
+    date: '2026-11-27',
+    startTime: '18:00',
+    venue: 'SGC ホール有明 (東京)',
+    url: 'https://gift-idol.jp/',
+    note: '=LOVE / FRUITS ZIPPER / モーニング娘。\'26 なども出演',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: 'GIFT 〜Girls Idol Festival Tokyo〜 DAY2',
+    date: '2026-11-28',
+    startTime: '13:00',
+    venue: 'SGC ホール有明 + TOYOTA ARENA TOKYO (東京)',
+    url: 'https://gift-idol.jp/',
+    note: '周遊型 2 会場、振り分け未発表。AKB48 / 日向坂46 なども出演',
+  },
+  {
+    artistNames: ['私立恵比寿中学', 'SWEET STEADY', 'Juice=Juice'],
+    title: 'GIFT 〜Girls Idol Festival Tokyo〜 DAY3',
+    date: '2026-11-29',
+    startTime: '13:00',
+    venue: 'SGC ホール有明 + TOYOTA ARENA TOKYO (東京)',
+    url: 'https://gift-idol.jp/',
+    note: '周遊型 2 会場、振り分け未発表。乃木坂46 / FRUITS ZIPPER なども出演',
   },
 
   // ── MTV VMAJ 2026（超ときめき♡宣伝部 出演） ──
