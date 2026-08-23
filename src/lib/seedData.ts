@@ -351,6 +351,22 @@ const EVENTS: EventSeed[] = [
   // ── エビ中 夏フェス出演 ──
   {
     artistNames: ['私立恵比寿中学'],
+    title: 'Heavy Kawaii Fes 2026 Day2 -私立恵比寿中学 × KOIAI-',
+    date: '2026-08-01',
+    startTime: '13:00',
+    venue: '明治座 (東京)',
+    url: 'https://www.shiritsuebichu.jp/news/15982/',
+    note: 'DAY 13:00 / NIGHT 18:00 の2公演、稲場愛香 / KOIAI と共演',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: 'めざましWANGANフェス めざましライブ',
+    date: '2026-08-04',
+    venue: '豊洲PIT (東京)',
+    note: 'イマドキ対バン、ねぎ塩豚丼と共演',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
     title: 'テレビ朝日・六本木ヒルズ SUMMER FES 音楽LIVE',
     date: '2026-08-14',
     venue: '六本木ヒルズ (東京)',
@@ -444,11 +460,12 @@ const EVENTS: EventSeed[] = [
     note: '星谷美来 グループ卒業公演',
   },
   {
-    artistNames: ['高嶺のなでしこ'],
+    artistNames: ['高嶺のなでしこ', '私立恵比寿中学'],
     title: '@JAM EXPO 2026 DAY1',
     date: '2026-08-29',
     venue: '横浜アリーナ (神奈川)',
     url: 'https://atjam.jp/expo2026',
+    note: '高城れに（ももクロ）ソロも同日出演',
   },
   {
     artistNames: ['高嶺のなでしこ'],
