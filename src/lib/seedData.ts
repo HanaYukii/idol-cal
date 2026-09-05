@@ -37,6 +37,10 @@ const JJ_5ROOMS = 'Juice=Juice Room Tour 2026 「5ROOMS」'
 const JJ_5ROOMS_URL =
   'https://helloproject.com/event/ac7ec0bd437f3af1f9fcdc9c579f31312e9112fe13471d9fbae91c755990d6f2/'
 const TRYSAIL_TRICK = 'LAWSON presents TrySail Event 2026「コワイセイルのTrick運動会」'
+const MOMO_RELIER = 'LAWSON presents 麻倉もも 10th Anniversary Live Tour 2027 “relier”'
+const MOMO_RELIER_URL = 'https://trysail.jp/contents/1107228'
+const SHIINA_MONA = 'LAWSON presents 夏川椎菜 as mona 3rdワンマンライブ motto☆motto愛を歌おうぜ♡'
+const SHIINA_MONA_URL = 'https://trysail.jp/contents/1089115'
 const MOMOCLO_XMAS = 'ももいろクローバーZ クリスマスツアー2026「ももクリDelivery」'
 const MOMOCLO_XMAS_URL = 'https://www.momoclo.net/archives/news/260727_03'
 const SWESTE_TOUR = 'SWEET STEADY JAPAN TOUR 2026 -WINTER-'
@@ -44,7 +48,7 @@ const SWESTE_RELEASE = '3rdシングル『SWEET STEP』発売記念リリース�
 const SOUND_OF_EBICHU = 'SOUND OF EBICHU 2026 -Band Edition-'
 const BOKUAO_9TH = '僕が見たかった青空 9thシングル発売記念'
 
-// 2026 年 2 月〜2027 年 1 月主要 live / tour（依公開資料，日期 JST）
+// 2026 年 2 月〜2027 年 3 月主要 live / tour（依公開資料，日期 JST）
 const EVENTS: EventSeed[] = [
   // ── 高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – (Feb–May) ──
   {
@@ -128,7 +132,8 @@ const EVENTS: EventSeed[] = [
     url: 'https://trysail.jp/contents/989829',
   },
 
-  // ── TrySail 2026 秋（9月は完全に空き） ──
+  // ── TrySail 系列：團體及成員個人活動共用分類 ──
+  // 2026-09-06 核對；同日不同場次分開收錄，時間為開演時間。
   {
     artistNames: ['TrySail'],
     title: 'TrySail Blu-ray 発売記念プレミア上映会 ①回',
@@ -154,6 +159,100 @@ const EVENTS: EventSeed[] = [
     startTime: '19:00',
     venue: '銀座 博品館劇場 (東京)',
     note: '夏川椎菜のみ出演',
+  },
+
+  // ── 夏川椎菜 as mona：神戸1場、東京昼夜2場 ──
+  {
+    artistNames: ['TrySail'],
+    title: `${SHIINA_MONA} — 神戸`,
+    date: '2026-12-06',
+    startTime: '18:00',
+    venue: '神戸国際会館 こくさいホール (兵庫)',
+    url: SHIINA_MONA_URL,
+    note: '夏川椎菜個人公演（mona役）。開場 17:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${SHIINA_MONA} — 東京 昼公演`,
+    date: '2026-12-13',
+    startTime: '15:00',
+    venue: 'Shibuya LOVEZ (東京)',
+    url: SHIINA_MONA_URL,
+    note: '夏川椎菜個人公演（mona役）。開場 14:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${SHIINA_MONA} — 東京 夜公演`,
+    date: '2026-12-13',
+    startTime: '18:30',
+    venue: 'Shibuya LOVEZ (東京)',
+    url: SHIINA_MONA_URL,
+    note: '夏川椎菜個人公演（mona役）。開場 17:30',
+  },
+
+  // ── 麻倉もも relier：2026-09-05 公布，5都市7公演 ──
+  {
+    artistNames: ['TrySail'],
+    title: `${MOMO_RELIER} — 愛知`,
+    date: '2027-01-09',
+    startTime: '18:00',
+    venue: 'Niterra日本特殊陶業市民会館 フォレストホール (愛知)',
+    url: MOMO_RELIER_URL,
+    note: '麻倉もも個人巡迴。開場 17:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${MOMO_RELIER} — 大阪 DAY1`,
+    date: '2027-01-16',
+    startTime: '18:00',
+    venue: 'NHK大阪ホール (大阪)',
+    url: MOMO_RELIER_URL,
+    note: '麻倉もも個人巡迴。開場 17:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${MOMO_RELIER} — 大阪 DAY2`,
+    date: '2027-01-17',
+    startTime: '17:00',
+    venue: 'NHK大阪ホール (大阪)',
+    url: MOMO_RELIER_URL,
+    note: '麻倉もも個人巡迴。開場 16:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${MOMO_RELIER} — 福岡`,
+    date: '2027-01-30',
+    startTime: '17:00',
+    venue: '福岡国際会議場 メインホール (福岡)',
+    url: MOMO_RELIER_URL,
+    note: '麻倉もも個人巡迴。開場 16:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${MOMO_RELIER} — 宮城`,
+    date: '2027-02-07',
+    startTime: '18:00',
+    venue: '電力ホール (宮城)',
+    url: MOMO_RELIER_URL,
+    note: '麻倉もも個人巡迴。開場 17:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${MOMO_RELIER} — 東京 DAY1`,
+    date: '2027-02-20',
+    startTime: '18:00',
+    venue: 'Shibuya LOVEZ (東京)',
+    url: MOMO_RELIER_URL,
+    note: '麻倉もも個人巡迴。開場 17:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: `${MOMO_RELIER} — 東京 DAY2`,
+    date: '2027-02-21',
+    startTime: '17:00',
+    venue: 'Shibuya LOVEZ (東京)',
+    url: MOMO_RELIER_URL,
+    note: '麻倉もも個人巡迴。開場 16:00',
   },
 
   // ── TrySail コワイセイルのTrick運動会（運動会×ハロウィン企画イベント） ──
@@ -1220,19 +1319,21 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['SWEET STEADY'],
-    title: `${SWESTE_RELEASE} — 都内某所`,
+    title: `${SWESTE_RELEASE} — 池袋`,
     date: '2026-09-07',
-    venue: '都内某所 (東京)',
-    url: 'https://sweetsteady.asobisystem.com/live_information/detail/43899',
-    note: '会場・時間・参加条件すべて未発表',
+    startTime: '16:30',
+    venue: '池袋・サンシャインシティ 噴水広場 (東京)',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/89031',
+    note: '9/2 詳細公布。ミニライブ＆特典会。CD販売 12:00、優先エリア集合 16:00',
   },
   {
     artistNames: ['SWEET STEADY'],
     title: `${SWESTE_RELEASE} — 大特典会`,
     date: '2026-09-22',
+    startTime: '10:00',
     venue: '東京流通センター 第二展示場 Fホール (東京)',
-    url: 'https://sweetsteady.asobisystem.com/live_information/detail/43900',
-    note: '特典会のみ、詳細未発表',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/88913',
+    note: '發售活動，個別2ショットチェキ撮影会のみ。6部制 10:00 / 11:20 / 13:20 / 14:40 / 16:40 / 18:00',
   },
 
   // ── SWEET STEADY 秋のフェス出演 & 単独公演 ──
@@ -2399,6 +2500,16 @@ const EVENTS: EventSeed[] = [
     venue: '東京ガーデンシアター (東京)',
     url: 'https://www.shiritsuebichu.jp/media/95129/',
     note: '開場 15:00',
+  },
+  // ── 2026-09-06 追加分: Juice=Juice ──
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'Livejack 2026 SMASH BEAT SP',
+    date: '2026-10-31',
+    startTime: '15:30',
+    venue: '大阪城ホール (大阪)',
+    url: 'https://helloproject.com/juicejuice/event/77c8f531d495ecbf427776654a9aa65e08e4a47520497a66a761b79bd3dd817a/',
+    note: '9/6 核對追加。開場 14:30。BEYOOOOONDS ほかと共演',
   },
   // ── 2026-09-01 追加分: J=J / ももクロ ──
   {
