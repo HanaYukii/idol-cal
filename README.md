@@ -31,7 +31,11 @@ npm install
 npm run dev
 ```
 
-Runs on `http://localhost:5173` by default. There's demo data (9 groups, ~160 events) under Settings → "load demo data" to see how it looks.
+Use Node.js 24 for local development and `npm test` (database merge and migration regression checks).
+
+Runs on `http://localhost:5173` by default. Settings → "load demo data" merges the built-in events for 8 groups into your existing data. Repeat loads skip matching events and preserve your edits and artist colors; no clearing is needed. Previously created duplicates are not deleted automatically. Calendar and list views default to upcoming events (including today, JST); select All to see the past.
+
+Database version 2 removes 僕が見たかった青空 and its exclusive events from existing installations, preserving other artists on shared events.
 
 ## Self-hosting (GitHub Pages)
 

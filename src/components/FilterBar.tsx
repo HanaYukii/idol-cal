@@ -51,13 +51,13 @@ export default function FilterBar({ artists, filter }: FilterBarProps) {
             />
           </div>
         )}
-        {filter.hasActive && (
+        {(filter.artistIds.length > 0 || filter.range !== 'upcoming' || filter.from || filter.to) && (
           <button
             type="button"
             onClick={filter.reset}
             className="ml-auto text-xs text-zinc-500 underline hover:text-zinc-800"
           >
-            清除全部
+            重設為今後
           </button>
         )}
       </div>

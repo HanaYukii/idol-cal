@@ -1,4 +1,5 @@
 import { createArtist } from '@/db/artists'
+import { db } from '@/db/schema'
 import { createEvent } from '@/db/events'
 
 interface ArtistSeed {
@@ -7,6 +8,7 @@ interface ArtistSeed {
 }
 
 interface EventSeed {
+  previousTitles?: string[]
   artistNames: string[]
   title: string
   date: string
@@ -21,7 +23,6 @@ const ARTISTS: ArtistSeed[] = [
   { name: 'TrySail', color: '#93C5FD' },
   { name: '私立恵比寿中学', color: '#67E8F9' },
   { name: '高嶺のなでしこ', color: '#FDBA74' },
-  { name: '僕が見たかった青空', color: '#5EEAD4' },
   { name: '超ときめき♡宣伝部', color: '#E879F9' },
   { name: 'SWEET STEADY', color: '#86EFAC' },
   { name: 'CUTIE STREET', color: '#FB7185' },
@@ -46,9 +47,8 @@ const MOMOCLO_XMAS_URL = 'https://www.momoclo.net/archives/news/260727_03'
 const SWESTE_TOUR = 'SWEET STEADY JAPAN TOUR 2026 -WINTER-'
 const SWESTE_RELEASE = '3rdシングル『SWEET STEP』発売記念リリースイベント'
 const SOUND_OF_EBICHU = 'SOUND OF EBICHU 2026 -Band Edition-'
-const BOKUAO_9TH = '僕が見たかった青空 9thシングル発売記念'
 
-// 2026 年 2 月〜2027 年 3 月主要 live / tour（依公開資料，日期 JST）
+// 2026 年 2 月〜2027 年 8 月主要 live / tour（依公開資料，日期 JST）
 const EVENTS: EventSeed[] = [
   // ── 高嶺のなでしこ Live Tour – Bouquet of 9 Flowers – (Feb–May) ──
   {
@@ -515,7 +515,7 @@ const EVENTS: EventSeed[] = [
     url: 'https://official.idolfes.com/s/tif2026/',
   },
   {
-    artistNames: ['高嶺のなでしこ', '僕が見たかった青空'],
+    artistNames: ['高嶺のなでしこ'],
     title: 'TOKYO IDOL FESTIVAL 2026 DAY2',
     date: '2026-08-01',
     venue: 'お台場・青海エリア (東京)',
@@ -619,7 +619,7 @@ const EVENTS: EventSeed[] = [
     note: '¥5,000、事前抽選',
   },
   {
-    artistNames: ['私立恵比寿中学', '僕が見たかった青空'],
+    artistNames: ['私立恵比寿中学'],
     title: 'TBS「SASUKEアイドル予選会2026 -出場権争奪バトル-」',
     date: '2026-10-01',
     startTime: '18:30',
@@ -667,42 +667,6 @@ const EVENTS: EventSeed[] = [
     venue: '山中湖交流プラザきららシアターひびき (山梨)',
     url: 'https://www.shiritsuebichu.jp/news/16137/',
     note: 'FAMIEN 2027、詳細後日',
-  },
-
-  // ── 僕が見たかった青空 2026 秋（9月はメンバー個人仕事のみ） ──
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: 'J1 ジェフ千葉 vs G大阪「浅井ヘルスケア グループ マッチデー」',
-    date: '2026-09-06',
-    startTime: '16:20',
-    venue: 'フクダ電子アリーナ 北芝生広場（場外）(千葉)',
-    url: 'https://bokuao.com/schedule/detail/5720',
-    note: '青木宙帆のみ。トークステージ 16:20 頃〜',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '劇場型マーダーミステリー「生放送は、止まらない」',
-    date: '2026-09-14',
-    startTime: '13:00',
-    venue: '座・高円寺2 (東京)',
-    url: 'https://bokuao.com/schedule/detail/5672',
-    note: '吉本此那のみ出演',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: 'クロフェス2026 7年目 ラッキー7アイドルフィーバーだしん！',
-    date: '2026-10-02',
-    venue: '稲毛海浜公園プール (千葉)',
-    url: 'https://bokuao.com/news/detail/5754',
-    note: 'フェスは 10/2-4 開催、僕青の出演日は公式未指定（要確認）',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '青春SPARK祭',
-    date: '2026-10-11',
-    venue: '静岡県内 (会場未発表)',
-    url: 'https://bokuao.com/schedule/detail/5583',
-    note: '僕青がアンバサダー就任',
   },
 
   // ── エビ中 舞台「けものフレンズ」×私立恵比寿中学（全8人出演） ──
@@ -952,65 +916,6 @@ const EVENTS: EventSeed[] = [
     venue: '横須賀うみかぜ公園 特設ステージ (神奈川)',
   },
 
-  // ── 僕が見たかった青空 全国ツアー2026 + 音楽祭 + 3周年野外 + サマフェス ──
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '僕が見たかった青空 全国ツアー2026 — 大阪 1部',
-    date: '2026-05-02',
-    startTime: '14:30',
-    venue: 'GORILLA HALL OSAKA (大阪)',
-    url: 'https://bokuao.com/feature/2026spring',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '僕が見たかった青空 全国ツアー2026 — 大阪 2部',
-    date: '2026-05-02',
-    startTime: '18:00',
-    venue: 'GORILLA HALL OSAKA (大阪)',
-    url: 'https://bokuao.com/feature/2026spring',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '僕が見たかった青空 全国ツアー2026 — 名古屋 1部',
-    date: '2026-05-09',
-    startTime: '14:30',
-    venue: 'DIAMOND HALL (愛知)',
-    url: 'https://bokuao.com/feature/2026spring',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '僕が見たかった青空 全国ツアー2026 — 名古屋 2部',
-    date: '2026-05-09',
-    startTime: '18:00',
-    venue: 'DIAMOND HALL (愛知)',
-    url: 'https://bokuao.com/feature/2026spring',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: 'EARLY SUMMER FESTA 2026 僕青音楽祭 — 1部',
-    date: '2026-05-06',
-    startTime: '13:45',
-    venue: 'うみかぜ公園 特設野外ステージ (神奈川 横須賀)',
-    url: 'https://esfes.jp/music/260506/',
-    note: 'OCEANS BAND 生演奏 / 海際野外ステージ',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: 'EARLY SUMMER FESTA 2026 僕青音楽祭 — 2部',
-    date: '2026-05-06',
-    startTime: '17:45',
-    venue: 'うみかぜ公園 特設野外ステージ (神奈川 横須賀)',
-    url: 'https://esfes.jp/music/260506/',
-    note: 'OCEANS BAND 生演奏 / 海際野外ステージ',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '僕が観たかった『青空野外』ライブ2026',
-    date: '2026-06-20',
-    venue: '河口湖ステラシアター (山梨)',
-    note: '結成3周年記念 初の野外ワンマン',
-  },
-
   // ── 高嶺のなでしこ たかねこフェスVol.6〜サマーセッション〜（高貓自辦 multi-artist フェス） ──
   {
     artistNames: ['高嶺のなでしこ'],
@@ -1020,21 +925,6 @@ const EVENTS: EventSeed[] = [
     venue: 'EX THEATER ROPPONGI (東京)',
     url: 'https://takanenonadeshiko.jp/takanekofes-vol6/',
     note: '高貓主催対バン、α+ / いぎなり東北産 / 22/7 / 可憐なアイボリー など 20 組',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: 'アオゾラサマーフェスティバル2026',
-    date: '2026-08-30',
-    venue: '豊洲PIT (東京)',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: 'BOKUAO Winter Concert 2026 〜君への贈りもの〜',
-    date: '2026-12-14',
-    startTime: '18:00',
-    venue: 'Kanadevia Hall (東京)',
-    url: 'https://bokuao.com/news/detail/5748',
-    note: '2026年ラストライブ。開場 17:00、終演後お見送り付き',
   },
 
   // ── 超ときめき♡宣伝部 きみのハートにロックオンTOUR 2026 (Jul–Oct, 16 公演) ──
@@ -1320,6 +1210,7 @@ const EVENTS: EventSeed[] = [
   {
     artistNames: ['SWEET STEADY'],
     title: `${SWESTE_RELEASE} — 池袋`,
+    previousTitles: [`${SWESTE_RELEASE} — 都内某所`],
     date: '2026-09-07',
     startTime: '16:30',
     venue: '池袋・サンシャインシティ 噴水広場 (東京)',
@@ -2306,7 +2197,7 @@ const EVENTS: EventSeed[] = [
     url: 'https://cutiestreet.asobisystem.com/news/detail/88537',
     note: 'きゃりーぱみゅぱみゅ / FRUITS ZIPPER / 新しい学校のリーダーズ / CANDY TUNE と共演',
   },
-  // ── 2026-09-01 追加分: 高嶺 / 僕青 / エビ中 ──
+  // ── 2026-09-01 追加分: 高嶺 / エビ中 ──
   {
     artistNames: ['高嶺のなでしこ'],
     title: '高嶺のなでしこ ワンマンライブ 〜CROWNED IN BLOOM〜',
@@ -2323,133 +2214,7 @@ const EVENTS: EventSeed[] = [
     venue: '配信 (NATSLIVE)',
     note: '出演メンバー後日発表',
   },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '僕が観たかったファンミ vol.2 1部',
-    date: '2026-09-12',
-    startTime: '15:30',
-    venue: 'SHIBUYA PLEASURE PLEASURE (東京)',
-    url: 'https://bokuao.com/news/detail/5747',
-    note: 'FC限定、来場者全員お見送り付き。開場 14:45',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: '僕が観たかったファンミ vol.2 2部',
-    date: '2026-09-12',
-    startTime: '19:00',
-    venue: 'SHIBUYA PLEASURE PLEASURE (東京)',
-    url: 'https://bokuao.com/news/detail/5747',
-    note: 'FC限定、来場者全員お見送り付き。開場 18:15',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} 個別握手会`,
-    date: '2026-09-05',
-    venue: '有明セントラルタワーホール＆カンファレンス ホールA (東京)',
-    url: 'https://bokuao.com/news/detail/5773',
-    note: '当日予約販売のみ、8thシングルMV衣装。時間未発表',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} オンライン個別お話し会`,
-    date: '2026-09-19',
-    startTime: '12:00',
-    venue: 'オンライン (WithLIVE)',
-    url: 'https://bokuao.com/news/detail/5777',
-    note: '7部制 12:00 / 13:15 / 14:30 / 16:00 / 17:15 / 18:30 / 19:45、約25秒',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} オンライン個別お話し会`,
-    date: '2026-09-20',
-    startTime: '12:00',
-    venue: 'オンライン (WithLIVE)',
-    url: 'https://bokuao.com/news/detail/5777',
-    note: '7部制 12:00〜20:45',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} 個別握手会`,
-    date: '2026-09-23',
-    venue: '大手町プレイスホール＆カンファレンス ホールA＆B (東京)',
-    url: 'https://bokuao.com/news/detail/5773',
-    note: '当日予約販売のみ、全国ツアー2026春衣装',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} 個別握手会`,
-    date: '2026-09-27',
-    venue: '新宿住友ホール (東京)',
-    url: 'https://bokuao.com/news/detail/5773',
-    note: '当日予約販売のみ、9thシングル制服',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} オンライン個別お話し会`,
-    date: '2026-10-04',
-    venue: 'オンライン',
-    url: 'https://bokuao.com/news/detail/5773',
-    note: '詳細後日',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} オンライン個別お話し会`,
-    date: '2026-10-10',
-    venue: 'オンライン',
-    url: 'https://bokuao.com/news/detail/5773',
-    note: '詳細後日',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} 個別握手会`,
-    date: '2026-10-12',
-    venue: '有明セントラルタワーホール＆カンファレンス ホールB (東京)',
-    url: 'https://bokuao.com/news/detail/5773',
-    note: '抽選 9/18 18:00〜',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} 個別握手会`,
-    date: '2026-10-18',
-    venue: '松下IMPホール (大阪)',
-    url: 'https://bokuao.com/news/detail/5773',
-    note: '抽選 9/18 18:00〜',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} オンライン個別お話し会`,
-    date: '2026-10-24',
-    venue: 'オンライン',
-    url: 'https://bokuao.com/news/detail/5773',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} 個別握手会`,
-    date: '2026-10-25',
-    venue: 'COMTEC PORTBASE (愛知)',
-    url: 'https://bokuao.com/news/detail/5773',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} 個別握手会`,
-    date: '2026-11-03',
-    venue: '新宿住友ホール (東京)',
-    url: 'https://bokuao.com/news/detail/5773',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} 個別握手会`,
-    date: '2026-11-07',
-    venue: '有明セントラルタワーホール＆カンファレンス ホールB (東京)',
-    url: 'https://bokuao.com/news/detail/5773',
-  },
-  {
-    artistNames: ['僕が見たかった青空'],
-    title: `${BOKUAO_9TH} オンライン個別お話し会`,
-    date: '2026-11-08',
-    venue: 'オンライン',
-    url: 'https://bokuao.com/news/detail/5773',
-  },
+
   {
     artistNames: ['私立恵比寿中学'],
     title: 'NATSLIVE「私立恵比寿中学SPクッキング」',
@@ -2621,34 +2386,81 @@ const EVENTS: EventSeed[] = [
   },
 ]
 
+// Keep artist order and old random IDs out of the identity comparison.
+function namesKey(names: string[]): string {
+  return JSON.stringify([...new Set(names.map((name) => name.trim().normalize('NFC')))].sort())
+}
+
 export async function loadSeedData(): Promise<{
   artistsAdded: number
   eventsAdded: number
+  eventsSkipped: number
 }> {
-  const nameToId: Record<string, string> = {}
+  // One transaction prevents partial loads and concurrent tabs inserting duplicates.
+  return db.transaction('rw', db.artists, db.events, async () => {
+    const artists = await db.artists.toArray()
+    const events = await db.events.toArray()
+    const nameToId = new Map(artists.map((artist) => [artist.name.trim(), artist.id]))
+    const idToName = new Map(artists.map((artist) => [artist.id, artist.name]))
+    let artistsAdded = 0
+    let eventsAdded = 0
+    let eventsSkipped = 0
 
-  for (const spec of ARTISTS) {
-    const artist = await createArtist(spec)
-    nameToId[spec.name] = artist.id
-  }
+    for (const spec of ARTISTS) {
+      if (nameToId.has(spec.name)) continue
+      const artist = await createArtist(spec)
+      nameToId.set(spec.name, artist.id)
+      idToName.set(artist.id, artist.name)
+      artistsAdded += 1
+    }
 
-  let eventsAdded = 0
-  for (const spec of EVENTS) {
-    const artistIds = spec.artistNames
-      .map((n) => nameToId[n])
-      .filter((id): id is string => Boolean(id))
-    if (artistIds.length === 0) continue
-    await createEvent({
-      artistIds,
-      title: spec.title,
-      date: spec.date,
-      startTime: spec.startTime,
-      venue: spec.venue,
-      url: spec.url,
-      note: spec.note,
-    })
-    eventsAdded += 1
-  }
+    const claimed = new Set<string>()
+    for (const spec of EVENTS) {
+      const artistNames = namesKey(spec.artistNames)
+      const seedKey = JSON.stringify([artistNames, spec.date, spec.title, spec.startTime ?? ''])
+      let existing = events.find((event) => event.seedKey === seedKey)
+      if (!existing) {
+        const titles = [spec.title, ...(spec.previousTitles ?? [])]
+        const candidates = events.filter((event) =>
+          !claimed.has(event.id) &&
+          event.date === spec.date && titles.includes(event.title) &&
+          namesKey(event.artistIds.map((id) => idToName.get(id) ?? id)) === artistNames,
+        )
+        existing = candidates.find((event) => (event.startTime ?? '') === (spec.startTime ?? ''))
+        // Older demos may have no time yet. Only match when both sides identify
+        // a single show, so a matinee never consumes a separate evening show.
+        if (!existing && candidates.length === 1 &&
+          (!candidates[0].startTime || !spec.startTime) &&
+          EVENTS.filter((other) => other.date === spec.date &&
+            other.title === spec.title && namesKey(other.artistNames) === artistNames).length === 1) {
+          existing = candidates[0]
+        }
+      }
+      if (existing) {
+        claimed.add(existing.id)
+        if (existing.seedKey !== seedKey) {
+          await db.events.update(existing.id, { seedKey })
+          existing.seedKey = seedKey
+        }
+        eventsSkipped += 1
+        continue
+      }
 
-  return { artistsAdded: ARTISTS.length, eventsAdded }
+      const artistIds = spec.artistNames.map((name) => nameToId.get(name)!)
+      const event = await createEvent({
+        artistIds,
+        title: spec.title,
+        date: spec.date,
+        startTime: spec.startTime,
+        venue: spec.venue,
+        url: spec.url,
+        note: spec.note,
+        seedKey,
+      })
+      events.push(event)
+      claimed.add(event.id)
+      eventsAdded += 1
+    }
+    return { artistsAdded, eventsAdded, eventsSkipped }
+  })
 }

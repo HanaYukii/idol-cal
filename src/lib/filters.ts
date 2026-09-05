@@ -54,7 +54,10 @@ export function useEventFilter(): EventFilter {
   const [params, setParams] = useSearchParams()
 
   const artistIds = params.get('a')?.split(',').filter(Boolean) ?? []
-  const range = (params.get('r') ?? 'all') as DateRange
+  const requestedRange = params.get('r')
+  const range: DateRange = requestedRange === 'all' || requestedRange === 'this-month' || requestedRange === 'custom'
+    ? requestedRange
+    : 'upcoming'
   const from = params.get('from') ?? undefined
   const to = params.get('to') ?? undefined
 
@@ -85,7 +88,7 @@ export function useEventFilter(): EventFilter {
       patch({ a: next.length > 0 ? next.join(',') : undefined })
     },
     setRange(r) {
-      patch({ r: r === 'all' ? undefined : r })
+      patch({ r: r === 'upcoming' ? undefined : r, from: undefined, to: undefined })
     },
     setFrom(v) {
       patch({ from: v })
