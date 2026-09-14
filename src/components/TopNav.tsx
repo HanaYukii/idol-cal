@@ -1,11 +1,13 @@
 import { Link, NavLink } from 'react-router-dom'
-import { Calendar, List, Users, Settings } from 'lucide-react'
+import { Calendar, List, ClipboardList, CircleCheck, Users, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Logo from '@/components/Logo'
 
 const TABS = [
   { to: '/', label: '月曆', icon: Calendar, end: true },
   { to: '/list', label: '清單', icon: List, end: false },
+  { to: '/plans', label: '安排', icon: ClipboardList, end: false },
+  { to: '/attended', label: '去過', icon: CircleCheck, end: false },
   { to: '/artists', label: '推し', icon: Users, end: false },
   { to: '/settings', label: '設定', icon: Settings, end: false },
 ] as const

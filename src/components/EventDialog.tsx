@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Artist, IdolEvent } from '@/db/schema'
 import { createEvent, updateEvent, deleteEvent } from '@/db/events'
+import { setPlanEvents, usePlans } from '@/db/plans'
 
 interface EventDialogProps {
   open: boolean
@@ -29,7 +30,14 @@ export default function EventDialog({
   const [note, setNote] = useState('')
   const [url, setUrl] = useState('')
   const [artistIds, setArtistIds] = useState<string[]>([])
+  const [attended, setAttended] = useState(false)
+  const [planIds, setPlanIds] = useState<string[]>([])
   const [saving, setSaving] = useState(false)
+
+  // Plans are read through a ref so a live-query re-emit can't reset the form.
+  const plans = usePlans()
+  const plansRef = useRef(plans)
+  plansRef.current = plans
 
   useEffect(() => {
     if (!open) return
@@ -41,6 +49,10 @@ export default function EventDialog({
       setNote(event.note ?? '')
       setUrl(event.url ?? '')
       setArtistIds(event.artistIds)
+      setAttended(!!event.attended)
+      setPlanIds(
+        plansRef.current.filter((p) => p.eventIds.includes(event.id)).map((p) => p.id),
+      )
     } else {
       setTitle('')
       setDate(defaultDate ?? '')
@@ -49,6 +61,8 @@ export default function EventDialog({
       setNote('')
       setUrl('')
       setArtistIds([])
+      setAttended(false)
+      setPlanIds([])
     }
   }, [open, event, defaultDate])
 
@@ -75,6 +89,24 @@ export default function EventDialog({
     )
   }
 
+  function togglePlan(id: string) {
+    setPlanIds((curr) =>
+      curr.includes(id) ? curr.filter((x) => x !== id) : [...curr, id],
+    )
+  }
+
+  async function syncPlans(eventId: string) {
+    for (const plan of plansRef.current) {
+      const wanted = planIds.includes(plan.id)
+      const has = plan.eventIds.includes(eventId)
+      if (wanted === has) continue
+      await setPlanEvents(
+        plan.id,
+        wanted ? [...plan.eventIds, eventId] : plan.eventIds.filter((x) => x !== eventId),
+      )
+    }
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!title.trim() || !date || artistIds.length === 0) return
@@ -88,12 +120,15 @@ export default function EventDialog({
         note: note.trim() || undefined,
         url: url.trim() || undefined,
         artistIds,
+        attended: attended || undefined,
       }
+      let id = event?.id
       if (event) {
         await updateEvent(event.id, payload)
       } else {
-        await createEvent(payload)
+        id = (await createEvent(payload)).id
       }
+      if (id) await syncPlans(id)
       onClose()
     } finally {
       setSaving(false)
@@ -246,6 +281,40 @@ export default function EventDialog({
               className={`${INPUT_CLASS} resize-none`}
             />
           </label>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-zinc-200 pt-4">
+            <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-zinc-800">
+              <input
+                type="checkbox"
+                checked={attended}
+                onChange={(e) => setAttended(e.target.checked)}
+                className="h-4 w-4 accent-zinc-900"
+              />
+              去過了
+            </label>
+            {plans.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-xs text-zinc-500">安排</span>
+                {plans.map((p) => {
+                  const selected = planIds.includes(p.id)
+                  return (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => togglePlan(p.id)}
+                      className={`rounded-full border px-2.5 py-0.5 text-xs transition ${
+                        selected
+                          ? 'border-zinc-900 bg-zinc-900 text-white'
+                          : 'border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50'
+                      }`}
+                    >
+                      {p.name}
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="mt-6 flex items-center justify-between gap-3">

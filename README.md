@@ -13,7 +13,9 @@ A personal tool for tracking idol events / live schedules. Desktop-first, works 
 - **Per-artist colors** — a preset palette of idol-scene pastels plus custom hex
 - **Multi-artist events** — two-man lives / joint shows show every group's color
 - **Filters** — by artist and by date range (all / upcoming / this month / custom); filter state lives in the URL
-- **Backup** — export / import JSON, plus iCal (.ics) export and import (TimeTree, Google Calendar, iOS Calendar files all work)
+- **Plans (安排)** — build a trip itinerary by hand-picking events; grouped by day with warnings for tight gaps and same-day cross-prefecture hops
+- **Attended (去過)** — mark shows you went to; per-artist counts and a month-by-month history
+- **Backup** — export / import JSON (events, plans, attended flags), plus iCal (.ics) export and import (TimeTree, Google Calendar, iOS Calendar files all work)
 - Dark-on-pastel UI, PWA-installable ("Add to Home Screen")
 
 ## Tech
@@ -35,7 +37,7 @@ Use Node.js 24 for local development and `npm test` (database merge and migratio
 
 Runs on `http://localhost:5173` by default. Settings → "load demo data" merges the built-in events for 8 groups into your existing data. Repeat loads skip matching events and preserve your edits and artist colors; no clearing is needed. Previously created duplicates are not deleted automatically. Calendar and list views default to upcoming events (including today, JST); select All to see the past.
 
-Database version 2 removes 僕が見たかった青空 and its exclusive events from existing installations, preserving other artists on shared events.
+Database version 2 removes 僕が見たかった青空 and its exclusive events from existing installations, preserving other artists on shared events. Version 3 adds the plans table and clears the stage-play / reading-theatre entries that were dropped from the demo data (events whose official title is still unannounced stay in as「タイトル未定」placeholders).
 
 ## Self-hosting (GitHub Pages)
 

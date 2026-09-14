@@ -21,11 +21,24 @@ export interface IdolEvent {
   updatedAt: number
   /** Identity of an imported demo event, retained when the user edits it. */
   seedKey?: string
+  /** The user went to this show. */
+  attended?: boolean
+}
+
+/** A trip itinerary: a named, hand-picked set of events. */
+export interface Plan {
+  id: string
+  name: string
+  note?: string
+  eventIds: string[]
+  createdAt: number
+  updatedAt: number
 }
 
 type DB = Dexie & {
   artists: EntityTable<Artist, 'id'>
   events: EntityTable<IdolEvent, 'id'>
+  plans: EntityTable<Plan, 'id'>
 }
 
 export const db = new Dexie('idol-cal') as DB
@@ -51,4 +64,30 @@ db.version(2).stores({
     else await tx.table('events').update(event.id, { artistIds })
   }
   await tx.table('artists').bulkDelete([...ids])
+})
+
+// Stage plays and reading theatre were dropped from the demo data (the user
+// doesn't follow drama), so clear the copies earlier loads left behind.
+export const REMOVED_SEED_TITLES = [
+  '夏川椎菜 リーディングシアター「シャーロック・ホームズ」',
+  'リーディング・オペラ Op.4「トスカ」DAY1 昼公演',
+  'リーディング・オペラ Op.4「トスカ」DAY1 夜公演',
+  'リーディング・オペラ Op.4「トスカ」DAY2 昼公演',
+  'リーディング・オペラ Op.4「トスカ」DAY2 夜公演',
+  '【公演延期】リーディング・オペラ Op.4「トスカ」DAY1 昼公演',
+  '【公演延期】リーディング・オペラ Op.4「トスカ」DAY1 夜公演',
+  '【公演延期】リーディング・オペラ Op.4「トスカ」DAY2 昼公演',
+  '【公演延期】リーディング・オペラ Op.4「トスカ」DAY2 夜公演',
+  '舞台「けものフレンズ」×私立恵比寿中学',
+]
+
+db.version(3).stores({
+  artists: 'id, name, createdAt',
+  events: 'id, date, createdAt, *artistIds',
+  plans: 'id, createdAt',
+}).upgrade(async (tx) => {
+  const gone = new Set(REMOVED_SEED_TITLES)
+  const stale = await tx.table<IdolEvent>('events')
+    .filter((event) => gone.has(event.title)).primaryKeys()
+  if (stale.length > 0) await tx.table('events').bulkDelete(stale)
 })

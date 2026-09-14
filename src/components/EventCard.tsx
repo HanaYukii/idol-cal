@@ -35,7 +35,14 @@ export default function EventCard({
         muted ? 'opacity-60' : ''
       } ${clickable ? 'hover:border-zinc-400 hover:bg-white/90 focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-200' : ''}`}
     >
-      {meta && <div className="text-xs text-zinc-500">{meta}</div>}
+      <div className="flex items-start justify-between gap-2">
+        {meta ? <div className="text-xs text-zinc-500">{meta}</div> : <div />}
+        {event.attended && (
+          <span className="inline-flex flex-shrink-0 items-center rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-medium text-emerald-800">
+            ✓ 去過
+          </span>
+        )}
+      </div>
       <div className="mt-0.5 font-medium text-zinc-900">{event.title}</div>
       {event.venue && (
         <div className="mt-0.5 text-xs text-zinc-600">{event.venue}</div>

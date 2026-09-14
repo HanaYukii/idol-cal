@@ -152,14 +152,6 @@ const EVENTS: EventSeed[] = [
     url: 'https://trysail.jp/contents/1100924',
     note: '上映前に舞台挨拶。¥3,500、3人登壇',
   },
-  {
-    artistNames: ['TrySail'],
-    title: '夏川椎菜 リーディングシアター「シャーロック・ホームズ」',
-    date: '2026-10-23',
-    startTime: '19:00',
-    venue: '銀座 博品館劇場 (東京)',
-    note: '夏川椎菜のみ出演',
-  },
 
   // ── 夏川椎菜 as mona：神戸1場、東京昼夜2場 ──
   {
@@ -431,47 +423,6 @@ const EVENTS: EventSeed[] = [
     note: 'エビ中 中山莉子 個人生誕祭。開場 18:15、指定席 ¥6,900',
   },
 
-  // ── エビ中 真山りか 主演 リーディング・オペラ Op.4「トスカ」（1日2公演 × 2日） ──
-  {
-    artistNames: ['私立恵比寿中学'],
-    previousTitles: ['リーディング・オペラ Op.4「トスカ」DAY1 昼公演'],
-    title: '【公演延期】リーディング・オペラ Op.4「トスカ」DAY1 昼公演',
-    date: '2026-09-09',
-    startTime: '15:00',
-    venue: 'ルーテル市ヶ谷ホール (東京)',
-    url: 'https://www.shiritsuebichu.jp/media/15972/',
-    note: '★9/4 発表: 岸本勇太の体調不良により公演延期、振替日程未定。エビ中 真山りか 主演',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    previousTitles: ['リーディング・オペラ Op.4「トスカ」DAY1 夜公演'],
-    title: '【公演延期】リーディング・オペラ Op.4「トスカ」DAY1 夜公演',
-    date: '2026-09-09',
-    startTime: '19:00',
-    venue: 'ルーテル市ヶ谷ホール (東京)',
-    url: 'https://www.shiritsuebichu.jp/media/15972/',
-    note: '★9/4 発表: 岸本勇太の体調不良により公演延期、振替日程未定。エビ中 真山りか 主演',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    previousTitles: ['リーディング・オペラ Op.4「トスカ」DAY2 昼公演'],
-    title: '【公演延期】リーディング・オペラ Op.4「トスカ」DAY2 昼公演',
-    date: '2026-09-10',
-    startTime: '15:00',
-    venue: 'ルーテル市ヶ谷ホール (東京)',
-    url: 'https://www.shiritsuebichu.jp/media/15973/',
-    note: '★9/4 発表: 岸本勇太の体調不良により公演延期、振替日程未定。エビ中 真山りか 主演',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    previousTitles: ['リーディング・オペラ Op.4「トスカ」DAY2 夜公演'],
-    title: '【公演延期】リーディング・オペラ Op.4「トスカ」DAY2 夜公演',
-    date: '2026-09-10',
-    startTime: '19:00',
-    venue: 'ルーテル市ヶ谷ホール (東京)',
-    url: 'https://www.shiritsuebichu.jp/media/15973/',
-    note: '★9/4 発表: 岸本勇太の体調不良により公演延期、振替日程未定。エビ中 真山りか 主演',
-  },
 
   // ── エビ中 FAMIEN 2026（8/8–9 @ 山中湖） ──
   {
@@ -675,34 +626,6 @@ const EVENTS: EventSeed[] = [
     note: 'FAMIEN 2027、詳細後日',
   },
 
-  // ── エビ中 舞台「けものフレンズ」×私立恵比寿中学（全8人出演） ──
-  {
-    artistNames: ['私立恵比寿中学'],
-    title: '舞台「けものフレンズ」×私立恵比寿中学',
-    date: '2026-12-04',
-    startTime: '12:00',
-    venue: '品川プリンスホテル ステラボール (東京)',
-    url: 'https://kemono-friends-butai.jp/schedule.html',
-    note: '初日、2公演 12:00 / 18:00',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    title: '舞台「けものフレンズ」×私立恵比寿中学',
-    date: '2026-12-05',
-    startTime: '13:30',
-    venue: '品川プリンスホテル ステラボール (東京)',
-    url: 'https://kemono-friends-butai.jp/schedule.html',
-    note: '2公演 13:30 / 16:30',
-  },
-  {
-    artistNames: ['私立恵比寿中学'],
-    title: '舞台「けものフレンズ」×私立恵比寿中学',
-    date: '2026-12-06',
-    startTime: '12:00',
-    venue: '品川プリンスホテル ステラボール (東京)',
-    url: 'https://kemono-friends-butai.jp/schedule.html',
-    note: '千穐楽、2公演 12:00 / 16:30',
-  },
 
   // ── 高嶺のなでしこ 4周年記念 ──
   {
@@ -2250,7 +2173,8 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['私立恵比寿中学'],
-    title: 'エビ中 クリスマスイベント（正式タイトル未発表）',
+    previousTitles: ['エビ中 クリスマスイベント（正式タイトル未発表）'],
+    title: 'エビ中 クリスマスイベント（タイトル未定）',
     date: '2026-12-26',
     venue: 'EX THEATER ROPPONGI (東京)',
     url: 'https://www.shiritsuebichu.jp/media/95127/',

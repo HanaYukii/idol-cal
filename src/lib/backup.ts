@@ -1,27 +1,31 @@
 import { createEvents, type EventAttributes } from 'ics'
-import { db, type Artist, type IdolEvent } from '@/db/schema'
+import { db, type Artist, type IdolEvent, type Plan } from '@/db/schema'
 
 interface BackupFile {
-  version: 1
+  /** 1 = artists + events; 2 adds plans (attended flags ride on events). */
+  version: 1 | 2
   exportedAt: string
   app: 'idol-cal'
   artists: Artist[]
   events: IdolEvent[]
+  plans?: Plan[]
 }
 
 // ── JSON ──────────────────────────────────────────────────────────
 
 export async function exportJSONText(): Promise<string> {
-  const [artists, events] = await Promise.all([
+  const [artists, events, plans] = await Promise.all([
     db.artists.toArray(),
     db.events.toArray(),
+    db.plans.toArray(),
   ])
   const data: BackupFile = {
-    version: 1,
+    version: 2,
     exportedAt: new Date().toISOString(),
     app: 'idol-cal',
     artists,
     events,
+    plans,
   }
   return JSON.stringify(data, null, 2)
 }
@@ -51,11 +55,15 @@ export async function importJSONText(
     throw new Error('不是有效的備份檔')
   }
   const d = data as Partial<BackupFile>
-  if (d.version !== 1) {
+  if (d.version !== 1 && d.version !== 2) {
     throw new Error(`不支援的備份版本：${d.version}`)
   }
   if (!Array.isArray(d.artists) || !Array.isArray(d.events)) {
     throw new Error('備份檔缺少 artists 或 events')
+  }
+  const plans = d.plans ?? []
+  if (!Array.isArray(plans)) {
+    throw new Error('plans 格式錯誤')
   }
 
   // Basic shape check
@@ -74,9 +82,15 @@ export async function importJSONText(
       throw new Error('events 格式錯誤')
     }
   }
+  for (const p of plans) {
+    if (typeof p.id !== 'string' || typeof p.name !== 'string' || !Array.isArray(p.eventIds)) {
+      throw new Error('plans 格式錯誤')
+    }
+  }
 
-  await db.transaction('rw', db.artists, db.events, async () => {
+  await db.transaction('rw', db.artists, db.events, db.plans, async () => {
     if (mode === 'replace') {
+      await db.plans.clear()
       await db.events.clear()
       await db.artists.clear()
     }
@@ -84,6 +98,7 @@ export async function importJSONText(
     // updates existing records with same id
     await db.artists.bulkPut(d.artists as Artist[])
     await db.events.bulkPut(d.events as IdolEvent[])
+    await db.plans.bulkPut(plans as Plan[])
   })
 
   return {
