@@ -1,5 +1,5 @@
 import { createArtist } from '@/db/artists'
-import { db } from '@/db/schema'
+import { db, REMOVED_SEED_TITLES } from '@/db/schema'
 import { createEvent } from '@/db/events'
 
 interface ArtistSeed {
@@ -2365,6 +2365,10 @@ export async function loadSeedData(): Promise<{
 }> {
   // One transaction prevents partial loads and concurrent tabs inserting duplicates.
   return db.transaction('rw', db.artists, db.events, async () => {
+    // Demo rows that were retired after a device already ran the migration
+    // (older title spellings) get cleared here, so a reload always converges.
+    const gone = new Set(REMOVED_SEED_TITLES)
+    await db.events.filter((event) => gone.has(event.title)).delete()
     const artists = await db.artists.toArray()
     const events = await db.events.toArray()
     const nameToId = new Map(artists.map((artist) => [artist.name.trim(), artist.id]))

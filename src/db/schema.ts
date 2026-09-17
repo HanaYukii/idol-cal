@@ -70,6 +70,8 @@ db.version(2).stores({
 // doesn't follow drama), so clear the copies earlier loads left behind.
 export const REMOVED_SEED_TITLES = [
   '夏川椎菜 リーディングシアター「シャーロック・ホームズ」',
+  'リーディング・オペラ Op.4「トスカ」DAY1',
+  'リーディング・オペラ Op.4「トスカ」DAY2',
   'リーディング・オペラ Op.4「トスカ」DAY1 昼公演',
   'リーディング・オペラ Op.4「トスカ」DAY1 夜公演',
   'リーディング・オペラ Op.4「トスカ」DAY2 昼公演',

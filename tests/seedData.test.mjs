@@ -138,6 +138,21 @@ test('v2 upgrade clears seeded drama shows but keeps everything else', async () 
   assert.equal(await db.plans.count(), 0)
 })
 
+test('reloading demo data clears retired titles even after the migration already ran', async () => {
+  await loadSeedData()
+  const before = await db.events.count()
+  // Model the very first demo (2026-08) still sitting in a browser: 2 Tosca rows, old spelling.
+  const base = { artistIds: (await db.events.toCollection().first()).artistIds, createdAt: 1, updatedAt: 1 }
+  await db.events.bulkAdd([
+    { ...base, id: 'old1', title: 'リーディング・オペラ Op.4「トスカ」DAY1', date: '2026-09-09' },
+    { ...base, id: 'old2', title: 'リーディング・オペラ Op.4「トスカ」DAY2', date: '2026-09-10' },
+  ])
+  const r = await loadSeedData()
+  assert.equal(r.eventsAdded, 0)
+  assert.equal(await db.events.count(), before)
+  assert.equal(await db.events.get('old1'), undefined)
+})
+
 test('plans and attended flags survive a JSON backup round trip', async () => {
   await loadSeedData()
   const [a, b, c] = await db.events.orderBy('date').limit(3).toArray()
