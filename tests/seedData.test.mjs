@@ -18,7 +18,7 @@ registerHooks({
 const { db, REMOVED_SEED_TITLES } = await import('../src/db/schema.ts')
 const { loadSeedData } = await import('../src/lib/seedData.ts')
 const { createPlan, setPlanEvents, togglePlanEvent } = await import('../src/db/plans.ts')
-const { exportJSONText, importJSONText } = await import('../src/lib/backup.ts')
+const { exportJSONText } = await import('../src/lib/backup.ts')
 beforeEach(async () => { await db.delete(); await db.open() })
 after(async () => { await db.delete() })
 
@@ -153,7 +153,7 @@ test('reloading demo data clears retired titles even after the migration already
   assert.equal(await db.events.get('old1'), undefined)
 })
 
-test('plans and attended flags survive a JSON backup round trip', async () => {
+test('JSON export carries plans and attended flags', async () => {
   await loadSeedData()
   const [a, b, c] = await db.events.orderBy('date').limit(3).toArray()
   await db.events.update(a.id, { attended: true })
@@ -163,15 +163,10 @@ test('plans and attended flags survive a JSON backup round trip', async () => {
   await togglePlanEvent(plan.id, a.id)
   assert.deepEqual((await db.plans.get(plan.id)).eventIds, [b.id, c.id])
 
-  const text = await exportJSONText()
-  const parsed = JSON.parse(text)
+  const parsed = JSON.parse(await exportJSONText())
   assert.equal(parsed.version, 2)
-  assert.equal(parsed.plans.length, 1)
-
-  await db.delete(); await db.open()
-  await importJSONText(text, 'replace')
-  assert.equal((await db.events.get(a.id)).attended, true)
-  assert.deepEqual((await db.plans.get(plan.id)).eventIds, [b.id, c.id])
-  // Version-1 backups (no plans) still import.
-  await assert.doesNotReject(importJSONText(JSON.stringify({ ...parsed, version: 1, plans: undefined }), 'merge'))
+  assert.equal(parsed.app, 'idol-cal')
+  assert.deepEqual(parsed.plans.map(p => p.eventIds), [[b.id, c.id]])
+  assert.equal(parsed.events.find(e => e.id === a.id).attended, true)
+  assert.equal(parsed.events.length, await db.events.count())
 })

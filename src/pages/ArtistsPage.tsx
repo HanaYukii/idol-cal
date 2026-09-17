@@ -38,7 +38,7 @@ export default function ArtistsPage() {
         <div className="rounded-xl border border-dashed border-zinc-300 bg-white/60 p-6 text-center text-zinc-500">
           <p className="text-sm">還沒有任何推し</p>
           <p className="mt-1 text-xs">
-            點右上「新增推し」開始，或到「設定」載入 demo 資料
+            內建的推し會在開啟時自動載入；也可以點右上「新增推し」
           </p>
         </div>
       ) : (

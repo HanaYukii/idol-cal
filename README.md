@@ -15,7 +15,8 @@ A personal tool for tracking idol events / live schedules. Desktop-first, works 
 - **Filters** — by artist and by date range (all / upcoming / this month / custom); filter state lives in the URL
 - **Plans (安排)** — build a trip itinerary by hand-picking events; grouped by day with warnings for tight gaps and same-day cross-prefecture hops
 - **Attended (去過)** — mark shows you went to; per-artist counts and a month-by-month history
-- **Backup** — export / import JSON (events, plans, attended flags), plus iCal (.ics) export and import (TimeTree, Google Calendar, iOS Calendar files all work)
+- **Built-in data** — the event list ships with the app and syncs into your browser on every launch; edits, plans and attended marks are preserved
+- **Export** — JSON (events, plans, attended flags) and iCal (.ics) for Google Calendar / iOS Calendar reminders
 - Dark-on-pastel UI, PWA-installable ("Add to Home Screen")
 
 ## Tech
@@ -35,7 +36,7 @@ npm run dev
 
 Use Node.js 24 for local development and `npm test` (database merge and migration regression checks).
 
-Runs on `http://localhost:5173` by default. Settings → "load demo data" merges the built-in events for 8 groups into your existing data. Repeat loads skip matching events and preserve your edits and artist colors; no clearing is needed. Previously created duplicates are not deleted automatically. Calendar and list views default to upcoming events (including today, JST); select All to see the past.
+Runs on `http://localhost:5173` by default. The built-in events for 8 groups are merged into your browser's data automatically every time the app starts (Settings → "立即同步" forces it), so publishing a new build is all it takes to update everyone's calendar. Only missing rows are added; your edits, artist colors, plans and attended marks are kept. "重設為內建資料" wipes everything and reloads. There is no import — the built-in list is the source of truth. Calendar and list views default to upcoming events (including today, JST); select All to see the past.
 
 Database version 2 removes 僕が見たかった青空 and its exclusive events from existing installations, preserving other artists on shared events. Version 3 adds the plans table and clears the stage-play / reading-theatre entries that were dropped from the demo data (events whose official title is still unannounced stay in as「タイトル未定」placeholders).
 
@@ -47,7 +48,7 @@ Database version 2 removes 僕が見たかった青空 and its exclusive events 
 
 The included `.github/workflows/deploy.yml` builds and deploys on every push to `main`. (Vercel / Netlify also work with zero config.)
 
-Data lives in your browser (IndexedDB) and never leaves the device. To move between devices, use Settings → export JSON, then import on the other device.
+Data lives in your browser (IndexedDB) and never leaves the device. Every device syncs the same built-in list on launch; plans and attended marks are per device (export JSON to keep a copy).
 
 ## Data model
 

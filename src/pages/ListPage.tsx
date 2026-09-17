@@ -58,7 +58,7 @@ export default function ListPage() {
         <div className="rounded-xl border border-dashed border-zinc-300 bg-white/60 p-6 text-center text-zinc-500">
           <p className="text-sm">還沒有任何活動</p>
           <p className="mt-1 text-xs">
-            點右上「+ 新增活動」，或到「設定」按「載入 demo 資料」
+            內建資料會在開啟時自動載入；也可以點右上「+ 新增活動」
           </p>
         </div>
       ) : filtered.length === 0 ? (

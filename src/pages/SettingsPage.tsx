@@ -1,20 +1,18 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { loadSeedData } from '@/lib/seedData'
-import {
-  downloadJSONBackup,
-  downloadICSBackup,
-  importJSONText,
-} from '@/lib/backup'
+import { downloadJSONBackup, downloadICSBackup } from '@/lib/backup'
 import { db } from '@/db/schema'
-import ICSImportDialog from '@/components/ICSImportDialog'
+import { useArtists } from '@/db/artists'
+import { useEvents } from '@/db/events'
+import { usePlans } from '@/db/plans'
 
 export default function SettingsPage() {
   const [busy, setBusy] = useState<string | null>(null)
   const [message, setMessage] = useState<string | null>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const icsInputRef = useRef<HTMLInputElement>(null)
-  const [icsFile, setIcsFile] = useState<File | null>(null)
-  const [icsOpen, setIcsOpen] = useState(false)
+  const artists = useArtists()
+  const events = useEvents()
+  const plans = usePlans()
+  const attended = events.filter((ev) => ev.attended).length
 
   async function withBusy(tag: string, fn: () => Promise<string | null>) {
     setBusy(tag)
@@ -31,21 +29,31 @@ export default function SettingsPage() {
     }
   }
 
-  function handleLoadDemo() {
-    return withBusy('載入 demo', async () => {
+  function handleResync() {
+    return withBusy('同步', async () => {
       const r = await loadSeedData()
-      return `載入完成：新增 ${r.artistsAdded} 組推し、${r.eventsAdded} 筆活動；跳過 ${r.eventsSkipped} 筆已存在的活動`
+      return r.eventsAdded === 0 && r.artistsAdded === 0
+        ? '已是最新：內建資料沒有新增的場次'
+        : `同步完成：新增 ${r.artistsAdded} 組推し、${r.eventsAdded} 筆活動`
     })
   }
 
-  function handleClearAll() {
-    if (!confirm('確定要清空所有推し和活動？此動作無法復原。')) return
-    return withBusy('清空', async () => {
-      await db.transaction('rw', db.artists, db.events, async () => {
+  function handleReset() {
+    if (
+      !confirm(
+        '確定要重設？會刪除你自訂的活動、所有安排和「去過」標記，然後重新載入內建資料。此動作無法復原。',
+      )
+    ) {
+      return
+    }
+    return withBusy('重設', async () => {
+      await db.transaction('rw', db.artists, db.events, db.plans, async () => {
+        await db.plans.clear()
         await db.events.clear()
         await db.artists.clear()
       })
-      return '已清空所有資料'
+      const r = await loadSeedData()
+      return `已重設：載入 ${r.artistsAdded} 組推し、${r.eventsAdded} 筆活動`
     })
   }
 
@@ -63,38 +71,6 @@ export default function SettingsPage() {
     })
   }
 
-  function pickImportFile() {
-    fileInputRef.current?.click()
-  }
-
-  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0]
-    e.target.value = '' // allow re-picking same file
-    if (!file) return
-    if (!confirm('匯入將覆蓋所有現有資料（推し + 活動），確定繼續？')) return
-    await withBusy('匯入 JSON', async () => {
-      const text = await file.text()
-      const r = await importJSONText(text, 'replace')
-      return `匯入完成：${r.artistsAdded} 組推し、${r.eventsAdded} 筆活動`
-    })
-  }
-
-  function pickICSFile() {
-    icsInputRef.current?.click()
-  }
-
-  function handleICSFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0]
-    e.target.value = ''
-    if (!file) return
-    setIcsFile(file)
-    setIcsOpen(true)
-  }
-
-  function handleICSImported(count: number) {
-    setMessage(`匯入 ${count} 筆 iCal 事件`)
-  }
-
   const loading = !!busy
 
   return (
@@ -105,35 +81,38 @@ export default function SettingsPage() {
 
       <section className="space-y-3">
         <div className="rounded-lg border border-zinc-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm">
-          <h2 className="text-sm font-medium text-zinc-900">Demo 資料</h2>
+          <h2 className="text-sm font-medium text-zinc-900">內建資料</h2>
           <p className="mt-1 text-xs text-zinc-500">
-            載入 8 組推し的活動資料，包含 TrySail 系列、エビ中、高嶺のなでしこ等。
-            可重複載入，不需先清空；只補入缺少的資料，保留既有活動、備註與推し配色。
+            每次開啟網頁都會自動同步最新的內建活動，只補入缺少的場次，
+            你的自訂活動、備註、安排與「去過」標記都會保留。
+          </p>
+          <p className="mt-2 text-xs text-zinc-600">
+            目前 {artists.length} 組推し · {events.length} 筆活動 · {plans.length} 個安排 · 去過 {attended} 場
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               type="button"
-              onClick={handleLoadDemo}
-              disabled={loading}
-              className="rounded-md bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-zinc-800 disabled:opacity-50"
-            >
-              {busy === '載入 demo' ? '載入中…' : '載入 demo 資料'}
-            </button>
-            <button
-              type="button"
-              onClick={handleClearAll}
+              onClick={handleResync}
               disabled={loading}
               className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50"
             >
-              {busy === '清空' ? '清空中…' : '清空所有資料'}
+              {busy === '同步' ? '同步中…' : '立即同步'}
+            </button>
+            <button
+              type="button"
+              onClick={handleReset}
+              disabled={loading}
+              className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-rose-600 hover:bg-rose-50 disabled:opacity-50"
+            >
+              {busy === '重設' ? '重設中…' : '重設為內建資料'}
             </button>
           </div>
         </div>
 
         <div className="rounded-lg border border-zinc-300 bg-white/70 p-4 shadow-sm backdrop-blur-sm">
-          <h2 className="text-sm font-medium text-zinc-900">資料匯出 / 匯入</h2>
+          <h2 className="text-sm font-medium text-zinc-900">匯出</h2>
           <p className="mt-1 text-xs text-zinc-500">
-            JSON 備份含完整資料可還原；iCal (.ics) 單向輸出，方便匯入 Google
+            JSON 含完整資料（活動、安排、去過標記）；iCal (.ics) 可匯入 Google
             Calendar、iOS 行事曆做額外提醒用。
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -147,46 +126,13 @@ export default function SettingsPage() {
             </button>
             <button
               type="button"
-              onClick={pickImportFile}
-              disabled={loading}
-              className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50"
-            >
-              {busy === '匯入 JSON' ? '匯入中…' : '匯入 JSON'}
-            </button>
-            <button
-              type="button"
               onClick={handleExportICS}
               disabled={loading}
               className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50"
             >
               {busy === '匯出 iCal' ? '匯出中…' : '匯出 iCal'}
             </button>
-            <button
-              type="button"
-              onClick={pickICSFile}
-              disabled={loading}
-              className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 disabled:opacity-50"
-            >
-              匯入 iCal
-            </button>
           </div>
-          <p className="mt-2 text-xs text-zinc-500">
-            匯入 iCal 可以吃 TimeTree / Google Calendar / iOS 行事曆 匯出的 .ics 檔。
-          </p>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="application/json,.json"
-            className="hidden"
-            onChange={handleFile}
-          />
-          <input
-            ref={icsInputRef}
-            type="file"
-            accept=".ics,text/calendar"
-            className="hidden"
-            onChange={handleICSFile}
-          />
         </div>
 
         {message && (
@@ -202,13 +148,6 @@ export default function SettingsPage() {
           </p>
         </div>
       </section>
-
-      <ICSImportDialog
-        open={icsOpen}
-        file={icsFile}
-        onClose={() => setIcsOpen(false)}
-        onImported={handleICSImported}
-      />
     </div>
   )
 }

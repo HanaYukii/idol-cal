@@ -2,13 +2,13 @@ import { createEvents, type EventAttributes } from 'ics'
 import { db, type Artist, type IdolEvent, type Plan } from '@/db/schema'
 
 interface BackupFile {
-  /** 1 = artists + events; 2 adds plans (attended flags ride on events). */
-  version: 1 | 2
+  /** 2 = artists + events (with attended flags) + plans. */
+  version: 2
   exportedAt: string
   app: 'idol-cal'
   artists: Artist[]
   events: IdolEvent[]
-  plans?: Plan[]
+  plans: Plan[]
 }
 
 // ── JSON ──────────────────────────────────────────────────────────
@@ -34,77 +34,6 @@ export async function downloadJSONBackup(): Promise<void> {
   const text = await exportJSONText()
   const today = new Date().toISOString().slice(0, 10)
   triggerDownload(text, `idol-cal-${today}.json`, 'application/json')
-}
-
-interface ImportResult {
-  artistsAdded: number
-  eventsAdded: number
-}
-
-export async function importJSONText(
-  text: string,
-  mode: 'replace' | 'merge',
-): Promise<ImportResult> {
-  let data: unknown
-  try {
-    data = JSON.parse(text)
-  } catch {
-    throw new Error('JSON 格式錯誤')
-  }
-  if (!data || typeof data !== 'object') {
-    throw new Error('不是有效的備份檔')
-  }
-  const d = data as Partial<BackupFile>
-  if (d.version !== 1 && d.version !== 2) {
-    throw new Error(`不支援的備份版本：${d.version}`)
-  }
-  if (!Array.isArray(d.artists) || !Array.isArray(d.events)) {
-    throw new Error('備份檔缺少 artists 或 events')
-  }
-  const plans = d.plans ?? []
-  if (!Array.isArray(plans)) {
-    throw new Error('plans 格式錯誤')
-  }
-
-  // Basic shape check
-  for (const a of d.artists) {
-    if (typeof a.id !== 'string' || typeof a.name !== 'string' || typeof a.color !== 'string') {
-      throw new Error('artists 格式錯誤')
-    }
-  }
-  for (const e of d.events) {
-    if (
-      typeof e.id !== 'string' ||
-      typeof e.title !== 'string' ||
-      typeof e.date !== 'string' ||
-      !Array.isArray(e.artistIds)
-    ) {
-      throw new Error('events 格式錯誤')
-    }
-  }
-  for (const p of plans) {
-    if (typeof p.id !== 'string' || typeof p.name !== 'string' || !Array.isArray(p.eventIds)) {
-      throw new Error('plans 格式錯誤')
-    }
-  }
-
-  await db.transaction('rw', db.artists, db.events, db.plans, async () => {
-    if (mode === 'replace') {
-      await db.plans.clear()
-      await db.events.clear()
-      await db.artists.clear()
-    }
-    // bulkPut overwrites by primary key, so merge mode effectively
-    // updates existing records with same id
-    await db.artists.bulkPut(d.artists as Artist[])
-    await db.events.bulkPut(d.events as IdolEvent[])
-    await db.plans.bulkPut(plans as Plan[])
-  })
-
-  return {
-    artistsAdded: d.artists.length,
-    eventsAdded: d.events.length,
-  }
 }
 
 // ── iCal ──────────────────────────────────────────────────────────
