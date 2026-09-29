@@ -21,6 +21,12 @@ export interface IdolEvent {
   updatedAt: number
   /** Identity of an imported demo event, retained when the user edits it. */
   seedKey?: string
+  /**
+   * The demo fields (title, date, time, venue, url, note) as last written by
+   * the loader. If the row still matches it, the user hasn't touched them and
+   * the loader may refresh them from newer demo data.
+   */
+  seedSnapshot?: string
   /** The user went to this show. */
   attended?: boolean
 }
@@ -66,30 +72,32 @@ db.version(2).stores({
   await tx.table('artists').bulkDelete([...ids])
 })
 
-// Stage plays and reading theatre were dropped from the demo data (the user
-// doesn't follow drama), so clear the copies earlier loads left behind.
-export const REMOVED_SEED_TITLES = [
-  '夏川椎菜 リーディングシアター「シャーロック・ホームズ」',
-  'リーディング・オペラ Op.4「トスカ」DAY1',
-  'リーディング・オペラ Op.4「トスカ」DAY2',
-  'リーディング・オペラ Op.4「トスカ」DAY1 昼公演',
-  'リーディング・オペラ Op.4「トスカ」DAY1 夜公演',
-  'リーディング・オペラ Op.4「トスカ」DAY2 昼公演',
-  'リーディング・オペラ Op.4「トスカ」DAY2 夜公演',
-  '【公演延期】リーディング・オペラ Op.4「トスカ」DAY1 昼公演',
-  '【公演延期】リーディング・オペラ Op.4「トスカ」DAY1 夜公演',
-  '【公演延期】リーディング・オペラ Op.4「トスカ」DAY2 昼公演',
-  '【公演延期】リーディング・オペラ Op.4「トスカ」DAY2 夜公演',
-  '舞台「けものフレンズ」×私立恵比寿中学',
-]
+/** Artists the roster dropped; their exclusive events go with them. */
+export const REMOVED_ARTIST_NAMES = ['僕が見たかった青空', 'ukka', '=LOVE']
 
 db.version(3).stores({
   artists: 'id, name, createdAt',
   events: 'id, date, createdAt, *artistIds',
   plans: 'id, createdAt',
+})
+
+// Drop the artists the roster no longer tracks, the same way version 2 did
+// for Bokuao: shared events keep their remaining artists, exclusive ones go.
+db.version(4).stores({
+  artists: 'id, name, createdAt',
+  events: 'id, date, createdAt, *artistIds',
+  plans: 'id, createdAt',
 }).upgrade(async (tx) => {
-  const gone = new Set(REMOVED_SEED_TITLES)
-  const stale = await tx.table<IdolEvent>('events')
-    .filter((event) => gone.has(event.title)).primaryKeys()
-  if (stale.length > 0) await tx.table('events').bulkDelete(stale)
+  const names = new Set(REMOVED_ARTIST_NAMES)
+  const removed = await tx.table<Artist>('artists')
+    .filter((artist) => names.has(artist.name.trim())).toArray()
+  const ids = new Set(removed.map((artist) => artist.id))
+  if (ids.size === 0) return
+  for (const event of await tx.table<IdolEvent>('events').toArray()) {
+    if (!event.artistIds.some((id) => ids.has(id))) continue
+    const artistIds = event.artistIds.filter((id) => !ids.has(id))
+    if (artistIds.length === 0) await tx.table('events').delete(event.id)
+    else await tx.table('events').update(event.id, { artistIds })
+  }
+  await tx.table('artists').bulkDelete([...ids])
 })

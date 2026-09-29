@@ -36,9 +36,11 @@ npm run dev
 
 Use Node.js 24 for local development and `npm test` (database merge and migration regression checks).
 
-Runs on `http://localhost:5173` by default. The built-in events for 8 groups are merged into your browser's data automatically every time the app starts (Settings → "立即同步" forces it), so publishing a new build is all it takes to update everyone's calendar. Only missing rows are added; your edits, artist colors, plans and attended marks are kept. "重設為內建資料" wipes everything and reloads. There is no import — the built-in list is the source of truth. Calendar and list views default to upcoming events (including today, JST); select All to see the past.
+After editing `src/lib/seedData.ts` — renaming an event, adding an artist to it, or dropping it — run `node scripts/retired-seed-events.mjs` before committing. It regenerates `src/db/retiredSeedEvents.ts` from git history so devices that loaded an older version clear the stale copy instead of showing the event twice. `npm test` fails if a retired signature collides with a current one.
 
-Database version 2 removes 僕が見たかった青空 and its exclusive events from existing installations, preserving other artists on shared events. Version 3 adds the plans table and clears the stage-play / reading-theatre entries that were dropped from the demo data (events whose official title is still unannounced stay in as「タイトル未定」placeholders).
+Runs on `http://localhost:5173` by default. The built-in events for 8 groups are merged into your browser's data automatically every time the app starts (Settings → "立即同步" forces it), so publishing a new build is all it takes to update everyone's calendar. Missing rows are added, rows you haven't edited pick up newer details (times, venues, titles), and leftovers from older versions of the data are removed with their attended marks and plan slots moved to the current row; your own edits, events and artist colors are kept. "重設為內建資料" wipes everything and reloads. There is no import — the built-in list is the source of truth. Calendar and list views default to upcoming events (including today, JST); select All to see the past.
+
+Database version 2 removes 僕が見たかった青空 and its exclusive events from existing installations, preserving other artists on shared events. Version 3 adds the plans table; version 4 drops =LOVE and ukka the same way. Stage plays / reading theatre are out of scope for the demo data (events whose official title is still unannounced stay in as「タイトル未定」placeholders).
 
 ## Self-hosting (GitHub Pages)
 

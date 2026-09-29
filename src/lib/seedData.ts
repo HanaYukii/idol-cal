@@ -1,6 +1,7 @@
 import { createArtist } from '@/db/artists'
-import { db, REMOVED_SEED_TITLES } from '@/db/schema'
+import { db, REMOVED_ARTIST_NAMES, type IdolEvent } from '@/db/schema'
 import { createEvent } from '@/db/events'
+import { RETIRED_SEED_EVENTS } from '@/db/retiredSeedEvents'
 
 interface ArtistSeed {
   name: string
@@ -44,7 +45,7 @@ const SHIINA_MONA = 'LAWSON presents 夏川椎菜 as mona 3rdワンマンライ�
 const SHIINA_MONA_URL = 'https://trysail.jp/contents/1089115'
 const MOMOCLO_XMAS = 'ももいろクローバーZ クリスマスツアー2026「ももクリDelivery」'
 const MOMOCLO_XMAS_URL = 'https://www.momoclo.net/archives/news/260727_03'
-const SWESTE_TOUR = 'SWEET STEADY JAPAN TOUR 2026 -WINTER-'
+const SWESTE_TOUR = 'SWEET STEADY JAPAN TOUR 2026 -WINTER- Snow Sparkle'
 const SWESTE_RELEASE = '3rdシングル『SWEET STEP』発売記念リリースイベント'
 const SOUND_OF_EBICHU = 'SOUND OF EBICHU 2026 -Band Edition-'
 
@@ -420,7 +421,7 @@ const EVENTS: EventSeed[] = [
     startTime: '19:00',
     venue: 'Zepp DiverCity (TOKYO)',
     url: 'https://www.shiritsuebichu.jp/news/16130/',
-    note: 'エビ中 中山莉子 個人生誕祭。開場 18:15、指定席 ¥6,900',
+    note: 'エビ中 中山莉子 個人生誕祭。開場 18:15、指定席 ¥6,900。ゲスト：三品瑠香（わーすた）',
   },
 
 
@@ -594,8 +595,10 @@ const EVENTS: EventSeed[] = [
     artistNames: ['私立恵比寿中学'],
     title: 'Spicy Sessions -THE LIVE- 2026',
     date: '2026-10-20',
-    venue: '会場未発表',
-    note: '真山りか・安本彩花のみ出演',
+    startTime: '14:00',
+    venue: 'TACHIKAWA STAGE GARDEN (東京)',
+    url: 'https://www.shiritsuebichu.jp/news/16113/',
+    note: '真山りか・安本彩花が昼公演のみゲスト出演。開場 13:15',
   },
   {
     artistNames: ['私立恵比寿中学'],
@@ -1011,17 +1014,19 @@ const EVENTS: EventSeed[] = [
     artistNames: ['超ときめき♡宣伝部'],
     title: '「大盛りハッピー」発売記念リアルイベント',
     date: '2026-10-11',
+    startTime: '12:00',
     venue: 'TODA HALL & CONFERENCE TOKYO ホールA (東京)',
-    url: 'https://toki-sen.com/contents/1083047',
-    note: '特典会形式',
+    url: 'https://toki-sen.com/contents/1092180',
+    note: '特典会形式、5部制 12:00 / 14:00 / 15:20 / 17:20 / 19:30',
   },
   {
     artistNames: ['超ときめき♡宣伝部'],
     title: '「大盛りハッピー」発売記念リアルイベント',
     date: '2026-10-12',
+    startTime: '12:00',
     venue: 'シティホール＆ギャラリー五反田 (東京)',
-    url: 'https://toki-sen.com/contents/1083047',
-    note: '特典会形式',
+    url: 'https://toki-sen.com/contents/1092180',
+    note: '特典会形式、5部制 12:00 / 14:00 / 15:20 / 17:20 / 19:30',
   },
   {
     artistNames: ['超ときめき♡宣伝部', 'ももいろクローバーZ'],
@@ -1855,7 +1860,7 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['Juice=Juice'],
-    title: `${JJ_5ROOMS} -SUITE-` + ' — 日本武道館 特別公演',
+    title: `${JJ_5ROOMS} -SUITE- — 日本武道館 特別公演`,
     date: '2026-11-06',
     startTime: '18:00',
     venue: '日本武道館 (東京)',
@@ -1904,7 +1909,7 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['Juice=Juice'],
-    title: `${JJ_5ROOMS} -ROYAL SUITE-` + ' — 横浜 FINAL',
+    title: `${JJ_5ROOMS} -ROYAL SUITE- — 横浜 FINAL`,
     date: '2026-11-25',
     startTime: '18:00',
     venue: 'ぴあアリーナMM (神奈川)',
@@ -2020,12 +2025,13 @@ const EVENTS: EventSeed[] = [
     note: '抽選制',
   },
   {
-    artistNames: ['SWEET STEADY'],
+    artistNames: ['SWEET STEADY', '高嶺のなでしこ'],
     title: "LARME FES '26",
     date: '2026-11-07',
     startTime: '16:00',
     venue: '東京ガーデンシアター (東京)',
     url: 'https://sweetsteady.asobisystem.com/live_information/detail/44462',
+    note: '開場 14:30。高嶺のなでしこは城月菜央・松本ももなのみ出演',
   },
   {
     artistNames: ['CUTIE STREET'],
@@ -2165,11 +2171,13 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['私立恵比寿中学'],
-    title: '真山りか 生誕ソロライブ',
+    previousTitles: ['真山りか 生誕ソロライブ'],
+    title: '真山りか 生誕ソロライブ「まやまにあ-Level.11-」',
     date: '2026-12-16',
+    startTime: '19:00',
     venue: 'Zepp DiverCity (TOKYO)',
-    url: 'https://www.shiritsuebichu.jp/media/15620/',
-    note: 'エビ中 真山りか 個人生誕祭。時間未発表',
+    url: 'https://www.shiritsuebichu.jp/news/16169/',
+    note: 'エビ中 真山りか 個人生誕祭。開場 18:15、指定席 ¥7,500 / カメラ席 ¥12,000',
   },
   {
     artistNames: ['私立恵比寿中学'],
@@ -2206,7 +2214,7 @@ const EVENTS: EventSeed[] = [
     startTime: '15:30',
     venue: '大阪城ホール (大阪)',
     url: 'https://helloproject.com/juicejuice/event/77c8f531d495ecbf427776654a9aa65e08e4a47520497a66a761b79bd3dd817a/',
-    note: '9/6 核對追加。開場 14:30。BEYOOOOONDS ほかと共演',
+    note: '開場 14:30。CLASS SEVEN / NEXZ / BUDDiiS / BEYOOOOONDS / ONE N\' ONLY と共演、¥11,000',
   },
   // ── 2026-09-01 追加分: J=J / ももクロ ──
   {
@@ -2345,11 +2353,386 @@ const EVENTS: EventSeed[] = [
   },
   {
     artistNames: ['私立恵比寿中学'],
-    title: '小久保柚乃 生誕ソロライブ',
+    previousTitles: ['小久保柚乃 生誕ソロライブ'],
+    title: '小久保柚乃 生誕ソロライブ（タイトル未定）',
     date: '2027-03-23',
     venue: 'Zepp DiverCity (TOKYO)',
     url: 'https://www.shiritsuebichu.jp/news/16150/',
     note: 'エビ中 小久保柚乃 個人生誕祭。9/7 発表、詳細後日',
+  },
+  // ── 2026-09-29 sweep 追加分 ──
+  // 高嶺のなでしこ: 対バン / 2ndアルバム 10月リリイベ / クリスマス
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'BEEEEM FES Vol.11 DX SP',
+    date: '2026-09-29',
+    startTime: '17:30',
+    venue: 'Zepp DiverCity (TOKYO)',
+    url: 'https://takanenonadeshiko.jp/events/event/beeeem-fes-vol-11-dx-sp/',
+    note: '対バン。開場 16:30',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'ドラマチックレコード presents「SPECIAL DRAMATIC POP Load to LOVEZ」',
+    date: '2026-10-01',
+    startTime: '19:00',
+    venue: 'GARDEN新木場FACTORY (東京)',
+    note: '対バン（ドラマチックレコード / わーすた）。開場 18:15',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '『A World in Our Colors』リリース記念イベント at イオンモール常滑 1部',
+    date: '2026-10-03',
+    startTime: '12:30',
+    venue: 'イオンモール常滑 ワンダーステージ (愛知)',
+    url: 'https://takanenonadeshiko.jp/newalbum-aworldinourcolors-1003/',
+    note: 'ミニライブ観覧フリー＋グループショット撮影会。優先エリア入場 12:10',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '『A World in Our Colors』リリース記念イベント at イオンモール常滑 2部',
+    date: '2026-10-03',
+    startTime: '16:00',
+    venue: 'イオンモール常滑 ワンダーステージ (愛知)',
+    url: 'https://takanenonadeshiko.jp/newalbum-aworldinourcolors-1003/',
+    note: 'ミニライブ観覧フリー＋グループ握手会。優先エリア入場 15:40',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '『A World in Our Colors』リリース記念イベント at イオンモール幕張新都心',
+    date: '2026-10-11',
+    venue: 'イオンモール幕張新都心 (千葉)',
+    url: 'https://takanenonadeshiko.jp/newalbum-aworldinourcolors-10/',
+    note: 'ミニライブ＆グループ特典会、時間未発表',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '『A World in Our Colors』リリース記念 オンラインサイン会＆お話し会',
+    date: '2026-10-16',
+    venue: 'オンライン',
+    url: 'https://takanenonadeshiko.jp/newalbum-aworldinourcolors-10/',
+    note: '時間未発表',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '『A World in Our Colors』リリース記念 個別特典会',
+    date: '2026-10-17',
+    venue: '都内某所 (東京)',
+    url: 'https://takanenonadeshiko.jp/newalbum-aworldinourcolors-10/',
+    note: '会場・時間とも未発表',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'iLiVE! HALLOWEEN',
+    date: '2026-10-21',
+    startTime: '11:30',
+    venue: '豊洲PIT (東京)',
+    url: 'https://takanenonadeshiko.jp/events/event/ilive-halloween-2/',
+    note: '大型対バン。開場 11:00',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '『A World in Our Colors』リリース記念 オンラインサイン会＆お話し会',
+    date: '2026-10-23',
+    venue: 'オンライン',
+    url: 'https://takanenonadeshiko.jp/newalbum-aworldinourcolors-10/',
+    note: '時間未発表',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '『A World in Our Colors』リリース記念 個別特典会',
+    date: '2026-10-24',
+    venue: '都内某所 (東京)',
+    url: 'https://takanenonadeshiko.jp/newalbum-aworldinourcolors-10/',
+    note: '会場・時間とも未発表',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '中央学院大学 第58回あびこ祭 スペシャルライブ',
+    date: '2026-10-25',
+    venue: '中央学院大学 (千葉 我孫子)',
+    note: '学園祭、入場無料。ライブ時間と整理券の配布方法は10月初旬に大学HPで発表',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: 'Devil ANTHEM. presents『でびぱっぱ〜Road to 幕張イベントホール〜』',
+    date: '2026-11-05',
+    venue: 'Shibuya LOVEZ / Veats Shibuya (東京)',
+    note: '2会場連動の大型対バン、時間未発表',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '高嶺のなでしこ「たかねこクリスマスパーティ2026」第一部',
+    date: '2026-12-24',
+    startTime: '16:00',
+    venue: 'ヒューリックホール東京 (東京)',
+    note: 'ライブ＋トーク。開場 15:00、一般発売 10/24 10:00',
+  },
+  {
+    artistNames: ['高嶺のなでしこ'],
+    title: '高嶺のなでしこ「たかねこクリスマスパーティ2026」第二部',
+    date: '2026-12-24',
+    startTime: '19:30',
+    venue: 'ヒューリックホール東京 (東京)',
+    note: 'ライブ＋トーク。開場 18:30、一般発売 10/24 10:00',
+  },
+
+  // 私立恵比寿中学: 対バン企画 / スポーツ / 年末
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '『新春大学芸会2026』発売記念 オンライン個別1分サイン会 追加開催',
+    date: '2026-10-22',
+    venue: 'オンライン',
+    note: '時間未発表、第2次応募 9/29 18:00〜',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: 'Astemoリヴァーレ茨城 ホームゲーム THANKS PROJECT スペシャルライブ',
+    date: '2026-10-25',
+    venue: 'ひたちなか市総合運動公園 総合体育館 (茨城)',
+    url: 'https://www.shiritsuebichu.jp/news/16175/',
+    note: 'SV.LEAGUE WOMEN。スペシャルライブ＆始球式、試合開始 14:05（ライブ時間未発表）',
+  },
+  {
+    artistNames: ['私立恵比寿中学', 'SWEET STEADY'],
+    title: '私立恵比寿中学 TAIBAN LIVE「放課後ロッケンロール-HYPER- 2026」vs SWEET STEADY',
+    date: '2026-11-16',
+    startTime: '18:30',
+    venue: 'Zepp Haneda (TOKYO)',
+    url: 'https://www.shiritsuebichu.jp/news/16156/',
+    note: '開場 17:30、全席指定 ¥7,400（後方スタンディング券販売予定）',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '私立恵比寿中学 TAIBAN LIVE「放課後ロッケンロール-HYPER- 2026」vs カネヨリマサル',
+    date: '2026-11-17',
+    startTime: '18:30',
+    venue: 'Zepp Haneda (TOKYO)',
+    url: 'https://www.shiritsuebichu.jp/news/16156/',
+    note: '開場 17:30、全席指定 ¥7,400',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: '【振替開催】namco TOKYO コラボカフェ プレミアムイベント トークショー',
+    date: '2026-11-22',
+    venue: '東急歌舞伎町タワー3F namco TOKYO (東京)',
+    note: '9/27 開催分の振替、時間未発表',
+  },
+  {
+    artistNames: ['私立恵比寿中学'],
+    title: 'Idol Xmas Fes 2026',
+    date: '2026-12-24',
+    startTime: '15:00',
+    venue: '横浜アリーナ (神奈川)',
+    url: 'https://www.shiritsuebichu.jp/news/16167/',
+    note: '9組出演、指定席 ¥6,000。開場 13:30',
+  },
+
+  // SWEET STEADY / CUTIE STREET（KAWAII LAB.）
+  {
+    artistNames: ['SWEET STEADY'],
+    title: '番組観覧『すいらぶ 〜Secret baseすいすての花園〜』1部',
+    date: '2026-10-07',
+    startTime: '17:00',
+    venue: '都内（当選者のみ通知）(東京)',
+    url: 'https://sweetsteady.asobisystem.com/live_information/detail/45517',
+    note: '公開収録、抽選制。開場 16:30',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: '番組観覧『すいらぶ 〜Secret baseすいすての花園〜』2部',
+    date: '2026-10-07',
+    startTime: '20:00',
+    venue: '都内（当選者のみ通知）(東京)',
+    url: 'https://sweetsteady.asobisystem.com/live_information/detail/45517',
+    note: '公開収録、抽選制。開場 19:30',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'CANDY TUNE / SWEET STEADY / MORE STAR シングル発売記念 大特典会',
+    date: '2026-10-11',
+    startTime: '10:00',
+    venue: '西日本総合展示場 (福岡)',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/91006',
+    note: '個別2ショットチェキ会、6部制 10:00 / 11:20 / 13:20 / 14:40 / 16:40 / 18:00',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: '1stアルバム『CUTIE LAND』発売記念 大特典会 in 神奈川',
+    date: '2026-11-03',
+    venue: 'パシフィコ横浜 展示ホールD (神奈川)',
+    url: 'https://cutiestreet.asobisystem.com/live_information/detail/45469',
+    note: '時間未発表',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: '1stアルバム『CUTIE LAND』発売記念 ミニライブ＆お渡し会',
+    date: '2026-11-08',
+    venue: 'イオンモール白山 平面駐車場 (石川)',
+    url: 'https://cutiestreet.asobisystem.com/live_information/detail/45466',
+    note: '時間未発表',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: '1stアルバム『CUTIE LAND』発売記念 大特典会 in 北海道',
+    date: '2026-11-23',
+    venue: 'アクセス札幌 (北海道)',
+    url: 'https://cutiestreet.asobisystem.com/live_information/detail/45470',
+    note: '時間未発表',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'SWEET STEADY 白石まゆみ BIRTHDAY LIVE 2026',
+    date: '2026-12-08',
+    startTime: '19:00',
+    venue: 'SGC ホール有明 (東京)',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/90613',
+    note: '全席指定 ¥6,500、開場 17:30',
+  },
+
+  // 超ときめき♡宣伝部
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: '「大盛りハッピー」発売日記念フリーライブイベント',
+    date: '2026-09-30',
+    startTime: '18:30',
+    venue: 'ららぽーと豊洲 シーサイドデッキ メインステージ (東京)',
+    url: 'https://toki-sen.com/contents/1111471',
+    note: '入場無料、YouTube 生配信あり',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: 'billboard classics 超ときめき♡宣伝部 オーケストラ超最強説!! 2027 -ときめきフォルテッシモ- 東京',
+    date: '2027-01-14',
+    startTime: '18:00',
+    venue: 'NHKホール (東京)',
+    url: 'https://toki-sen.com/contents/1108723',
+    note: 'オーケストラ公演、¥12,000。開場 17:00',
+  },
+  {
+    artistNames: ['超ときめき♡宣伝部'],
+    title: 'billboard classics 超ときめき♡宣伝部 オーケストラ超最強説!! 2027 -ときめきフォルテッシモ- 大阪',
+    date: '2027-02-09',
+    startTime: '18:00',
+    venue: 'グランキューブ大阪 メインホール (大阪)',
+    url: 'https://toki-sen.com/contents/1108723',
+    note: 'オーケストラ公演、¥12,000。開場 17:00',
+  },
+
+  // Juice=Juice
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'GFEST.2026',
+    date: '2026-10-11',
+    venue: 'Gメッセ群馬 (群馬)',
+    note: 'J=J 出演日、時間未発表（10/10 はとき宣が出演）',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: '入江里咲 バースデーイベント2026 公演01',
+    date: '2026-10-23',
+    startTime: '16:40',
+    venue: '有楽町朝日ホール (東京)',
+    url: 'https://www.upfc.jp/helloproject/news_detail.php?@uid=AyvWrrB87V9RWrND',
+    note: 'FC 会員限定、¥4,700、終演後お見送り会。開場 16:05',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: '入江里咲 バースデーイベント2026 公演02',
+    date: '2026-10-23',
+    startTime: '19:00',
+    venue: '有楽町朝日ホール (東京)',
+    url: 'https://www.upfc.jp/helloproject/news_detail.php?@uid=AyvWrrB87V9RWrND',
+    note: 'FC 会員限定、¥4,700、終演後お見送り会。開場 18:25',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'Juice=Juice Room Tour 2026「5ROOMS -TAIPEI ANNEX-」①',
+    date: '2026-12-06',
+    startTime: '14:00',
+    venue: 'SUB Live (台湾 台北)',
+    note: '台北時間（JST−1）。オールスタンディング VIP NT$3,680 / 一般 NT$2,480、終演後お見送り会',
+  },
+  {
+    artistNames: ['Juice=Juice'],
+    title: 'Juice=Juice Room Tour 2026「5ROOMS -TAIPEI ANNEX-」②',
+    date: '2026-12-06',
+    startTime: '18:00',
+    venue: 'SUB Live (台湾 台北)',
+    note: '台北時間（JST−1）。オールスタンディング VIP NT$3,680 / 一般 NT$2,480、終演後お見送り会',
+  },
+
+  // ももいろクローバーZ（メンバー個人）
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: 'アゼリア40周年 SPECIAL EVENT「ももクロが答える！40の質問」1回目',
+    date: '2026-10-03',
+    startTime: '11:00',
+    venue: '川崎アゼリア サンライト広場 (神奈川)',
+    url: 'https://www.azalea.co.jp/topics/5683',
+    note: '高城れに出演（他メンバーは事前収録の回答）',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: 'アゼリア40周年 SPECIAL EVENT「ももクロが答える！40の質問」2回目',
+    date: '2026-10-03',
+    startTime: '14:00',
+    venue: '川崎アゼリア サンライト広場 (神奈川)',
+    url: 'https://www.azalea.co.jp/topics/5683',
+    note: '高城れに出演（他メンバーは事前収録の回答）',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: 'カダンフェス2026秋『高城れにの週末ももクロ☆パンチ!!』公開収録',
+    date: '2026-10-10',
+    startTime: '13:00',
+    venue: '船橋競馬場 場外広場 (千葉)',
+    note: '高城れにのみ。時間変更の可能性あり',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: 'おながわ秋の収獲祭2026',
+    date: '2026-10-11',
+    startTime: '15:05',
+    venue: '女川町海岸広場 (宮城)',
+    url: 'https://onagawa-matsuri.jp/autumn/stage/',
+    note: '高城れに出演、入場無料',
+  },
+  {
+    artistNames: ['ももいろクローバーZ'],
+    title: '横浜マラソン2026 応援ゲスト',
+    date: '2026-10-25',
+    venue: '横浜マラソンコース (神奈川)',
+    note: '高城れに。ライブではなく応援出演',
+  },
+
+  // TrySail（麻倉もも / 夏川椎菜 ソロ）
+  {
+    artistNames: ['TrySail'],
+    title: 'LISANI！TAIPEI 2026',
+    date: '2026-11-29',
+    startTime: '18:00',
+    venue: 'Legacy MAX (台湾 台北)',
+    url: 'https://trysail.jp/contents/1112099',
+    note: '麻倉もも出演。台北時間、開場 17:00',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: 'エアトリ presents 毎日がクリスマス 2026 昼（トークショー）',
+    date: '2026-12-17',
+    startTime: '16:30',
+    venue: '横浜赤レンガ倉庫1号館 3Fホール (神奈川)',
+    url: 'https://trysail.jp/contents/1111202',
+    note: '夏川椎菜出演、トーク＆プレゼント抽選会（ライブなし）。開場 15:45',
+  },
+  {
+    artistNames: ['TrySail'],
+    title: 'エアトリ presents 毎日がクリスマス 2026 夜（LIVE）',
+    date: '2026-12-17',
+    startTime: '19:30',
+    venue: '横浜赤レンガ倉庫1号館 3Fホール (神奈川)',
+    url: 'https://trysail.jp/contents/1111202',
+    note: '夏川椎菜出演。開場 18:45',
   },
 ]
 
@@ -2364,11 +2747,8 @@ export async function loadSeedData(): Promise<{
   eventsSkipped: number
 }> {
   // One transaction prevents partial loads and concurrent tabs inserting duplicates.
-  return db.transaction('rw', db.artists, db.events, async () => {
-    // Demo rows that were retired after a device already ran the migration
-    // (older title spellings) get cleared here, so a reload always converges.
-    const gone = new Set(REMOVED_SEED_TITLES)
-    await db.events.filter((event) => gone.has(event.title)).delete()
+  return db.transaction('rw', db.artists, db.events, db.plans, async () => {
+    await dropRemovedArtists()
     const artists = await db.artists.toArray()
     const events = await db.events.toArray()
     const nameToId = new Map(artists.map((artist) => [artist.name.trim(), artist.id]))
@@ -2409,9 +2789,12 @@ export async function loadSeedData(): Promise<{
       }
       if (existing) {
         claimed.add(existing.id)
-        if (existing.seedKey !== seedKey) {
-          await db.events.update(existing.id, { seedKey })
-          existing.seedKey = seedKey
+        const patch = seedRowPatch(existing, spec, seedKey)
+        if (patch) {
+          // Only ever await Dexie calls in here: awaiting a plain promise
+          // drops Dexie's transaction context and the load commits halfway.
+          await db.events.update(existing.id, patch)
+          Object.assign(existing, patch)
         }
         eventsSkipped += 1
         continue
@@ -2427,11 +2810,135 @@ export async function loadSeedData(): Promise<{
         url: spec.url,
         note: spec.note,
         seedKey,
+        seedSnapshot: seedFingerprint(spec),
       })
       events.push(event)
       claimed.add(event.id)
       eventsAdded += 1
     }
+
+    // Last step on purpose: its early return awaits nothing from Dexie.
+    await clearStaleSeedRows(events, claimed, idToName)
     return { artistsAdded, eventsAdded, eventsSkipped }
   })
+}
+
+/** Artists dropped from the roster, plus any event left with nobody in it. */
+async function dropRemovedArtists(): Promise<void> {
+  const names = new Set(REMOVED_ARTIST_NAMES)
+  const removed = await db.artists.filter((a) => names.has(a.name.trim())).toArray()
+  const ids = new Set(removed.map((a) => a.id))
+  if (ids.size === 0) return
+  for (const event of await db.events.toArray()) {
+    if (!event.artistIds.some((id) => ids.has(id))) continue
+    const artistIds = event.artistIds.filter((id) => !ids.has(id))
+    if (artistIds.length === 0) await db.events.delete(event.id)
+    else await db.events.update(event.id, { artistIds })
+  }
+  await db.artists.bulkDelete([...ids])
+}
+
+/** [date, title, artists] identity used to recognise demo rows across versions. */
+export function seedSignature(date: string, title: string, artistNames: string[]): string {
+  return JSON.stringify([date, title.trim(), JSON.parse(namesKey(artistNames))])
+}
+
+/** Signatures of everything the current demo data ships (for tests). */
+export function currentSeedSignatures(): string[] {
+  return EVENTS.map((spec) => seedSignature(spec.date, spec.title, spec.artistNames))
+}
+
+type SeedFields = Pick<IdolEvent, 'title' | 'date' | 'startTime' | 'venue' | 'url' | 'note'>
+
+function seedFingerprint(e: SeedFields): string {
+  return JSON.stringify([e.title, e.date, e.startTime ?? '', e.venue ?? '', e.url ?? '', e.note ?? ''])
+}
+
+/**
+ * What to write to bring a matched demo row up to date, or null if nothing.
+ * A row whose demo fields no longer match what the loader last wrote has been
+ * edited by hand, so only its identity key follows the seed. Rows from before
+ * snapshots existed count as unedited — the loader wrote those too.
+ */
+function seedRowPatch(row: IdolEvent, spec: EventSeed, seedKey: string): Partial<IdolEvent> | null {
+  const edited = row.seedSnapshot !== undefined && row.seedSnapshot !== seedFingerprint(row)
+  if (edited) return row.seedKey === seedKey ? null : { seedKey }
+  const snapshot = seedFingerprint(spec)
+  if (row.seedKey === seedKey && row.seedSnapshot === snapshot && seedFingerprint(row) === snapshot) {
+    return null
+  }
+  return {
+    title: spec.title,
+    date: spec.date,
+    startTime: spec.startTime,
+    venue: spec.venue,
+    url: spec.url,
+    note: spec.note,
+    seedKey,
+    seedSnapshot: snapshot,
+  }
+}
+
+// seedKey stamping shipped on 2026-09-06; rows created after that without one
+// were made by hand, never by the loader.
+const SEEDKEY_EPOCH = Date.UTC(2026, 8, 6)
+
+/**
+ * Remove copies the current seed didn't claim but that are recognisably demo
+ * data: the pre-rename version of an event, one from before an artist was
+ * added to it, or a second copy from the old non-idempotent loader. Their
+ * attended mark and plan slots move to the current row for that show.
+ */
+async function clearStaleSeedRows(
+  events: IdolEvent[],
+  claimed: Set<string>,
+  idToName: Map<string, string>,
+): Promise<void> {
+  const known = new Set([
+    ...currentSeedSignatures(),
+    ...RETIRED_SEED_EVENTS.map(([date, title, names]) => seedSignature(date, title, [...names])),
+  ])
+  const signatureOf = (event: IdolEvent) =>
+    seedSignature(event.date, event.title, event.artistIds.map((id) => idToName.get(id) ?? id))
+  const stale = events.filter(
+    (event) =>
+      !claimed.has(event.id) &&
+      (event.seedKey !== undefined || event.createdAt < SEEDKEY_EPOCH) &&
+      known.has(signatureOf(event)),
+  )
+  if (stale.length === 0) return
+
+  const staleIds = new Set(stale.map((event) => event.id))
+  const current = events.filter((event) => claimed.has(event.id))
+  const heirOf = new Map<string, IdolEvent>()
+  for (const event of stale) {
+    const sameShow = current.filter(
+      (other) =>
+        other.date === event.date &&
+        other.artistIds.some((id) => event.artistIds.includes(id)),
+    )
+    const heir =
+      sameShow.find((other) => other.title === event.title) ??
+      sameShow.find((other) => (other.startTime ?? '') === (event.startTime ?? '') && !!event.startTime) ??
+      sameShow[0]
+    if (!heir) continue
+    heirOf.set(event.id, heir)
+    if (event.attended && !heir.attended) {
+      await db.events.update(heir.id, { attended: true })
+      heir.attended = true
+    }
+  }
+
+  for (const plan of await db.plans.toArray()) {
+    if (!plan.eventIds.some((id) => staleIds.has(id))) continue
+    const eventIds = [
+      ...new Set(
+        plan.eventIds
+          .map((id) => (staleIds.has(id) ? heirOf.get(id)?.id : id))
+          .filter((id): id is string => !!id),
+      ),
+    ]
+    await db.plans.update(plan.id, { eventIds, updatedAt: Date.now() })
+  }
+  await db.events.bulkDelete([...staleIds])
 }
