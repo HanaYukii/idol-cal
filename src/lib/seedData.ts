@@ -47,6 +47,8 @@ const MOMOCLO_XMAS = 'ももいろクローバーZ クリスマスツアー2026�
 const MOMOCLO_XMAS_URL = 'https://www.momoclo.net/archives/news/260727_03'
 const SWESTE_TOUR = 'SWEET STEADY JAPAN TOUR 2026 -WINTER- Snow Sparkle'
 const SWESTE_RELEASE = '3rdシングル『SWEET STEP』発売記念リリースイベント'
+const KAWAII_LAB_5TH = 'KAWAII LAB. 5th ANNIVERSARY TOUR'
+const KAWAII_LAB_5TH_URL = 'https://sweetsteady.asobisystem.com/news/detail/93737'
 const SOUND_OF_EBICHU = 'SOUND OF EBICHU 2026 -Band Edition-'
 
 // 2026 年 2 月〜2027 年 8 月主要 live / tour（依公開資料，日期 JST）
@@ -2733,6 +2735,125 @@ const EVENTS: EventSeed[] = [
     venue: '横浜赤レンガ倉庫1号館 3Fホール (神奈川)',
     url: 'https://trysail.jp/contents/1111202',
     note: '夏川椎菜出演。開場 18:45',
+  },
+
+  // ── 2026-10-27 追加分: SWEET STEADY 生誕祭 2027 / KAWAII LAB. ──
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: 'KAWAII LAB. ファンクラブ限定フリーライブ',
+    date: '2026-11-06',
+    startTime: '18:00',
+    venue: '東京ガーデンシアター (東京)',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/93708',
+    note: 'FC 会員限定・無料（システム手数料別）、開場 16:30。出演 CANDY TUNE / SWEET STEADY / CUTIE STREET / MORE STAR',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'SWEET STEADY 奥田彩友 BIRTHDAY LIVE 2027',
+    date: '2027-01-07',
+    startTime: '19:00',
+    venue: 'SGC ホール有明 (東京)',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/94087',
+    note: '全席指定 ¥6,500、開場 17:30',
+  },
+  {
+    artistNames: ['SWEET STEADY'],
+    title: 'SWEET STEADY 音井結衣 BIRTHDAY LIVE 2027',
+    date: '2027-01-18',
+    startTime: '19:00',
+    venue: 'SGC ホール有明 (東京)',
+    url: 'https://sweetsteady.asobisystem.com/news/detail/94088',
+    note: '全席指定 ¥6,500、開場 17:30',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 宮城 DAY1`,
+    date: '2027-01-30',
+    startTime: '17:00',
+    venue: '宮城セキスイハイムスーパーアリーナ (宮城)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 15:00、一般指定席 ¥10,000。出演 FRUITS ZIPPER / CANDY TUNE / SWEET STEADY / CUTIE STREET / MORE STAR',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 宮城 DAY2`,
+    date: '2027-01-31',
+    startTime: '16:00',
+    venue: '宮城セキスイハイムスーパーアリーナ (宮城)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 14:00',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 横浜 DAY1`,
+    date: '2027-02-13',
+    startTime: '17:00',
+    venue: 'Kアリーナ横浜 (神奈川)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 15:00',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 横浜 DAY2`,
+    date: '2027-02-14',
+    startTime: '16:00',
+    venue: 'Kアリーナ横浜 (神奈川)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 14:00',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 愛知 DAY1`,
+    date: '2027-02-20',
+    startTime: '17:00',
+    venue: 'IGアリーナ (愛知)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 15:00',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 愛知 DAY2`,
+    date: '2027-02-21',
+    startTime: '16:00',
+    venue: 'IGアリーナ (愛知)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 14:00',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 神戸 DAY1`,
+    date: '2027-03-20',
+    startTime: '17:00',
+    venue: 'GLION ARENA KOBE (兵庫)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 15:00。CUTIE STREET は真鍋凪咲を除く 7 名で出演',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 神戸 DAY2`,
+    date: '2027-03-21',
+    startTime: '16:00',
+    venue: 'GLION ARENA KOBE (兵庫)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 14:00',
+  },
+  {
+    artistNames: ['CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 福岡 DAY1`,
+    date: '2027-04-03',
+    startTime: '17:00',
+    venue: 'マリンメッセ福岡A館 (福岡)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 15:00。SWEET STEADY はこの日出演なし',
+  },
+  {
+    artistNames: ['SWEET STEADY', 'CUTIE STREET'],
+    title: `${KAWAII_LAB_5TH} — 福岡 DAY2`,
+    date: '2027-04-04',
+    startTime: '16:00',
+    venue: 'マリンメッセ福岡A館 (福岡)',
+    url: KAWAII_LAB_5TH_URL,
+    note: '開場 14:00',
   },
 ]
 
